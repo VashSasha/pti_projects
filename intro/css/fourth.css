@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+}
+body{
+    margin: 0 auto;
+    padding: 0;
+    background-image: url(/1/img/photo-1579546929518-9e396f3cc809.jpeg);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+}
+h2{
+    font-size: 28px;
+    margin: 0;
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width:100%;
+   
+}
+
+
+.header{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    background-color: rgba(255, 255, 255, 0.516);
+    border-radius: 10px;
+}
+
+.active{
+    background-color: rgba(250, 159, 48, 0.625) ;
+    border-radius: 10px;
+}
+
+li a {
+    color: rgb(36, 36, 36);
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li:hover{
+    background-color: rgba(8, 19, 43, 0.392);
+    transition: all ease-in-out .3s;
+}
+
+p{
+    line-height: 22px ;
+}
+
+form{
+    width: 40%;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: rgba(250, 253, 255, 0.345);
+    border-radius: 15px;
+}
+.header{
+    margin-top: 60px;
+    padding: 20px;
+    background-color: rgba(190, 227, 255, 0.267);
+    border-radius: 10px;
+}
+
+table{
+    margin: 0 auto;
+}
+
+th{
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: rgb(53, 72, 150);
+    color: #fff;
+}
+td{
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: rgb(146, 164, 235);
+}
+.content{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 20px  0;
+}
+
+.el{
+    padding: 20px;
+    margin: 10px 0;
+    background-color: rgba(45, 140, 255, 0.379);
+    border-radius: 15px;
+    max-height: 150px;
+    max-width: 300px;
+    overflow:auto;
+    word-break: break-all;
+}
+
+.el:nth-child(2){
+    word-break:keep-all;
+}
+
+.el:nth-child(3){
+    opacity: .5;
+}
+
+.el:nth-child(2){
+    word-break:keep-all;
+    overflow: hidden;
+}
+
+.el:nth-child(3){
+    opacity: .5;
+}
+
+.galery{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    width: 90%;
+    margin: 25px auto;
+    
+}
+
+.block{
+    width: 45%;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 0px rgb(111, 111, 111);
+    transition: all .4s;
+}
+
+.block:hover{
+    box-shadow: 0px 0px 20px 10px rgba(255, 235, 180, 0.817);;
+}
+
+.block1{
+    background-image: url(/1/img/86786bba9b97f7c6_mi.jpg);
+}
+
+.block2{
+    background-image: url(/1/img/playtech.png);
+}
+
+.colored{
+    color:rgb(198, 67, 67);
+    font-weight: bold;
+}
+
+section{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap:15px
+}
+
+.call-icon{
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 20px 0px rgba(255, 245, 168, 0.735);
+    transition: all .4s;
+    z-index: 10;
+}
+.call-icon:hover{
+    transform: scale(1.3);
+    box-shadow: 0 0 20px 20px rgba(255, 245, 168, 0.735);
+}
+
+.call-icon img{
+    margin-bottom:-4px;
+    width: 60px;
+    height: 60px;   
+}
+
+footer{
+    padding: 20px;
+    width: 100vw;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.269);
+}
+
+
+@media screen  and (max-width: 990px){
+
+    .header{
+        display: flex;
+    }
+
+    section{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    table{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    
+    .container{
+        flex-direction: column;
+    }
+    
+    form{
+        width: 100%;
+    }
+    
+    .list ol{
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    .list li {
+        width: 100%;
+    }
+
+    table{
+        display: none;
+    }
+}
