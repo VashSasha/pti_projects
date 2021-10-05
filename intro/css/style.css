@@ -1,5 +1,4 @@
-
-body{
+body {
     margin: 0 auto;
     padding: 0;
     background-image: url(/intro/img/photo-1579546929518-9e396f3cc809.jpeg);
@@ -8,7 +7,8 @@ body{
     background-repeat: no-repeat;
     position: relative;
 }
-h2{
+
+h2 {
     font-size: 28px;
     margin: 0;
     text-align: center;
@@ -17,12 +17,12 @@ h2{
     letter-spacing: 5px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #000;
 }
 
-ul{
+ul{/* TODO: code style как выше */
     padding: 0;
     margin: 0;
     list-style-type: none;
