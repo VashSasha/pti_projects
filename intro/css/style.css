@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     padding: 0;
-    background-image: url(/intro/img/photo-1579546929518-9e396f3cc809.jpeg);
+    background-image: url(../img/photo-1579546929518-9e396f3cc809.jpeg);
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
@@ -160,11 +160,11 @@ td{
 }
 
 .block1{
-    background-image: url(/intro/img/86786bba9b97f7c6_mi.jpg);
+    background-image: url(../img/86786bba9b97f7c6_mi.jpg);
 }
 
 .block2{
-    background-image: url(/intro/img/playtech.png);
+    background-image: url(../img/playtech.png);
 }
 
 .colored{
