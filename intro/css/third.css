@@ -1,14 +1,14 @@
 
-body{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+body {
+    font-family: Georgia, serif;
     background-image: url(../img/photo-1579546929518-9e396f3cc809.jpeg);
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 100%;
     position: relative;
 }
-h2{
+h2 {
     font-size: 28px;
     margin: 0;
     text-align: center;
@@ -16,24 +16,24 @@ h2{
     font-style: italic;
 }
 
-a{
+a {
     text-decoration: none;
     color: #000;
 }
 
-ul{
+ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
 }
 
-ol{
+ol {
     margin: 0 auto;
     padding: 0;
     width: 60%;
 }
 
-ol li{
+ol li {
     padding: 10px;
     text-align: center;
     border-radius: 15px;
@@ -41,50 +41,46 @@ ol li{
     transition: all 0.2s ease-in-out ;
 }
 
-
-ol li:first-child:hover{
+ol li:first-child:hover {
     background-color: rgba(229, 151, 255, 0.262);
 }
 
-ol li p::before{
+ol li p::before {
     content: '•';
     clear: both;
     margin-right: 4px;
 }
 
-ol li:nth-child(odd){
+ol li:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.331);
     text-align: right;
 }
 
-ol li:nth-child(odd):hover{
+ol li:nth-child(odd):hover {
     background-color: #e042ff31;
 }
 
-ol li:nth-child(even):hover{
+ol li:nth-child(even):hover {
     background-color: rgba(0, 179, 255, 0.297);
 }
 
-ol li:nth-child(even){
+ol li:nth-child(even) {
     text-align: left;
 }
 
-nav{
+nav {
     position: sticky;
     top: 0;
     left: 0;
-    width:100%;
-   
+    width:100%; 
 }
 
-
-.header{
+.header {
     padding: 20px;
     border-radius: 10px;
 }
 
-
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-around;
     margin: 15px 0;
@@ -92,18 +88,18 @@ nav{
     border-radius: 10px;
 }
 
-.active{
+.active {
     background-color: rgba(250, 159, 48, 0.625) ;
     border-radius: 10px;
 }
 
-li{
+li {
     text-transform: uppercase;
     font-size: 0.7rem;
     line-height: 1.5rem;
 }
 
-li a {
+li a  {
     color: rgb(36, 36, 36);
     font-weight: 800;
     margin: 0;
@@ -112,16 +108,16 @@ li a {
     text-decoration: none;
 }
 
-li:hover{
+li:hover {
     background-color: rgba(8, 19, 43, 0.392);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out 0.3s;
 }
 
-p{
+p {
     line-height: 22px ;
 }
 
-form{
+form {
     text-align: right;
     width: 40%;
     margin: 10px auto;
@@ -130,51 +126,52 @@ form{
     border-radius: 15px;
 }
 
-input:checked{
+input:checked {
     color: red
 }
 
-.header{
+.header {
     margin-top: 60px;
     padding: 20px;
     background-color: rgba(190, 227, 255, 0.267);
     border-radius: 10px;
 }
 
-table{
+table {
     margin: 0 auto;
 }
 
-th{
+th {
     padding: 5px 10px;
     font-size: 16px;
     background-color: rgb(53, 72, 150);
     color: #fff;
 }
-td{
+
+td {
     padding: 5px 10px;
     font-size: 16px;
     background-color: rgb(146, 164, 235);
 }
-.content{
+.content {
     width: 80%;
     margin: 0 auto;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.wrap{
+.wrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 20px  0;
 }
 
-.el{
+.el {
     padding: 20px;
     margin: 10px 0;
     background-color: rgba(45, 140, 255, 0.379);
@@ -185,51 +182,50 @@ td{
     word-break: break-all;
 }
 
-.el:nth-child(2){
+.el:nth-child(2) {
     word-break:keep-all;
 }
 
-.el:nth-child(3){
-    opacity: .5;
+.el:nth-child(3) {
+    opacity:0.5;
 }
 
-.galery{
+.galery {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
     width: 90%;
     margin: 25px auto;
-    
 }
 
-.block{
+.block {
     width: 45%;
     height: 400px;
     background-position: center;
     background-size: cover;
     border-radius: 20px;
-    box-shadow: 10px 10px 10px 0px rgb(111, 111, 111);
-    transition: all .4s;
+    box-shadow: 10px 10px 10px 0 rgb(111, 111, 111);
+    transition: all 0.4s;
 }
 
-.block:hover{
-    box-shadow: 0px 0px 20px 10px rgba(255, 235, 180, 0.817);;
+.block:hover {
+    box-shadow: 0 0 20px 10px rgba(255, 235, 180, 0.817);;
 }
 
-.block1{
+.block1 {
     background-image: url(../img/86786bba9b97f7c6_mi.jpg);
 }
 
-.block2{
+.block2 {
     background-image: url(../img/playtech.png);
 }
 
-.colored{
+.colored {
     color:rgb(198, 67, 67);
     font-weight: bold;
 }
 
-.call-icon{
+.call-icon {
     position: absolute;
     display: flex;
     align-items: flex-end;
@@ -238,40 +234,41 @@ td{
     border-radius: 50%;
     box-sizing: border-box;
     background-color: #fff;
-    box-shadow: 0 0 20px 0px rgba(255, 245, 168, 0.735);
-    transition: all .4s;
+    box-shadow: 0 0 20px 0 rgba(255, 245, 168, 0.735);
+    transition: all 0.4s;
     z-index: 10;
 }
-.call-icon:hover{
+
+.call-icon:hover {
     transform: scale(1.3);
     box-shadow: 0 0 20px 20px rgba(255, 245, 168, 0.735);
 }
 
-.call-icon img{
+.call-icon img {
     margin-bottom:-4px;
     width: 60px;
     height: 60px;   
 }
 
-footer{
+footer {
     padding: 20px;
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.269);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 480px)  {
     
-    .list ol{
+    .list ol {
         width: 100%;
         margin: 15px auto;
     }
 
-    .list li {
+    .list li  {
         width: 100%;
     }
 
-    table{
+    table {
         display: none;
     }
 }
