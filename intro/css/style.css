@@ -153,6 +153,7 @@ td {
 .el:nth-child(2) {
     word-break: break-word;
     overflow: hidden;
+    font-family: MyFont;
 }
 
 .el:nth-child(3) {
@@ -221,6 +222,7 @@ td {
     background-color: #fff;
     box-shadow: 0 0 20px 0 rgba(255, 245, 168, 0.735);
     transition: all 0.4s;
+    animation: pulse 0.3s linear infinite alternate;
     z-index: 10;
 }
 
@@ -240,6 +242,11 @@ footer {
     width: 100%;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.269);
+}
+
+@font-face {
+    font-family: "MyFont";
+    src: url("../font/Roboto_Mono/RobotoMono-VariableFont_wght.ttf");
 }
 
 @media screen and (max-width: 500px) {
@@ -270,4 +277,15 @@ footer {
         margin: 15px;
     }
 }
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1.08);
+    }
+}
+
 

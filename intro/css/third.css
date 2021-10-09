@@ -1,4 +1,3 @@
-
 body {
     font-family: Georgia, serif;
     background-image: url(../img/photo-1579546929518-9e396f3cc809.jpeg);
@@ -29,7 +28,7 @@ ul {
 
 ol {
     margin: 0 auto;
-    padding: 0;
+    padding: 15px;
     width: 60%;
 }
 
@@ -54,14 +53,17 @@ ol li p::before {
 ol li:nth-child(odd) {
     background-color: rgba(255, 255, 255, 0.331);
     text-align: right;
+    
 }
 
 ol li:nth-child(odd):hover {
     background-color: #e042ff31;
+    animation: slide 0.4s linear alternate;
 }
 
 ol li:nth-child(even):hover {
     background-color: rgba(0, 179, 255, 0.297);
+    animation: slide-left 0.4s linear alternate;
 }
 
 ol li:nth-child(even) {
@@ -139,6 +141,7 @@ input:checked {
 
 table {
     margin: 0 auto;
+    font-family: MyFont;
 }
 
 th {
@@ -229,13 +232,14 @@ td {
     position: absolute;
     display: flex;
     align-items: flex-end;
-    right: 20px;
-    bottom: 20px;
+    right: 30px;
+    bottom: 30px;
     border-radius: 50%;
     box-sizing: border-box;
     background-color: #fff;
     box-shadow: 0 0 20px 0 rgba(255, 245, 168, 0.735);
     transition: all 0.4s;
+    animation: pulse 0.3s linear infinite alternate;
     z-index: 10;
 }
 
@@ -257,7 +261,12 @@ footer {
     background-color: rgba(255, 255, 255, 0.269);
 }
 
-@media screen and (max-width: 480px)  {
+@font-face {
+    font-family: "MyFont";
+    src: url("../font/Roboto_Mono/RobotoMono-VariableFont_wght.ttf");
+}
+
+@media screen and (max-width: 480px) {
     
     .list ol {
         width: 100%;
@@ -270,5 +279,33 @@ footer {
 
     table {
         display: none;
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(30px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-30px);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
