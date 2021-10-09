@@ -191,10 +191,10 @@ td {
     font-weight: bold;
 }
 
-section {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap:15px
+section {     
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
 .call-icon {
