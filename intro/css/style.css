@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body  {
     margin: 0 auto;
     padding: 0;
@@ -77,6 +83,15 @@ form {
     border-radius: 15px;
 }
 
+input, label, button {
+    margin: 10px;
+}
+
+:checked {
+    margin: 5px;
+    box-shadow: 0 0 10px 0 rgb(118, 198, 62);
+}
+
 .header {
     margin-top: 60px;
     padding: 20px;
@@ -104,7 +119,12 @@ td {
 
 .content {
     width: 80%;
-    margin: 0 auto;
+    margin: 15px auto;
+}
+
+.content:nth-child(1) {
+    text-indent: 20px;
+    outline: 2px solid rgb(198, 67, 67);
 }
 
 .container {
@@ -131,7 +151,7 @@ td {
 }
 
 .el:nth-child(2) {
-    word-break:keep-all;
+    word-break: break-word;
     overflow: hidden;
 }
 
@@ -139,12 +159,17 @@ td {
     opacity: 0.5;
 }
 
-.galery {
+#galery {
+    padding: 20px;
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
     width: 90%;
     margin: 25px auto;
+}
+
+[id]:hover {
+    box-shadow: 0 0 20px 0 rgb(146, 164, 235);
 }
 
 .block {
@@ -157,8 +182,19 @@ td {
     transition: all 0.4s;
 }
 
+#galery > .block1:hover {
+    transform: rotate(-8deg);
+    transition: all ease-in-out 0.3s;
+}
+
+.block ~ .block:hover {
+    transform: rotate(8deg);
+    transition: all ease-in-out 0.3s;
+}
+
 .block:hover {
-    box-shadow: 0 0 20px 10px rgba(255, 235, 180, 0.817);;
+    box-shadow: 0 0 20px 10px rgba(255, 235, 180, 0.817);
+    transform: scale(1.05);
 }
 
 .block1 {
@@ -201,7 +237,7 @@ td {
 
 footer {
     padding: 20px;
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.269);
 }
