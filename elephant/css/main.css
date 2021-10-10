@@ -1,0 +1,227 @@
+/*
+    Этот комментарий удалить в конце разработки
+    Семейство шрифтов используемых на сайте:
+    font: 11px Tahoma, sans-serif;
+    font: 14px "Times New Roman", serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #e7e5c8;
+    margin: 0 auto;
+    /* padding: 20px 0; */
+    width: 707px;
+    font: 11px Tahoma, sans-serif;
+    font: 14px "Times New Roman", serif;
+}
+
+header {
+    min-height: 88px;
+    position: relative;
+    width: 100%;
+    vertical-align: baseline;
+}
+
+.logo {
+    margin: 25px 20px;
+}
+
+
+.phone {
+    position: absolute;
+    right: -20px;
+    top: 0;
+    width: 275px;
+    height: 90px;
+    float: right;
+    font-size: 13px;
+    text-align: center;
+    background-image: url(../images/phone.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 30;
+}
+
+.inner-text {
+    position: absolute;
+    top: 50%;  
+    left: 60%; 
+    transform: translate(-50%, -50%);
+    text-indent: -30px;
+}
+
+.inner-text * {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.inner-text p {
+    font-size: 10px;
+}
+
+main {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 30px 0;
+    box-shadow:  0 1px 0 #c0bd9a,
+     0 -1px 0 #c0bd9a,
+     0 2px 0 #f1f0e0,
+     0 -2px 0 #f1f0e0;  
+   z-index: 1;  
+}
+
+.banner {
+    width: 49%;
+    min-height: 275px;
+    float: left;
+    background-image: url(../images/ho.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.content {
+    width: 46%;
+    margin-left: auto;
+}
+
+.content h1 {
+    text-indent: 30px;
+    font-size: 14px;
+    color: #6e6b3d;
+}
+
+p {
+    color: #828063;
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 13px;
+}
+
+.highlite {
+    color: #90aa1f
+}
+
+aside {
+    background-color: #dedbbb;
+    padding: 8px 0;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.block{
+    display: inline-block;
+    vertical-align: top;
+    width: 32%;
+    /* min-height: 180px; */
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.block h3 {
+    margin-bottom: 10px;
+}
+
+h3,
+strong {
+    color: #6e6b3d;
+}
+
+.block:nth-child(2) {
+    box-shadow: 1px 0 0 #c0bd9a,
+    -1px 0 0 #c0bd9a,
+    2px 0 0 #f1f0e0,
+    -2px 0 0 #f1f0e0; 
+}
+
+.block:nth-child(3){
+    background-image: url(../images/elephant.jpg);
+    background-position:  bottom 8px right 3px;
+    background-repeat: no-repeat;
+}
+
+.block:nth-child(3) p {
+    max-width: 135px;
+}
+
+.img-wrap,
+.img-wrap-lg {
+    display: inline-block;
+    margin: 4px 3px;
+    height: 100%;
+    width: 46%;
+    background-color: #b7b192;
+    padding: 3px 18px 3px 3px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.img-wrap-lg {
+    width: 100%;
+    padding: 3px;
+}
+
+.img-wrap img,
+.img-wrap-lg img {
+    width: 100%;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+ul {
+    margin: 15px 0 20px 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.block li a {
+    margin-left: -10px;
+    color: #6a684d;
+}
+
+footer {
+    padding: 15px 0 15px 15px;
+    display: flex;
+}
+
+.welcome {
+    display: inline-block;
+    height: 75px;
+    width: 50px;
+    background-image: url(../images/welcome.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.info {
+    display: inline-block;
+    vertical-align: top;
+    width: 270px;
+    margin-left: auto;
+    background-image: url(../images/map.jpg);
+    background-repeat: no-repeat;
+}
+
+.info-caption {
+    width: 200px;
+    height: 100%;
+    margin-top: 20px;
+    margin-left: auto;
+}
+
+.info-caption h3 {
+    text-indent: 10px;
+}
+
+.info p {
+    vertical-align: bottom;
+    margin: 5px 0;
+}
