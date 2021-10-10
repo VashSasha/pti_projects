@@ -1,10 +1,3 @@
-/*
-    Этот комментарий удалить в конце разработки
-    Семейство шрифтов используемых на сайте:
-    font: 11px Tahoma, sans-serif;
-    font: 14px "Times New Roman", serif;
-*/
-
 * {
     margin: 0;
     padding: 0;
@@ -15,8 +8,16 @@ body {
     margin: 0 auto;
     /* padding: 20px 0; */
     width: 707px;
-    font: 11px Tahoma, sans-serif;
+    font: 11px Tahoma, sans-serif;  
+}
+
+h3 {
     font: 14px "Times New Roman", serif;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 header {
@@ -88,18 +89,19 @@ main {
 }
 
 .content {
-    width: 46%;
+    width: 48%;
     margin-left: auto;
+    font: 11px Tahoma, sans-serif;
 }
 
-.content h1 {
+.content h3 {
     text-indent: 30px;
     font-size: 14px;
     color: #6e6b3d;
 }
 
 p {
-    color: #828063;
+    color: #8e8c77;
     margin-top: 12px;
     font-size: 12px;
     line-height: 13px;
@@ -117,11 +119,11 @@ aside {
     border-radius: 4px;
 }
 
-.block{
+.block {
     display: inline-block;
     vertical-align: top;
     width: 32%;
-    /* min-height: 180px; */
+    min-height: 180px;
     padding: 0 16px;
     box-sizing: border-box;
 }
@@ -178,15 +180,22 @@ strong {
 
 ul {
     margin: 15px 0 20px 0;
-    padding: 0;
-    list-style-position: inside;
+    list-style-type: none;
 }
 
 .block li a {
-    margin-left: -10px;
+    line-height: 18px;
+    font-size: 12px;
     color: #6a684d;
 }
 
+.block li::before{
+    content: "•"; 
+    color: #6a684d;
+    display: inline-block;
+    width: 1em;
+    /* margin-left: -1em */
+}
 footer {
     padding: 15px 0 15px 15px;
     display: flex;
@@ -204,14 +213,14 @@ footer {
 .info {
     display: inline-block;
     vertical-align: top;
-    width: 270px;
+    width: 285px;
     margin-left: auto;
     background-image: url(../images/map.jpg);
     background-repeat: no-repeat;
 }
 
 .info-caption {
-    width: 200px;
+    width: 220px;
     height: 100%;
     margin-top: 20px;
     margin-left: auto;
