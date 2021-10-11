@@ -1,15 +1,4 @@
-﻿/*
-    Основной шрифт страницы
-    font-family: Verdana;
-
-    Для заголовка "Карта рынка труда России" используется
-    font-family: "Times New Roman";
-
-    Для footer
-    font-family: Tahoma;
-*/
-
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,7 +16,9 @@ header {
     font-family: Tahoma, sans-serif;
 }
 
-.wrap {
+.wrap,
+main,
+footer{
     width: 1014px;
     margin: 0 auto;
 }
@@ -56,6 +47,10 @@ header {
     color: #676767;
     font-size: 11px;
     letter-spacing: 0.8px;
+}
+
+a {
+    color: #676767;
 }
 
 a:hover,
@@ -306,4 +301,21 @@ p {
 
 footer {
     font-family: Tahoma, sans-serif;
+}
+
+footer ul {
+    display: flex;
+    margin-top: 10px;
+    padding: 15px;
+    list-style-type: none;
+}
+
+footer li {
+    margin-right: 35px;
+    font-size: 10px;
+}
+
+footer li:last-child {
+    margin-left: auto;
+    margin-right: 0;
 }
