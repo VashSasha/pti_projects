@@ -150,12 +150,12 @@ td {
     background-position: center;
     background-size: cover;
     border-radius: 20px;
-    box-shadow: 10px 10px 10px 0px rgb(111, 111, 111);
+    box-shadow: 10px 10px 10px 0 rgb(111, 111, 111);
     transition: all 0.4s;
 }
 
 .block:hover {
-    box-shadow: 0px 0px 20px 10px rgba(255, 235, 180, 0.817);;/* TODO: ;; 0px */
+    box-shadow: 0 0 20px 10px rgba(255, 235, 180, 0.817);
 }
 
 .block1 {
@@ -167,7 +167,7 @@ td {
 }
 
 .colored {
-    color:rgb(198, 67, 67);/* TODO: color:rgb */
+    color: rgb(198, 67, 67);
     font-weight: bold;
 }
 
