@@ -1,21 +1,14 @@
-/*
-    TODO:
-        размер текста меньше
-        в телефоне другой шрифт
-        горизонтальная линия под header
-*/
-
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     background-color: #e7e5c8;
     margin: 0 auto;
-    /* padding: 20px 0; */
     width: 707px;
-    font: 11px Tahoma, sans-serif;  
+    font: 11px Tahoma, sans-serif;
 }
 
 h3 {
@@ -38,51 +31,41 @@ header {
     margin: 25px 20px;
 }
 
-
 .phone {
+    font: 14px "Times New Roman", serif;
     position: absolute;
-    right: -20px;
+    right: -25px;
     top: 0;
     width: 275px;
     height: 90px;
     float: right;
-    font-size: 13px;
-    text-align: center;
+    color: #fff;
+    padding-top: 28px;
+    padding-left: 125px;
+    text-indent: -15px;
+    font-weight: bold;
+    line-height: 15px;
     background-image: url(../images/phone.png);
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 30;
 }
 
-.inner-text {
-    position: absolute;
-    top: 50%;  
-    left: 60%; 
-    transform: translate(-50%, -50%);
-    text-indent: -30px;
-}
-
-.inner-text * {
+.phone p {
+    margin: 0;
     color: #fff;
-    text-decoration: none;
+    font: 11px Tahoma, sans-serif;
     font-weight: bold;
-}
-
-.inner-text p {
-    font-size: 10px;
 }
 
 main {
     display: inline-block;
     width: 100%;
-    margin: 0 auto;
-    padding: 20px 0 30px 0;
-    box-shadow:  0 1px 0 #c0bd9a,
-     0 -1px 0 #c0bd9a,
-     0 2px 0 #f1f0e0,
-     0 -2px 0 #f1f0e0;  
-   z-index: 1;  
+    margin: 4px auto;
+    padding: 25px 0 30px 0;
+    box-shadow:  0 1px 0 #c0bd9a, 0 -1px 0 #f1f0e0, 0 2px 0 #f1f0e0, 0 -2px 0 #c0bd9a;
+    z-index: 1;
 }
 
 .banner {
@@ -96,13 +79,13 @@ main {
 }
 
 .content {
-    width: 48%;
+    width: 45%;
     margin-left: auto;
     font: 11px Tahoma, sans-serif;
 }
 
 .content h3 {
-    text-indent: 30px;
+    text-indent: 35px;
     font-size: 14px;
     color: #6e6b3d;
 }
@@ -110,18 +93,16 @@ main {
 p {
     color: #8e8c77;
     margin-top: 12px;
-    font-size: 12px;
-    line-height: 13px;
 }
 
-.highlite {
+.highlighted,
+a {
     color: #90aa1f
 }
 
 aside {
     background-color: #dedbbb;
     padding: 8px 0;
-    margin: 4px 0;
     box-sizing: border-box;
     border-radius: 4px;
 }
@@ -129,7 +110,7 @@ aside {
 .block {
     display: inline-block;
     vertical-align: top;
-    width: 32%;
+    width: 33%;
     min-height: 180px;
     padding: 0 16px;
     box-sizing: border-box;
@@ -145,10 +126,7 @@ strong {
 }
 
 .block:nth-child(2) {
-    box-shadow: 1px 0 0 #c0bd9a,
-    -1px 0 0 #c0bd9a,
-    2px 0 0 #f1f0e0,
-    -2px 0 0 #f1f0e0; 
+    box-shadow: 1px 0 0 #f1f0e0, -1px 0 0 #c0bd9a, 2px 0 0 #c0bd9a, -2px 0 0 #f1f0e0;
 }
 
 .block:nth-child(3){
@@ -176,6 +154,7 @@ strong {
 .img-wrap-lg {
     width: 100%;
     padding: 3px;
+    margin: 0;
 }
 
 .img-wrap img,
@@ -192,7 +171,7 @@ ul {
 
 .block li a {
     line-height: 18px;
-    font-size: 12px;
+    font-size: 11px;
     color: #6a684d;
 }
 
@@ -201,39 +180,26 @@ ul {
     color: #6a684d;
     display: inline-block;
     width: 1em;
-    /* margin-left: -1em */
 }
 footer {
     padding: 15px 0 15px 15px;
-    display: flex;
-}
-
-.welcome {
-    display: inline-block;
-    height: 75px;
-    width: 50px;
     background-image: url(../images/welcome.jpg);
+    background-size: 50px 75px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-position: top 15px left 10px;
 }
 
 .info {
-    display: inline-block;
     vertical-align: top;
-    width: 285px;
+    width: 260px;
     margin-left: auto;
+    padding-top: 20px;
+    padding-left: 60px;
     background-image: url(../images/map.jpg);
     background-repeat: no-repeat;
 }
 
-.info-caption {
-    width: 220px;
-    height: 100%;
-    margin-top: 20px;
-    margin-left: auto;
-}
-
-.info-caption h3 {
+.info h3 {
     text-indent: 10px;
 }
 
