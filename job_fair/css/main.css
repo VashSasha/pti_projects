@@ -18,7 +18,7 @@ header {
 
 .wrap,
 main,
-footer{
+footer {
     width: 1014px;
     margin: 0 auto;
 }
@@ -86,7 +86,6 @@ button:hover{
     color: #fff;
     border: 2px solid #fff;
     border-radius: 8px;
-
 }
 
 .news-bar a {
@@ -99,7 +98,7 @@ button:hover{
 
 .arrow-left,
 .arrow-right,
-.arrow-down{
+.arrow-down {
     width: 0;
     height: 0;
     vertical-align: middle;
@@ -171,7 +170,7 @@ button:hover{
     background-color: #89c160;
 }
 
-.tabs li:last-child a{
+.tabs li:last-child a {
     width: 90px;
     background-color: #74b8d2;
     margin-left: 60px;
@@ -182,7 +181,8 @@ button:hover{
 }
 
 main {
-    border: 6px solid #043a4f;
+    padding: 6px;
+    background: #043a4f;
     border-radius: 0 0 4px 4px;
     letter-spacing: normal;
 }
@@ -192,7 +192,7 @@ main {
     width: 825px;
 }
 
-.content {
+.banner {
     position: relative;
     padding: 15px 41px 10px 41px;
     color: #ffffff;
@@ -221,7 +221,7 @@ main {
 }
 
 h1 {
-    font-family: Times, New Roman, sans-serif;
+    font-family: "Times New Roman", sans-serif;
 }
 
 h1,
@@ -238,16 +238,17 @@ p {
     border-radius: 3px 3px 0 0 ;
 }
 
-.content .arrow-down {
+.banner .arrow-down {
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 10px solid #cdf1ff;
 }
 
 .block {
+    background: #fff;
     min-height: 500px;
     border-radius: 4px;
-    box-shadow: 0 0 0 3px #043a4f;
+    box-shadow: 0 0 0 3px #043a4f;/* TODO: лишнее */
     z-index: 4;
 }
 
