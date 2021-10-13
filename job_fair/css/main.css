@@ -1,4 +1,8 @@
-﻿* {
+﻿/*
+    TODO: сгрупируй компоненты
+*/
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,6 +13,8 @@ body {
     font-size: 12px;
     letter-spacing: 0.8px;
 }
+
+/* --------------------------------------------- Header */
 
 header {
     width: 100%;
@@ -210,7 +216,7 @@ button:hover{
     margin-left: 60px;
 }
 
-.active {
+.tabs .active {
     background-color: #043a4f !important;
 }
 
@@ -263,7 +269,7 @@ p {
     margin-bottom: 14px;
 }
 
-.toggle {
+.btn-toggler {
     position: absolute;
     right: 0;
     top: -17px;
@@ -292,7 +298,7 @@ p {
     background-color: #218fbb;
 }
 
-.active-btn {
+.pagination .active {
     background-color: #2fbaf1;
 }
 
@@ -319,6 +325,8 @@ p {
     border: none;
     border-radius: 5px;
 }
+
+/* --------------------------------------------- Footer */
 
 footer {
     font-family: Tahoma, sans-serif;
