@@ -19,6 +19,8 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+/* --------------------------------------------- Header */
+
 header {
     display: flex;
     height: 30px;
@@ -146,6 +148,8 @@ a:hover {
 .nav-list a:last-child {
     border: none;
 }
+
+/* --------------------------------------------- Footer */
 
 footer {
     display: flex;
