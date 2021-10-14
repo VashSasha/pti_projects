@@ -51,6 +51,8 @@ a {
     text-decoration: none;
 }
 
+/* ---------------------------------- Main */
+
 main {
     display: flex;
     flex-direction: column;
@@ -58,6 +60,7 @@ main {
     width: 720px;
     margin: 0 auto;
     background: #000;
+    padding-bottom: 15px;
     border-left: 1px solid #a36917;
     border-right: 1px solid #a36917;
 }
@@ -128,6 +131,10 @@ a:hover {
     float: left;
     width: 330px;
     margin-right: 10px;
+}
+
+.content .wrap p {
+    margin-bottom: 15px;
 }
 
 .nav-list {
