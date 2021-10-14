@@ -1,8 +1,4 @@
-﻿/*
-    TODO: сгрупируй компоненты
-*/
-
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -131,33 +127,6 @@ button:hover{
     border-right: 8px solid #fff;
 }
 
-.banner .btn-next::before {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    text-align: center;
-    background-color: transparent;
-    margin-left: auto;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-left: 15px solid #fff;
-}
-
-.banner .btn-previous::before {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    text-align: center;
-    background-color: transparent;
-    border-top: 9px solid transparent;
-    border-bottom: 9px solid transparent;
-    border-right: 15px solid #fff;
-}
-
 .log-btn {
     width: 100px;
     background-image: url(../images/1.gif);
@@ -242,66 +211,6 @@ main {
     box-shadow: 0 0 0 5px #043a4f;
 }
 
-.pagination {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.pagination a {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    width: 24px;
-    height: 24px;
-    padding-top: 4px;
-    font-weight: bold;
-    margin-right: 3px;
-    text-decoration: none;
-}
-
-h1 {
-    font-family: "Times New Roman", sans-serif;
-}
-
-h1,
-p {
-    margin-bottom: 14px;
-}
-
-.btn-toggler {
-    position: absolute;
-    right: 0;
-    top: -17px;
-    padding: 4px 6px;
-    background-color: #1f617a;
-    border-radius: 3px 3px 0 0 ;
-}
-
-.banner .arrow-down {
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 10px solid #cdf1ff;
-}
-
-.block {
-    background: #fff;
-    min-height: 500px;
-    border-radius: 4px;
-    box-shadow: 0 0 0 3px #043a4f;/* TODO: лишнее */
-    z-index: 4;
-}
-
-.btn {
-    color: #fff;
-    border-radius: 5px;
-    background-color: #218fbb;
-}
-
-.pagination .active {
-    background-color: #2fbaf1;
-}
-
 .banner .btn-previous {
     left: 7px;
     bottom: 10px;
@@ -324,6 +233,96 @@ p {
     background: #218fbb;
     border: none;
     border-radius: 5px;
+}
+
+.banner .btn-next::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    text-align: center;
+    background-color: transparent;
+    margin-left: auto;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 15px solid #fff;
+}
+
+.banner .btn-previous::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    text-align: center;
+    background-color: transparent;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 15px solid #fff;
+}
+
+.pagination {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.pagination button {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border: none;
+    font-weight: bold;
+    margin-right: 3px;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: "Times New Roman", sans-serif;
+}
+
+h1,
+p {
+    margin-bottom: 14px;
+}
+
+.btn-toggler {
+    position: absolute;
+    right: 0;
+    top: -17px;
+    padding: 4px 6px;
+    border: none;
+    background-color: #1f617a;
+    border-radius: 3px 3px 0 0 ;
+}
+
+.btn-toggler::before {
+    content: '';
+    display: block;
+    vertical-align: middle;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid #cdf1ff;
+}
+
+main .block {
+    background: #fff;
+    min-height: 500px;
+    border-radius: 4px;
+    z-index: 4;
+}
+
+.btn {
+    color: #fff;
+    border-radius: 5px;
+    background-color: #218fbb;
+}
+
+.pagination .active {
+    background-color: #2fbaf1;
 }
 
 /* --------------------------------------------- Footer */
