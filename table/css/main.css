@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+/* ----------------------------------- First */
+
+table {
+    margin: 30px auto;
+}
+
+.first table,
+.first th,
+.first td {
+    border: 1px solid #ccc;
+    box-shadow: -1px -1px 0 0 #606060;
+    text-align: center;
+}
+
+.first th,
+.first td {
+    padding: 15px 10px;
+    font-size: 18px;
+}
+
+.first td {
+    width: 160px;
+}
+
+.first th:first-child {
+    width: 320px;
+    font-weight: bold;
+}
+
+
+.first td:first-child {
+    text-align: left;
+}
+
+/* ----------------------------------- Second */
+
+.second {
+    text-align: center;
+}
+
+.second tr:first-child {
+    width: 500px;
+}
+
+.second  {
+    box-shadow: 1px 1px 0 0 #aaa;
+}
+
+.second ul {
+    list-style-position: inside;
+    text-align: right;
+}
+
+.second th,
+.second td {
+    padding: 10px 5px;
+    box-shadow: -1px -1px 0 0 #aaa;
+}
+
+.second td:nth-child(2) {
+    width: 290px;
+}
+
+/* ----------------------------------- Third */
+
+.third {
+    padding: 2px;
+    border: 1px solid;
+    border-color:  #808080 #000 #000 #808080;
+}
+
+
+.third th,
+.third td {
+    text-align: left;
+    padding: 6px;
+    border: 1px solid;
+    border-color: #000 #808080 #808080 #000;
+}
+
+.third th {
+    padding: 10px 25px;
+}
+
+.third th:first-child {
+    width: 140px;
+}
+
+.third tr:last-child td:last-child {
+    text-align: center;
+}
+
+/* ----------------------------------- Fourth */
+
+.fourth {
+    outline: 10px solid #ccc;
+}
+
+.fourth,
+.fourth td {
+    border: 1px solid #ccc;
+}
+
+.fourth tr,
+.fourth td {
+    padding: 10px;
+}
+
+/* ----------------------------------- Fifth */
+
+.fifth {
+    padding: 10px;
+}
+
+.fifth th {
+    background: #706d97;
+    color: #fff;
+    text-align: left;
+}
+
+.fifth th,
+.fifth td {
+    padding: 10px;
+    width: 180px;
+}
+
+.fifth th:nth-child(3),
+.fifth td:nth-child(3) {
+    text-align: right;
+}
+
+.fifth tr:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+/* ----------------------------------- Sixth*/
+
+.sixth {
+    background: radial-gradient(#fefefe, #deeffa);
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.sixth th,
+.sixth td {
+    padding: 5px 10px;
+    border: 1px solid #8ce3cc;
+}
+
+.sixth tr:first-child th:first-child,
+.sixth tr:first-child th:last-child {
+    width: 110px;
+}
+
+.sixth tr:nth-child(2) th:first-child {
+    width: 100px;
+}
+
+.sixth tr:nth-child(2) th:nth-child(2) {
+    width: 110px;
+}
+
+.sixth tr:nth-child(2) th:nth-child(3) {
+    width: 100px;
+}
+.sixth tr:nth-child(2) th:nth-child(4) {
+    width: 120px;
+}
+
