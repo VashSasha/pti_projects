@@ -1,0 +1,40 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #473B38;
+}
+
+.page {
+    width: 950px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding-bottom: 120px;
+    position: relative;
+}
+
+/* ---------------------------------------- Content */
+
+/*
+    Для голубых заголовков
+    font-family: Verdana, sans-serif;
+*/
+
+/* ---------------------------------------- Footer */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #6A5455;
+    height: 120px;
+}
