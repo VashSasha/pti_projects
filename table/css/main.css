@@ -19,7 +19,7 @@ table {
     margin: 30px auto;
 }
 
-.first table,
+.first,
 .first th,
 .first td {
     border: 1px solid #ccc;
@@ -47,18 +47,23 @@ table {
     text-align: left;
 }
 
-/* ----------------------------------- Second */
-
-.second {
+.first tr:last-child td {
     text-align: center;
 }
 
-.second tr:first-child {
-    width: 500px;
-}
+/* ----------------------------------- Second */
 
 .second  {
+    text-align: center;
     box-shadow: 1px 1px 0 0 #aaa;
+}
+
+.second tr:first-child th {
+    width: 490px;
+}
+
+.second tr:nth-child(2) th:first-child {
+    width: 100px;
 }
 
 .second ul {
@@ -159,7 +164,7 @@ table {
 
 .sixth th,
 .sixth td {
-    padding: 5px 10px;
+    padding: 8px 6px;
     border: 1px solid #8ce3cc;
 }
 
@@ -183,3 +188,6 @@ table {
     width: 120px;
 }
 
+.sixth tr th:first-child {
+    text-align: left;
+}
