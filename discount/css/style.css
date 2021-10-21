@@ -1,12 +1,13 @@
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  height: 100%;
+  font-family: Arial, sans-serif;
   background: #473B38;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body a:hover {
@@ -16,7 +17,16 @@ body a:hover {
 .page {
   width: 950px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
+  padding-bottom: 120px;
+  position: relative;
+}
+
+.page a {
+  color: #decacb;
+  margin-left: 20px;
+  padding-top: 6px;
+  font-size: 13px;
 }
 
 .page .nav {
@@ -27,18 +37,14 @@ body a:hover {
   border-bottom: 1px solid #6a5455;
 }
 
+.page .nav a {
+  text-decoration: none;
+}
+
 .page .nav .logo {
   margin-right: auto;
   margin-left: 0;
   padding: 0;
-}
-
-.page .nav a {
-  color: #decacb;
-  text-decoration: none;
-  margin-left: 20px;
-  padding-top: 6px;
-  font-size: 13px;
 }
 
 .page .nav .active {
@@ -122,39 +128,46 @@ body a:hover {
 .page .container .main {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 0 20px 20px 35px;
+  padding: 0 0 20px 0;
+  margin-left: 35px;
 }
 
 .page .container .main .registration {
-  display: flex;
   text-align: right;
-}
-
-.page .container .main .registration .reg-form {
+  height: 200px;
+  background-image: url(../images/cards.jpg);
+  background-repeat: no-repeat;
   color: #c2c2c2;
   padding-right: 5px;
 }
 
-.page .container .main .registration .reg-form h3 {
+.page .container .main .registration h3 {
   color: #95d0d9;
   font-size: 17px;
+  font-family: Verdana, sans-serif;
   text-align: center;
   margin-bottom: 10px;
+  margin-left: 200px;
 }
 
-.page .container .main .registration .reg-form label {
+.page .container .main .registration form {
+  padding-right: 60px;
+  width: 380px;
+  margin-left: 280px;
+}
+
+.page .container .main .registration form label {
   font-size: 13px;
 }
 
-.page .container .main .registration .reg-form input {
+.page .container .main .registration form input {
   margin: 5px 0 5px 14px;
   border: 1px solid #95d0d9;
-  min-width: 170px;
+  width: 170px;
   min-height: 20px;
 }
 
-.page .container .main .registration .reg-form .btn-lg-blue {
+.page .container .main .registration .btn-lg-blue {
   display: block;
   color: #fff;
   margin: 25px 0 0 auto;
@@ -178,34 +191,73 @@ body a:hover {
 .page .container .main .caption h3 {
   color: #95d0d9;
   font-size: 20px;
+  font-family: Verdana, sans-serif;
   text-align: center;
   margin-bottom: 10px;
   margin: 20px 0;
   text-align: left;
 }
 
+.page .container .main .caption h4 {
+  display: inline-block;
+  font-size: 16px;
+  margin-right: auto;
+}
+
 .page .container .main .caption p {
   margin-bottom: 30px;
+}
+
+.page .container .main .caption a {
+  display: block;
+  margin-right: 77px;
+  text-align: right;
 }
 
 .page .container .main .caption ol {
   line-height: 18px;
 }
 
+.page .container .main .caption .grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page .container .main .caption .grid .item {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background: #3c312f;
+  margin: 10px;
+}
+
+.page .container .main .caption .grid .item a {
+  padding: 0;
+  margin: 0;
+}
+
+.page .container .main .caption .grid .item img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
 .page .footer {
-  background-image: url("../images/company.jpg");
-  background-repeat: no-repeat;
-  background-position: 0 15px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 120px;
   padding: 15px 0;
   border-top: 1px solid #6a5455;
+  background-image: url("../images/company.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 15px;
 }
 
 .page .footer a {
   margin-left: 100px;
-  display: block;
-  vertical-align: middle;
   color: #ffffff;
 }
 
