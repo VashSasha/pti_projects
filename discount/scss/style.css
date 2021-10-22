@@ -160,6 +160,7 @@ body a:hover {
   border-top: 1px solid #b5e4eb;
 }
 .page .container .main .caption {
+  width: 600px;
   color: #c2c2c2;
   font-size: 13px;
 }
@@ -173,17 +174,19 @@ body a:hover {
   text-align: left;
 }
 .page .container .main .caption h4 {
-  display: inline-block;
+  display: inline;
   font-size: 16px;
-  margin-right: auto;
+  margin: 40px 0;
 }
 .page .container .main .caption p {
   margin-bottom: 30px;
 }
 .page .container .main .caption a {
-  display: block;
-  margin-right: 77px;
-  text-align: right;
+  display: inline;
+  font-weight: bold;
+  color: #b8a6a6;
+  margin-right: 10px;
+  margin-left: 250px;
 }
 .page .container .main .caption ol {
   line-height: 18px;

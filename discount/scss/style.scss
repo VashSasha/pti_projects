@@ -182,6 +182,7 @@ body {
             }
 
             .caption {
+                width: 600px;
                 color: #c2c2c2;
                 font-size: 13px;
 
@@ -192,9 +193,9 @@ body {
                 }
 
                 h4 {
-                    display: inline-block;
+                    display: inline;
                     font-size: 16px;
-                    margin-right: auto;
+                    margin: 40px 0;
                 }
 
                 p {
@@ -202,9 +203,11 @@ body {
                 }
 
                 a {
-                    display: block;
-                    margin-right: 77px;
-                    text-align: right;
+                    display: inline;
+                    font-weight: bold;
+                    color: #b8a6a6;
+                    margin-right: 10px;
+                    margin-left: 250px;
                 }
 
                 ol {

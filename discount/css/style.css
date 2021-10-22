@@ -184,6 +184,7 @@ body a:hover {
 }
 
 .page .container .main .caption {
+  width: 600px;
   color: #c2c2c2;
   font-size: 13px;
 }
@@ -199,9 +200,9 @@ body a:hover {
 }
 
 .page .container .main .caption h4 {
-  display: inline-block;
+  display: inline;
   font-size: 16px;
-  margin-right: auto;
+  margin: 40px 0;
 }
 
 .page .container .main .caption p {
@@ -209,9 +210,11 @@ body a:hover {
 }
 
 .page .container .main .caption a {
-  display: block;
-  margin-right: 77px;
-  text-align: right;
+  display: inline;
+  font-weight: bold;
+  color: #b8a6a6;
+  margin-right: 10px;
+  margin-left: 250px;
 }
 
 .page .container .main .caption ol {
