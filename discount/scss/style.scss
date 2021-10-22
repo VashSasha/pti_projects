@@ -53,213 +53,223 @@ body {
         padding-top: 6px;
         font-size: 13px;
     }
+}
 
-    .nav {
-        display: flex;
-        align-items: end;
-        padding: 15px 0;
-        margin-bottom: 30px;
-        border-bottom: 1px solid #6a5455;
+/* --------------------------------------------- Header */
 
-        a {
-            text-decoration: none;
-        }
+.header {
+    display: flex;
+    align-items: end;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #6a5455;
 
-        .logo {
-            margin-right: auto;
-            margin-left: 0;
-            padding: 0;
-        }
-
-        .active {
-            border-top: 8px solid #594546;
-        }
+    a {
+        text-decoration: none;
     }
 
-    .container {
-        min-height: 650px;
-        display: flex;
-
-        .side-nav {
-            display: flex;
-            flex-direction: column;
-            width: 280px;
-
-            .card {
-                margin-left: -120px;
-                margin-bottom: 25px;
-                width: 400px;
-                background: #594546;
-                padding: 20px 10px 20px 110px;
-                border: 1px solid #7f5e60;
-
-                h3 {
-                    color: #decacb;
-                    margin-bottom: 10px;
-                    font-size: 19px;
-
-                    span {
-                        font-weight: bold;
-                        font-size: 27px;
-                    }
-                }
-
-                p {
-                    color: #cac4c1;
-                    font-size: 14px;
-                }
-            }
-
-            .application {
-                line-height: 20px;
-                padding: 25px 15px 40px 10px;
-                background: #3c322f;
-                border-radius: 7px;
-                color: #a28c8b;
-
-                p {
-                    font-size: 12px;
-                    line-height: 19px;
-                    margin-bottom: 35px;
-                }
-
-                i {
-                    display: block;
-                    font-weight: bold;
-                    font-size: 12px;
-                    color: #fff;
-                    margin: 25px 0;
-                }
-
-                .btn-lg-blue {
-                    @include reg-btn;
-                }
-            }
-        }
-
-        .main {
-            display: flex;
-            flex-direction: column;
-            //width: 100%;
-            padding: 0 0 20px 0;
-            margin-left: 35px;
-
-            .registration {
-                //display: flex;
-                text-align: right;
-                height: 200px;
-                background-image: url(../images/cards.jpg);
-                background-repeat: no-repeat;
-                color: #c2c2c2;
-                padding-right: 5px;
-
-                h3 {
-                    @include headline;
-                    margin-left: 200px;
-                }
-
-                form {
-                    padding-right: 60px;
-                    width: 380px;
-                    margin-left: 280px;
-
-                    label {
-                        font-size: 13px;
-                    }
-
-                    input {
-                        margin: 5px 0 5px 14px;
-                        border: 1px solid #95d0d9;
-                        width: 170px;
-                        min-height: 20px;
-                    }
-                }
-
-                .btn-lg-blue {
-                    @include reg-btn($margin: 25px 0 0 auto);
-                }
-
-            }
-
-            .caption {
-                width: 600px;
-                color: #c2c2c2;
-                font-size: 13px;
-
-                h3 {
-                    @include headline($font-size: 20px);
-                    margin: 20px 0;
-                    text-align: left;
-                }
-
-                h4 {
-                    display: inline;
-                    font-size: 16px;
-                    margin: 40px 0;
-                }
-
-                p {
-                    margin-bottom: 30px;
-                }
-
-                a {
-                    display: inline;
-                    font-weight: bold;
-                    color: #b8a6a6;
-                    margin-right: 10px;
-                    margin-left: 250px;
-                }
-
-                ol {
-                    line-height: 18px;
-                }
-
-                .grid {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    .item {
-                        width: 100px;
-                        height: 100px;
-                        padding: 10px;
-                        background: #3c312f;
-                        margin: 10px;
-
-                        a {
-                            padding: 0;
-                            margin: 0;
-                        }
-
-                        img {
-                            object-fit: contain;
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
-            }
-        }
+    .logo {
+        margin-right: auto;
+        margin-left: 0;
+        padding: 0;
     }
 
-    .footer {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 120px;
-        padding: 15px 0;
-        border-top: 1px solid #6a5455;
-        background-image: url("../images/company.jpg");
-        background-repeat: no-repeat;
-        background-position: 0 15px;
-
-
-        a {
-            margin-left: 100px;
-            color: #ffffff;
-        }
-
+    .active {
+        border-top: 8px solid #594546;
     }
 }
 
+/* --------------------------------------------- Grid */
+
+.columns {
+    min-height: 650px;
+    display: flex;
+
+    .column-left {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+    }
+
+    .column-right {
+        display: flex;
+        flex-direction: column;
+        //width: 100%;
+        padding: 0 0 20px 0;
+        margin-left: 35px;
+    }
+}
+
+/* --------------------------------------------- Module: Card */
+
+.card {
+    margin-left: -120px;
+    margin-bottom: 25px;
+    width: 400px;
+    background: #594546;
+    padding: 20px 10px 20px 110px;
+    border: 1px solid #7f5e60;
+
+    h3 {
+        color: #decacb;
+        margin-bottom: 10px;
+        font-size: 19px;
+
+        span {
+            font-weight: bold;
+            font-size: 27px;
+        }
+    }
+
+    p {
+        color: #cac4c1;
+        font-size: 14px;
+    }
+}
+
+/* --------------------------------------------- Module: Application */
+
+.application {
+    line-height: 20px;
+    padding: 25px 15px 40px 10px;
+    background: #3c322f;
+    border-radius: 7px;
+    color: #a28c8b;
+
+    p {
+        font-size: 12px;
+        line-height: 19px;
+        margin-bottom: 35px;
+    }
+
+    i {
+        display: block;
+        font-weight: bold;
+        font-size: 12px;
+        color: #fff;
+        margin: 25px 0;
+    }
+
+    .btn-lg-blue {
+        @include reg-btn;
+    }
+}
+
+/* --------------------------------------------- Module: Registration */
+
+.registration {
+    //display: flex;
+    text-align: right;
+    height: 200px;
+    background-image: url(../images/cards.jpg);
+    background-repeat: no-repeat;
+    color: #c2c2c2;
+    padding-right: 5px;
+
+    h3 {
+        @include headline;
+        margin-left: 200px;
+    }
+
+    form {
+        padding-right: 60px;
+        width: 380px;
+        margin-left: 280px;
+
+        label {
+            font-size: 13px;
+        }
+
+        input {
+            margin: 5px 0 5px 14px;
+            border: 1px solid #95d0d9;
+            width: 170px;
+            min-height: 20px;
+        }
+    }
+
+    .btn-lg-blue {
+        @include reg-btn($margin: 25px 0 0 auto);
+    }
+}
+
+/* --------------------------------------------- Module: Content */
+
+.content {
+    width: 600px;
+    color: #c2c2c2;
+    font-size: 13px;
+
+    h3 {
+        @include headline($font-size: 20px);
+        margin: 20px 0;
+        text-align: left;
+    }
+
+    h4 {
+        display: inline;
+        font-size: 16px;
+        margin: 40px 0;
+    }
+
+    p {
+        margin-bottom: 30px;
+    }
+
+    a {
+        display: inline;
+        font-weight: bold;
+        color: #b8a6a6;
+        margin-right: 10px;
+        margin-left: 250px;
+    }
+
+    ol {
+        line-height: 18px;
+    }
+
+    .participants {
+        display: flex;
+        flex-wrap: wrap;
+
+        .item {/* TODO: удоли! */
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            background: #3c312f;
+            margin: 10px;
+
+            a {
+                padding: 0;
+                margin: 0;
+            }
+
+            img {
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+/* --------------------------------------------- Footer */
+
+.footer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    padding: 15px 0;
+    border-top: 1px solid #6a5455;
+    background-image: url("../images/company.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 15px;
+
+    a {
+        margin-left: 100px;
+        color: #ffffff;
+    }
+}
