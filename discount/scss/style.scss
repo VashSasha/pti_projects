@@ -231,8 +231,9 @@ body {
     .participants {
         display: flex;
         flex-wrap: wrap;
+        padding: 10px 0;
 
-        .item {/* TODO: удоли! */
+        .item {
             width: 100px;
             height: 100px;
             padding: 10px;

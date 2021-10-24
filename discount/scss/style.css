@@ -26,34 +26,46 @@ body a:hover {
   padding-top: 6px;
   font-size: 13px;
 }
-.page .nav {
+
+/* --------------------------------------------- Header */
+.header {
   display: flex;
   align-items: end;
   padding: 15px 0;
   margin-bottom: 30px;
   border-bottom: 1px solid #6a5455;
 }
-.page .nav a {
+.header a {
   text-decoration: none;
 }
-.page .nav .logo {
+.header .logo {
   margin-right: auto;
   margin-left: 0;
   padding: 0;
 }
-.page .nav .active {
+.header .active {
   border-top: 8px solid #594546;
 }
-.page .container {
+
+/* --------------------------------------------- Grid */
+.columns {
   min-height: 650px;
   display: flex;
 }
-.page .container .side-nav {
+.columns .column-left {
   display: flex;
   flex-direction: column;
   width: 280px;
 }
-.page .container .side-nav .card {
+.columns .column-right {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 20px 0;
+  margin-left: 35px;
+}
+
+/* --------------------------------------------- Module: Card */
+.card {
   margin-left: -120px;
   margin-bottom: 25px;
   width: 400px;
@@ -61,39 +73,41 @@ body a:hover {
   padding: 20px 10px 20px 110px;
   border: 1px solid #7f5e60;
 }
-.page .container .side-nav .card h3 {
+.card h3 {
   color: #decacb;
   margin-bottom: 10px;
   font-size: 19px;
 }
-.page .container .side-nav .card h3 span {
+.card h3 span {
   font-weight: bold;
   font-size: 27px;
 }
-.page .container .side-nav .card p {
+.card p {
   color: #cac4c1;
   font-size: 14px;
 }
-.page .container .side-nav .application {
+
+/* --------------------------------------------- Module: Application */
+.application {
   line-height: 20px;
   padding: 25px 15px 40px 10px;
   background: #3c322f;
   border-radius: 7px;
   color: #a28c8b;
 }
-.page .container .side-nav .application p {
+.application p {
   font-size: 12px;
   line-height: 19px;
   margin-bottom: 35px;
 }
-.page .container .side-nav .application i {
+.application i {
   display: block;
   font-weight: bold;
   font-size: 12px;
   color: #fff;
   margin: 25px 0;
 }
-.page .container .side-nav .application .btn-lg-blue {
+.application .btn-lg-blue {
   display: block;
   color: #fff;
   margin: 0 auto;
@@ -108,13 +122,9 @@ body a:hover {
   border-bottom: 1px solid #0d5e6a;
   border-top: 1px solid #b5e4eb;
 }
-.page .container .main {
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 20px 0;
-  margin-left: 35px;
-}
-.page .container .main .registration {
+
+/* --------------------------------------------- Module: Registration */
+.registration {
   text-align: right;
   height: 200px;
   background-image: url(../images/cards.jpg);
@@ -122,7 +132,7 @@ body a:hover {
   color: #c2c2c2;
   padding-right: 5px;
 }
-.page .container .main .registration h3 {
+.registration h3 {
   color: #95d0d9;
   font-size: 17px;
   font-family: Verdana, sans-serif;
@@ -130,21 +140,21 @@ body a:hover {
   margin-bottom: 10px;
   margin-left: 200px;
 }
-.page .container .main .registration form {
+.registration form {
   padding-right: 60px;
   width: 380px;
   margin-left: 280px;
 }
-.page .container .main .registration form label {
+.registration form label {
   font-size: 13px;
 }
-.page .container .main .registration form input {
+.registration form input {
   margin: 5px 0 5px 14px;
   border: 1px solid #95d0d9;
   width: 170px;
   min-height: 20px;
 }
-.page .container .main .registration .btn-lg-blue {
+.registration .btn-lg-blue {
   display: block;
   color: #fff;
   margin: 25px 0 0 auto;
@@ -159,12 +169,14 @@ body a:hover {
   border-bottom: 1px solid #0d5e6a;
   border-top: 1px solid #b5e4eb;
 }
-.page .container .main .caption {
+
+/* --------------------------------------------- Module: Content */
+.content {
   width: 600px;
   color: #c2c2c2;
   font-size: 13px;
 }
-.page .container .main .caption h3 {
+.content h3 {
   color: #95d0d9;
   font-size: 20px;
   font-family: Verdana, sans-serif;
@@ -173,45 +185,48 @@ body a:hover {
   margin: 20px 0;
   text-align: left;
 }
-.page .container .main .caption h4 {
+.content h4 {
   display: inline;
   font-size: 16px;
   margin: 40px 0;
 }
-.page .container .main .caption p {
+.content p {
   margin-bottom: 30px;
 }
-.page .container .main .caption a {
+.content a {
   display: inline;
   font-weight: bold;
   color: #b8a6a6;
   margin-right: 10px;
   margin-left: 250px;
 }
-.page .container .main .caption ol {
+.content ol {
   line-height: 18px;
 }
-.page .container .main .caption .grid {
+.content .participants {
   display: flex;
   flex-wrap: wrap;
+  padding: 10px 0;
 }
-.page .container .main .caption .grid .item {
+.content .participants .item {
   width: 100px;
   height: 100px;
   padding: 10px;
   background: #3c312f;
   margin: 10px;
 }
-.page .container .main .caption .grid .item a {
+.content .participants .item a {
   padding: 0;
   margin: 0;
 }
-.page .container .main .caption .grid .item img {
+.content .participants .item img {
   object-fit: contain;
   width: 100%;
   height: 100%;
 }
-.page .footer {
+
+/* --------------------------------------------- Footer */
+.footer {
   display: flex;
   align-items: center;
   position: absolute;
@@ -224,7 +239,7 @@ body a:hover {
   background-repeat: no-repeat;
   background-position: 0 15px;
 }
-.page .footer a {
+.footer a {
   margin-left: 100px;
   color: #ffffff;
 }
