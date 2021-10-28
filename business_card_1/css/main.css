@@ -263,6 +263,10 @@ header .container .menu .active {
   padding: 10px;
 }
 
+.row-light .grid .item:last-child {
+  border-right: 8px solid #efefef;
+}
+
 .row-light form {
   font-family: "Times New Roman", serif;
 }

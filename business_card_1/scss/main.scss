@@ -218,6 +218,10 @@ header {
             ul {
                 padding: 10px;
             }
+
+            &:last-child {
+                border-right: 8px solid #efefef;
+            }
         }
     }
 
