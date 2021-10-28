@@ -9,25 +9,58 @@
 </head>
 
 <body>
-    contact us
-    Go to contact us
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="./images/logo.png" alt="">
+            </a>
+            <div class="menu">
+                <a href="about_us.htm" class="about-us">about us</a>
+                <a href="offers.htm" class="offers">offers</a>
+                <a href="contact_us.htm" class="contact-us active">contact us</a>
+            </div>
+        </div>
+    </header>
 
-    offers
-    Go to offers
+    <div class="row-dark">
+        <div class="container">
+            <h3>Contact</h3>
+            <div class="description">
+                <p>Descriptive text here, descriptive text here, descriptive text here, descriptive text here,</p>
+                <p>Descriptive text here, descriptive text here, descriptive text here, descriptive text here,</p>
+                <p>Descriptive text here, descriptive text here, descriptive text here, descriptive text here,</p>
+            </div>
+        </div>
+    </div>
 
-    about us
-    Go to about us
+    <div class="row-light">
+        <div class="container">
+            <h3>Contact Us</h3>
+            <form>
+                <div>
+                    <label for="name">Name: </label>
+                    <input type="text" id="name">
+                </div>
+                <div>
+                    <label for="email">E-mail: </label>
+                    <input type="text" id="email"></div>
+                <div>
+                    <label for="subject">Subject: </label>
+                    <input type="text" id="subject">
+                </div>
+                <div>
+                    <label for="message">Message: </label>
+                    <textarea id="message" rows="8" cols="40" maxlength="200">
+                    </textarea>
+                </div>
 
-    Contact
-    Descriptive text here, descriptive text here, descriptive text here, descriptive text here descriptive text here, descriptive text here, descriptive text here, descriptive text here descriptive text here, descriptive text here, descriptive text here, descriptive text here
+                <button>Send</button>
+            </form>
+        </div>
+    </div>
 
-    Contact us
-    Name:
-    E-mail:
-    Subject:
-    Message:
-    Send
-
-    Copyright 2007 &copy;. Privacy Policy
+    <footer>
+        Copyright 2007 &copy;. <a href="#">Privacy Policy</a>
+    </footer>
 </body>
 </html>

@@ -14,13 +14,11 @@ body {
 header {
   background: linear-gradient(to top, #f0f0f0, #ffff);
 }
-
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 header .container .menu a {
   display: inline-block;
   color: #343434;
@@ -32,16 +30,13 @@ header .container .menu a {
   height: 140px;
   width: 130px;
 }
-
 header .container .menu a:hover {
   background: linear-gradient(to top, #d9d9d9, #ffff);
 }
-
 header .container .menu .about-us {
   border-top: 14px solid #ff7800;
   position: relative;
 }
-
 header .container .menu .about-us::before {
   content: "Go to about us";
   position: absolute;
@@ -60,7 +55,6 @@ header .container .menu .about-us::before {
   box-shadow: 0 0 1px 1px #ccc;
   z-index: 10;
 }
-
 header .container .menu .about-us::after {
   content: "";
   position: absolute;
@@ -73,16 +67,13 @@ header .container .menu .about-us::after {
   border-bottom: 16px solid #f2f2f2;
   border-left: 14px solid transparent;
 }
-
 header .container .menu .about-us:hover::before, header .container .menu .about-us:hover::after {
   visibility: visible;
 }
-
 header .container .menu .offers {
   border-top: 14px solid #319aa3;
   position: relative;
 }
-
 header .container .menu .offers::before {
   content: "Go to offers";
   position: absolute;
@@ -101,7 +92,6 @@ header .container .menu .offers::before {
   box-shadow: 0 0 1px 1px #ccc;
   z-index: 10;
 }
-
 header .container .menu .offers::after {
   content: "";
   position: absolute;
@@ -114,16 +104,13 @@ header .container .menu .offers::after {
   border-bottom: 16px solid #f2f2f2;
   border-left: 14px solid transparent;
 }
-
 header .container .menu .offers:hover::before, header .container .menu .offers:hover::after {
   visibility: visible;
 }
-
 header .container .menu .contact-us {
   border-top: 14px solid #1e3436;
   position: relative;
 }
-
 header .container .menu .contact-us::before {
   content: "Got to contact us";
   position: absolute;
@@ -142,7 +129,6 @@ header .container .menu .contact-us::before {
   box-shadow: 0 0 1px 1px #ccc;
   z-index: 10;
 }
-
 header .container .menu .contact-us::after {
   content: "";
   position: absolute;
@@ -155,11 +141,9 @@ header .container .menu .contact-us::after {
   border-bottom: 16px solid #f2f2f2;
   border-left: 14px solid transparent;
 }
-
 header .container .menu .contact-us:hover::before, header .container .menu .contact-us:hover::after {
   visibility: visible;
 }
-
 header .container .menu .active {
   background: linear-gradient(to top, #d9d9d9, #ffff);
   border-top: 14px solid #d5d5d5 !important;
@@ -179,13 +163,11 @@ header .container .menu .active {
   background: linear-gradient(to top, #494949, #333333);
   color: #ffffff;
 }
-
 .row-dark .description {
   padding: 10px 0 10px 18px;
   margin: 10px 0;
   border-left: 8px solid #646464;
 }
-
 .row-dark .description img {
   position: absolute;
   right: 27%;
@@ -202,12 +184,10 @@ header .container .menu .active {
   width: 100%;
   padding: 20px 0;
 }
-
 .row-light h3 {
   font-weight: normal;
   margin-bottom: 10px;
 }
-
 .row-light .description {
   width: 480px;
   padding: 10px 85px 5px 18px;
@@ -219,31 +199,25 @@ header .container .menu .active {
   background-position: right;
   background-size: contain;
 }
-
 .row-light .description:nth-child(3) {
   background-image: url(../images/p2.jpg);
 }
-
 .row-light .grid {
   display: flex;
 }
-
 .row-light .grid .item {
   padding: 25px 15px 15px 15px;
   width: 33%;
   color: #616161;
   border-left: 8px solid #efefef;
 }
-
 .row-light .grid .item ul {
   list-style-type: none;
 }
-
 .row-light .grid .item h3 {
   position: relative;
   margin-left: 15px;
 }
-
 .row-light .grid .item h3::before {
   content: "";
   display: block;
@@ -257,32 +231,26 @@ header .container .menu .active {
   background-size: contain;
   z-index: -1;
 }
-
 .row-light .grid .item p,
 .row-light .grid .item ul {
   padding: 10px;
 }
-
 .row-light form {
   font-family: "Times New Roman", serif;
 }
-
 .row-light form div {
   margin-bottom: 10px;
 }
-
 .row-light form label {
   display: inline-block;
   width: 100px;
   vertical-align: top;
   text-align: right;
 }
-
 .row-light form input,
 .row-light form textarea {
   border: 1px solid #d6d6d6;
 }
-
 .row-light form button {
   width: 100px;
   padding: 5px;
@@ -303,11 +271,8 @@ footer {
   color: #fff;
   vertical-align: center;
 }
-
 footer a {
   color: #fff;
 }
-
-/*# sourceMappingURL=main.css.map */
 
 /*# sourceMappingURL=main.css.map */
