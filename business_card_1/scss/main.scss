@@ -5,40 +5,6 @@
 @mixin gradient($color1: #ff7800, $color2: #ffff) {
     background: linear-gradient(to top, $color1, $color2);
 }
-@mixin hint($caption: '') {
-    &::before {
-        content: $caption;
-        position: absolute;
-        display: flex;
-        box-sizing: border-box;
-        align-items: center;
-        visibility: hidden;
-        padding: 0 15px;
-        top: 110px;
-        right: 70px;
-        width: 200px;
-        height: 40px;
-        border-radius: 10px;
-        background: #f2f2f2;
-        font-size: 14px;
-        box-shadow: 0 0 1px 1px #ccc;
-        z-index: 10;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        visibility: hidden;
-        top: 94px;
-        right: 90px;
-        z-index: 11;
-        width: 0;
-        height: 0;
-        border-bottom: 16px solid #f2f2f2;
-        border-left: 14px solid transparent;
-    }
-}
-
 
 * {
     box-sizing: border-box;
@@ -73,55 +39,70 @@ header {
                 font-size: 22px;
                 height: 140px;
                 width: 130px;
+                position: relative;
 
                 &:hover {
-                    @include  gradient( #d9d9d9, #ffff);
+                    @include gradient( #d9d9d9, #ffff);
                 }
-            }
 
-            .about-us {
-                @include menu-top-bar();
-                position: relative;
+                &.active {
+                    @include gradient( #d9d9d9, #ffff);
+                    @include menu-top-bar(#d5d5d5 !important);
+                }
 
-                @include hint('Go to about us');
+                &.about-us {
+                    @include menu-top-bar();
+                }
 
-                &:hover::before,
+                &.offers {
+                    @include menu-top-bar(#319aa3);
+                }
+
+                &.contact-us{
+                    @include menu-top-bar(#1e3436);
+                }
+
+                &::before {
+                    content: attr(data-hint);
+                    position: absolute;
+                    box-sizing: border-box;
+                    align-items: center;
+                    padding: 0 15px;
+                    top: 110px;
+                    right: 70px;
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 10px;
+                    background: #f2f2f2;
+                    font-size: 14px;
+                    box-shadow: 0 0 1px 1px #ccc;
+                    z-index: 10;
+                    display: none;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 94px;
+                    right: 90px;
+                    z-index: 11;
+                    width: 0;
+                    height: 0;
+                    border-bottom: 16px solid #f2f2f2;
+                    border-left: 14px solid transparent;
+                    display: none;
+                }
+
+                &:hover::before {
+                    display: flex;
+                }
+
                 &:hover::after {
-                    visibility: visible;
+                    display: block;
                 }
-            }
-
-            .offers {
-                @include menu-top-bar(#319aa3);
-                position: relative;
-                @include hint('Go to offers');
-
-                &:hover::before,
-                &:hover::after {
-                    visibility: visible;
-                }
-            }
-
-            .contact-us{
-                @include menu-top-bar(#1e3436);
-                position: relative;
-                @include hint('Got to contact us');
-
-                &:hover::before,
-                &:hover::after {
-                    visibility: visible;
-                }
-            }
-
-            .active {
-                @include  gradient( #d9d9d9, #ffff);
-                @include menu-top-bar(#d5d5d5 !important);
             }
         }
     }
-
-
-
 }
 
 /* ---------------------------------------------- Container */
@@ -144,11 +125,12 @@ header {
         padding: 10px 0 10px 18px;
         margin: 10px 0;
         border-left: 8px solid #646464;
+        position: relative;
 
         img {
             position: absolute;
-            right: 27%;
-            top: 10px;
+            right: 13%;
+            top: -43px;
             display: inline-block;
             padding: 4px 0 0 4px;
             width: 140px;
@@ -167,6 +149,7 @@ header {
         font-weight: normal;
         margin-bottom: 10px;
     }
+
     .description {
         width: 480px;
         padding: 10px 85px 5px 18px;
@@ -185,6 +168,7 @@ header {
 
     .grid {
         display: flex;
+
         .item {
             padding: 25px 15px 15px 15px;
             width: 33%;
@@ -227,6 +211,7 @@ header {
 
     form {
         font-family: "Times New Roman", serif;
+
         div {
             margin-bottom: 10px;
         }
