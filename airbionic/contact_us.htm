@@ -8,31 +8,67 @@
 </head>
 
 <body>
-    Home
-    Contacts
+    <header>
+        <a href="about_us.htm"><img src="./images/logo.gif" alt=""></a>
+        <div class="menu">
+            <a href="about_us.htm" class="home">Home</a>
+            <a href="contact_us.htm" class="contact">Contact</a>
+        </div>
+    </header>
 
-    About us
-    Our advantages
-    Contact us
-    FAQ
+    <div class="banner">
+        <div class="tabs">
+            <a href="about_us.htm" >About us</a>
+            <a href="our_advantages.htm">Our advantages</a>
+            <a href="contact_us.htm" class="active">Contact us</a>
+            <a href="faq.htm">FAQ</a>
+        </div>
+    </div>
 
-    Our works
-    Prices
-    Portfolio
+    <main>
+        <div class="columns">
+            <div class="column-left">
+                <a href="#">Our works</a>
+                <a href="#">Prices</a>
+                <a href="#">Portfolio</a>
+            </div>
 
-    Contact us to discuss how we can help you
-    Contact Us
-    Call Us
+            <div class="column-center">
+                <div class="main-component">
+                    <h2>Request Form</h2>
+                    <form>
+                        <label for="name"><span>*</span>Name</label>
+                        <input id="name">
+                        <label for="email"><span>*</span>E-mail:</label>
+                        <input id="email">
+                        <label for="description"><span>*</span> Request description:</label>
+                        <textarea id="description" cols="30" rows="10"></textarea>
+                        <label for="file">File:</label>
+                        <input type="file" id="file">
+                        <img src="./images/verification.gif" alt="">
+                        <label for="code"><span>*</span> Security Code:</label>
+                        <input type="text" id="code">
+                        <button>Send</button>
+                    </form>
+                </div>
+            </div>
 
-    Request Form
-    * Name:
-    * E-mail:
-    * Request description:
-    File:
-    * Security Code:
-    Send
+            <div class="column-right">
+                <p>Contact us to discuss how we can help you</p>
+                <a href="#" class="contact-us">Contact Us</a>
+                <a href="#" class="call-us">Call Us</a>
+            </div>
+        </div>
+    </main>
 
-    &copy; 2007-2008 AirBionic. All rights reserved.
-    <a href="#">Company</a> | <a href="#">Portfolio</a> | <a href="#">Contacts</a> | <a href="#">Some thing</a>
+    <footer>
+        <div class="logo-footer">
+            <img src="./images/logo-sm.gif" alt="">
+            <a href="#"> &copy; 2007-2008 AirBionic. All rights reserved.</a>
+        </div>
+        <div class="links">
+            <a href="#">Company</a> | <a href="#">Portfolio</a> | <a href="#">Contacts</a> | <a href="#">Some thing</a>
+        </div>
+    </footer>
 </body>
 </html>
