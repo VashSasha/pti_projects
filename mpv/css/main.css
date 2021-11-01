@@ -1,0 +1,175 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 1015px;
+  height: 100%;
+  margin: 0 auto;
+  background: #000000;
+  font-family: "Arial Narrow", Helvetica, sans-serif;
+}
+
+/* ---------------------------- Header */
+header {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  background-image: url(../images/header-bg.png);
+  margin-bottom: 25px;
+}
+
+header .logo {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+header .logo .headline {
+  width: 65%;
+  align-self: flex-start;
+  margin-top: 80px;
+  text-align: center;
+}
+
+header .logo .headline span {
+  text-transform: uppercase;
+}
+
+header .logo .headline h1 {
+  color: #fd6703;
+  font-weight: normal;
+}
+
+header .logo .headline h3 {
+  color: #a8aebe;
+}
+
+header .logo .car {
+  height: 100%;
+  width: 100%;
+  background-image: url(../images/car.png);
+  background-repeat: no-repeat;
+}
+
+header .menu {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 23px;
+  background: linear-gradient(to bottom, #fd6c03, #fd5103);
+  color: #ffff;
+}
+
+header .menu a {
+  color: #23262b;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  width: 170px;
+  display: inline-block;
+  padding: 10px 10px 8px 10px;
+  margin-bottom: 5px;
+}
+
+header .menu .active {
+  color: #fd6703;
+  background: linear-gradient(to bottom, #23262b, #17181c);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* ---------------------------- Main */
+main {
+  display: flex;
+  padding: 0 22px;
+  background: #2f3239;
+}
+
+main div {
+  flex: 1;
+  padding: 15px 20px;
+}
+
+main div p {
+  font-size: 17px;
+  margin: 15px 0;
+  color: #e5e5e5;
+}
+
+main div p a {
+  color: #e5e5e5;
+}
+
+main h2 {
+  color: #fd6703;
+  margin-bottom: 10px;
+}
+
+main .services-module {
+  color: #e5e5e5;
+}
+
+main .services-module li {
+  margin: 20px 5px;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+main .services-module li::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fd6703;
+  margin-right: 10px;
+  box-shadow: 0px 1px 3px #fff inset;
+}
+
+main .gallery-module .gallery {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+main .gallery-module .gallery img {
+  width: 49%;
+  margin: 5px 0;
+  padding: 5px;
+  background: #fff;
+}
+
+/* ---------------------------- Footer */
+footer {
+  height: 100px;
+  margin-top: auto;
+  background: #000000;
+  width: 100%;
+  border-bottom: 9px solid #fd6a03;
+}
+
+footer h2 {
+  color: #fd6703;
+}
+
+footer p {
+  width: 300px;
+  color: #e5e5e5;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+/*# sourceMappingURL=main.css.map */
