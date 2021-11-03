@@ -1,6 +1,15 @@
+/*
+    TODO:
+    1. HTML не трогаем (дописать CSS)
+    2. hover спрайты
+    3. FAQ
+    4. box-shadow
+    5. font-size
+*/
+
 $blue-main: #2faed8;
 
-@mixin  arrow (){
+@mixin arrow() {
     background-image: url(../images/arrows.gif);
     background-repeat: no-repeat;
     background-position: 0 8px;
@@ -43,7 +52,7 @@ header {
             padding: 15px;
             text-decoration: none;
 
-            &.home::before {
+            &.home::before {/* TODO: hover - домик синего цвета */
                 content: '';
                 display: inline-block;
                 width: 12px;
@@ -218,7 +227,6 @@ header {
         margin-bottom: 20px;
     }
 
-
     form {
         display: flex;
         flex-direction: column;
@@ -288,44 +296,44 @@ header {
 
 /* -------------------------------------- categories-module */
 
-    .category-module {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        border-bottom: 1px dotted #a1a1a1;
-        padding-bottom: 20px;
-        margin-bottom: 5px;
+.category-module {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px dotted #a1a1a1;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
 
-        .item {
-            flex: 1;
-            background: none;
-            padding: 0;
+    .item {
+        flex: 1;
+        background: none;
+        padding: 0;
 
-            h3 {
-                border-bottom: 1px solid #d8d8d8;
-                padding-bottom: 5px;
-                margin-bottom: 1px;
-            }
+        h3 {
+            border-bottom: 1px solid #d8d8d8;
+            padding-bottom: 5px;
+            margin-bottom: 1px;
+        }
 
-            p {
-                padding: 10px 10px;
-                background: linear-gradient(to bottom, #f3f3f3, #fff);
-            }
+        p {
+            padding: 10px 10px;
+            background: linear-gradient(to bottom, #f3f3f3, #fff);
+        }
 
-            a {
-                display: block;
-                text-align: right;
-                text-decoration: none;
+        a {
+            display: block;
+            text-align: right;
+            text-decoration: none;
 
-                &::after {
-                    @include arrow();
-                    content: '';
-                    display: inline-block;
-                    margin-left: 10px;
-                }
+            &::after {
+                @include arrow();
+                content: '';
+                display: inline-block;
+                margin-left: 10px;
             }
         }
     }
+}
 
 /* -------------------------------------- Projects-module */
 
