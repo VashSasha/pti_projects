@@ -1,3 +1,13 @@
+/*
+    TODO:
+    1. border у колонок
+    2. footer
+    3. шрифты
+    4. градиент
+        background: 62% 50% url("../images/car.png") no-repeat, linear-gradient(180deg, rgba(47,50,57,1) 28%, rgba(0,0,0,1) 28%, rgba(0,0,0,1) 82%, rgba(47,50,57,1) 82%);
+
+*/
+
 $orange-main: #fd6703;
 
 * {
@@ -135,7 +145,7 @@ main {
                 border-radius: 50%;
                 background-color: $orange-main;
                 margin-right: 10px;
-                box-shadow: 0px 1px 3px #fff inset;
+                box-shadow: 0 1px 3px #fff inset;
             }
         }
     }
