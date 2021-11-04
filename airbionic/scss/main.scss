@@ -1,27 +1,13 @@
-/*
-    TODO:
-    1. HTML не трогаем (дописать CSS)
-    2. hover спрайты
-    3. FAQ
-    4. box-shadow
-    5. font-size
-*/
-
 $blue-main: #2faed8;
-
-@mixin arrow() {
-    background-image: url(../images/arrows.gif);
-    background-repeat: no-repeat;
-    background-position: 0 8px;
-    background-size: cover;
-    height: 15px;
-    width: 10px;
-}
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 html {
@@ -35,6 +21,7 @@ body {
     height: 100%;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 0 10px #ccc;
 }
 
 /* --------------------------------- Header */
@@ -52,7 +39,7 @@ header {
             padding: 15px;
             text-decoration: none;
 
-            &.home::before {/* TODO: hover - домик синего цвета */
+            &.home::before {
                 content: '';
                 display: inline-block;
                 width: 12px;
@@ -60,9 +47,17 @@ header {
                 margin-right: 5px;
                 background-image: url(../images/home.gif);
                 background-repeat: no-repeat;
+                background-position: 0 1px;
                 background-size: cover;
             }
 
+            &.home:hover {
+                color: $blue-main;
+
+                &::before {
+                    background-position: 0 -18px;
+                }
+            }
             &.contact::before {
                 content: '';
                 display: inline-block;
@@ -73,6 +68,13 @@ header {
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: 0 4px;
+            }
+
+            &.contact:hover{
+                color: $blue-main;
+                &::before {
+                    background-position: 0 -16px;
+                }
             }
         }
     }
@@ -93,7 +95,13 @@ header {
         position: absolute;
         bottom: 1px;
         right: 0;
+        font-size: 0.9em;
         padding-right: 2px;
+
+        a:hover {
+            background-color: #fff;
+            color: $blue-main;
+        }
     }
 
     a {
@@ -123,7 +131,7 @@ header {
     padding: 20px 10px;
     color: #6b6b6b;
 
-    .column-left {
+    .module-menu-2 {
         display: flex;
         flex-shrink: 0;
         flex-direction: column;
@@ -159,13 +167,18 @@ header {
         width: 100%;
         padding: 15px 24px;
 
+        h2 {
+            border-bottom: 1px solid #6b6b6b;
+            margin-bottom: 20px;
+        }
+
         a {
             color: $blue-main;
             text-decoration-style: dashed;
         }
     }
 
-    .column-right {
+    .module-menu-3 {
         flex-shrink: 0;
         width: 200px;
         height: fit-content;
@@ -193,6 +206,10 @@ header {
                 background-size: cover;
             }
 
+            &.contact-us:hover::before {
+                background-position: 0 0;
+            }
+
             &.call-us::before {
                 content: '';
                 display: inline-block;
@@ -205,17 +222,17 @@ header {
                 background-position: 0 -30px;
                 background-size: cover;
             }
+            &.call-us:hover::before {
+                background-position: 0 0;
+            }
         }
     }
 }
 
 /* -------------------------------------- Module Main */
 
-.main-component {
-    h2 {
-        border-bottom: 1px solid #6b6b6b;
-        margin-bottom: 20px;
-    }
+.module-content {
+    padding: 0 15px;
 
     h3 {
         font-size: 0.9rem;
@@ -223,7 +240,146 @@ header {
     }
 
     p {
-        font-size: 0.85rem;
+        margin-bottom: 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* -------------------------------------- categories-module */
+
+.module-category {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px dotted #a1a1a1;
+    padding-bottom: 20px;
+    margin-bottom: 5px;
+
+    h3 {
+        color: $blue-main;
+        border-bottom: 1px solid #d8d8d8;
+        margin-bottom: 1px;
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 0.9em;
+        line-height: 1.5em;
+        margin-bottom: 25px;
+        background: linear-gradient(to bottom, #f3f3f3, #fff);
+    }
+
+    .more-btn {
+        display: block;
+        text-align: right;
+        text-decoration: none;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            margin-left: 10px;
+            background-image: url(../images/arrows.gif);
+            background-repeat: no-repeat;
+            background-position: 0 8px;
+            background-size: cover;
+            height: 15px;
+            width: 10px;
+        }
+
+        &:hover {
+            color: #565656;
+
+            &::after {
+                background-position: 0 -9px;
+            }
+        }
+    }
+}
+
+/* -------------------------------------- Projects-module */
+
+.module-xxx {
+
+
+    p {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+}
+
+/* ---------------------------------------- Module Projects*/
+
+.module-projects {
+    .project-list {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        .project {
+            width: 48%;
+            box-sizing: border-box;
+            color: #939393;
+
+            img {
+                float: left;
+                margin-right: 10px;
+                border: 1px solid #b3b3b3;
+                background: #bbbbbb;
+                padding: 4px;
+            }
+        }
+    }
+
+    .item {
+        width: 50%;
+    }
+}
+
+/* -------------------------------------- Module FAQ */
+
+.module-faq {
+    h2 {
+        padding: 5px 0;
+        border-bottom: 1px solid #6b6b6b;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        border-bottom: 1px solid #d8d8d8;
+        padding-bottom: 5px;
+        margin-bottom: 1px;
+    }
+
+    dt {
+        font-weight: bold;
+        color: $blue-main;
+
+        &.open {
+            background: #f2f2f2;
+        }
+
+
+        &.open+dd {
+            display: block;
+        }
+    }
+
+    dd {
+        background: #f2f2f2;
+        display: none;
+    }
+
+
+}
+
+/* -------------------------------------- Module Form */
+
+.module-form {
+    h2 {
+        padding: 5px 0;
+        border-bottom: 1px solid #6b6b6b;
         margin-bottom: 20px;
     }
 
@@ -275,95 +431,6 @@ header {
             color: #6b6b6b;
         }
     }
-
-    .item {
-        background: #f2f2f2;
-        padding-left: 25px;
-
-        p {
-            margin: 0;
-            padding-bottom: 15px;
-        }
-
-        &.closed {
-            background: transparent;
-            p {
-                display: none;
-            }
-        }
-    }
-}
-
-/* -------------------------------------- categories-module */
-
-.category-module {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    border-bottom: 1px dotted #a1a1a1;
-    padding-bottom: 20px;
-    margin-bottom: 5px;
-
-    .item {
-        flex: 1;
-        background: none;
-        padding: 0;
-
-        h3 {
-            border-bottom: 1px solid #d8d8d8;
-            padding-bottom: 5px;
-            margin-bottom: 1px;
-        }
-
-        p {
-            padding: 10px 10px;
-            background: linear-gradient(to bottom, #f3f3f3, #fff);
-        }
-
-        a {
-            display: block;
-            text-align: right;
-            text-decoration: none;
-
-            &::after {
-                @include arrow();
-                content: '';
-                display: inline-block;
-                margin-left: 10px;
-            }
-        }
-    }
-}
-
-/* -------------------------------------- Projects-module */
-
-.projects-module {
-
-    .project-list {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px;
-        gap: 20px;
-        flex-wrap: wrap;
-
-        .project {
-            width: 48%;
-            box-sizing: border-box;
-            color: #939393;
-
-            img {
-                float: left;
-                margin-right: 10px;
-                border: 1px solid #b3b3b3;
-                background: #bbbbbb;
-                padding: 4px;
-            }
-        }
-    }
-
-    .item {
-        width: 50%;
-    }
 }
 
 /* -------------------------------------- Footer */
@@ -372,6 +439,7 @@ footer {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    font-size: 0.9em;
     padding: 15px 30px;
     height: 70px;
     width: 100%;

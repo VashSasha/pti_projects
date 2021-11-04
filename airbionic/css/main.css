@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 html {
   height: 100%;
 }
@@ -15,6 +19,7 @@ body {
   height: 100%;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 0 10px #ccc;
 }
 
 /* --------------------------------- Header */
@@ -42,7 +47,16 @@ header .menu a.home::before {
   margin-right: 5px;
   background-image: url(../images/home.gif);
   background-repeat: no-repeat;
+  background-position: 0 1px;
   background-size: cover;
+}
+
+header .menu a.home:hover {
+  color: #2faed8;
+}
+
+header .menu a.home:hover::before {
+  background-position: 0 -18px;
 }
 
 header .menu a.contact::before {
@@ -55,6 +69,14 @@ header .menu a.contact::before {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 4px;
+}
+
+header .menu a.contact:hover {
+  color: #2faed8;
+}
+
+header .menu a.contact:hover::before {
+  background-position: 0 -16px;
 }
 
 /* ----------------------------------- Banner */
@@ -72,7 +94,13 @@ header .menu a.contact::before {
   position: absolute;
   bottom: 1px;
   right: 0;
+  font-size: 0.9em;
   padding-right: 2px;
+}
+
+.banner .tabs a:hover {
+  background-color: #fff;
+  color: #2faed8;
 }
 
 .banner a {
@@ -101,7 +129,7 @@ header .menu a.contact::before {
   color: #6b6b6b;
 }
 
-.columns .column-left {
+.columns .module-menu-2 {
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
@@ -113,14 +141,14 @@ header .menu a.contact::before {
   border: 1px solid #d8d8d8;
 }
 
-.columns .column-left a {
+.columns .module-menu-2 a {
   color: #6b6b6b;
   margin-bottom: 16px;
   text-decoration: none;
   font-weight: bold;
 }
 
-.columns .column-left a::before {
+.columns .module-menu-2 a::before {
   content: "";
   display: inline-block;
   width: 5px;
@@ -138,12 +166,17 @@ header .menu a.contact::before {
   padding: 15px 24px;
 }
 
+.columns .column-center h2 {
+  border-bottom: 1px solid #6b6b6b;
+  margin-bottom: 20px;
+}
+
 .columns .column-center a {
   color: #2faed8;
   text-decoration-style: dashed;
 }
 
-.columns .column-right {
+.columns .module-menu-3 {
   flex-shrink: 0;
   width: 200px;
   height: fit-content;
@@ -154,13 +187,13 @@ header .menu a.contact::before {
   border: 1px solid #d8d8d8;
 }
 
-.columns .column-right a {
+.columns .module-menu-3 a {
   display: block;
   margin-top: 15px;
   color: #2faed8;
 }
 
-.columns .column-right a.contact-us::before {
+.columns .module-menu-3 a.contact-us::before {
   content: "";
   display: inline-block;
   height: 14px;
@@ -173,7 +206,11 @@ header .menu a.contact::before {
   background-size: cover;
 }
 
-.columns .column-right a.call-us::before {
+.columns .module-menu-3 a.contact-us:hover::before {
+  background-position: 0 0;
+}
+
+.columns .module-menu-3 a.call-us::before {
   content: "";
   display: inline-block;
   height: 28px;
@@ -186,52 +223,176 @@ header .menu a.contact::before {
   background-size: cover;
 }
 
-/* -------------------------------------- Module Main */
-.main-component h2 {
-  border-bottom: 1px solid #6b6b6b;
-  margin-bottom: 20px;
+.columns .module-menu-3 a.call-us:hover::before {
+  background-position: 0 0;
 }
 
-.main-component h3 {
+/* -------------------------------------- Module Main */
+.module-content {
+  padding: 0 15px;
+}
+
+.module-content h3 {
   font-size: 0.9rem;
   color: #2faed8;
 }
 
-.main-component p {
-  font-size: 0.85rem;
+.module-content p {
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+/* -------------------------------------- categories-module */
+.module-category {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px dotted #a1a1a1;
+  padding-bottom: 20px;
+  margin-bottom: 5px;
+}
+
+.module-category h3 {
+  color: #2faed8;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 1px;
+  font-size: 1em;
+}
+
+.module-category p {
+  font-size: 0.9em;
+  line-height: 1.5em;
+  margin-bottom: 25px;
+  background: linear-gradient(to bottom, #f3f3f3, #fff);
+}
+
+.module-category .more-btn {
+  display: block;
+  text-align: right;
+  text-decoration: none;
+}
+
+.module-category .more-btn::after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  background-image: url(../images/arrows.gif);
+  background-repeat: no-repeat;
+  background-position: 0 8px;
+  background-size: cover;
+  height: 15px;
+  width: 10px;
+}
+
+.module-category .more-btn:hover {
+  color: #565656;
+}
+
+.module-category .more-btn:hover::after {
+  background-position: 0 -9px;
+}
+
+/* -------------------------------------- Projects-module */
+.module-xxx p {
+  font-size: 0.95em;
   margin-bottom: 20px;
 }
 
-.main-component form {
+/* ---------------------------------------- Module Projects*/
+.module-projects .project-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.module-projects .project-list .project {
+  width: 48%;
+  box-sizing: border-box;
+  color: #939393;
+}
+
+.module-projects .project-list .project img {
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #b3b3b3;
+  background: #bbbbbb;
+  padding: 4px;
+}
+
+.module-projects .item {
+  width: 50%;
+}
+
+/* -------------------------------------- Module FAQ */
+.module-faq h2 {
+  padding: 5px 0;
+  border-bottom: 1px solid #6b6b6b;
+  margin-bottom: 20px;
+}
+
+.module-faq h3 {
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 5px;
+  margin-bottom: 1px;
+}
+
+.module-faq dt {
+  font-weight: bold;
+  color: #2faed8;
+}
+
+.module-faq dt.open {
+  background: #f2f2f2;
+}
+
+.module-faq dt.open + dd {
+  display: block;
+}
+
+.module-faq dd {
+  background: #f2f2f2;
+  display: none;
+}
+
+/* -------------------------------------- Module Form */
+.module-form h2 {
+  padding: 5px 0;
+  border-bottom: 1px solid #6b6b6b;
+  margin-bottom: 20px;
+}
+
+.module-form form {
   display: flex;
   flex-direction: column;
   width: 275px;
   margin-left: 35px;
 }
 
-.main-component form label {
+.module-form form label {
   margin-bottom: 5px;
   font-size: 0.8rem;
 }
 
-.main-component form label span {
+.module-form form label span {
   color: #2faed8;
   margin-right: 4px;
   vertical-align: middle;
 }
 
-.main-component form input {
+.module-form form input {
   margin-bottom: 10px;
   border: 1px solid #9b9b9b;
 }
 
-.main-component form textarea {
+.module-form form textarea {
   resize: vertical;
   border: 1px solid #9b9b9b;
   margin-bottom: 10px;
 }
 
-.main-component form img {
+.module-form form img {
   width: 188px;
   height: 45px;
   margin-bottom: 10px;
@@ -239,7 +400,7 @@ header .menu a.contact::before {
   margin-left: auto;
 }
 
-.main-component form button {
+.module-form form button {
   display: inline-block;
   width: 95px;
   height: 25px;
@@ -250,101 +411,12 @@ header .menu a.contact::before {
   color: #6b6b6b;
 }
 
-.main-component .item {
-  background: #f2f2f2;
-  padding-left: 25px;
-}
-
-.main-component .item p {
-  margin: 0;
-  padding-bottom: 15px;
-}
-
-.main-component .item.closed {
-  background: transparent;
-}
-
-.main-component .item.closed p {
-  display: none;
-}
-
-/* -------------------------------------- categories-module */
-.category-module {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 1px dotted #a1a1a1;
-  padding-bottom: 20px;
-  margin-bottom: 5px;
-}
-
-.category-module .item {
-  flex: 1;
-  background: none;
-  padding: 0;
-}
-
-.category-module .item h3 {
-  border-bottom: 1px solid #d8d8d8;
-  padding-bottom: 5px;
-  margin-bottom: 1px;
-}
-
-.category-module .item p {
-  padding: 10px 10px;
-  background: linear-gradient(to bottom, #f3f3f3, #fff);
-}
-
-.category-module .item a {
-  display: block;
-  text-align: right;
-  text-decoration: none;
-}
-
-.category-module .item a::after {
-  background-image: url(../images/arrows.gif);
-  background-repeat: no-repeat;
-  background-position: 0 8px;
-  background-size: cover;
-  height: 15px;
-  width: 10px;
-  content: "";
-  display: inline-block;
-  margin-left: 10px;
-}
-
-/* -------------------------------------- Projects-module */
-.projects-module .project-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.projects-module .project-list .project {
-  width: 48%;
-  box-sizing: border-box;
-  color: #939393;
-}
-
-.projects-module .project-list .project img {
-  float: left;
-  margin-right: 10px;
-  border: 1px solid #b3b3b3;
-  background: #bbbbbb;
-  padding: 4px;
-}
-
-.projects-module .item {
-  width: 50%;
-}
-
 /* -------------------------------------- Footer */
 footer {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+  font-size: 0.9em;
   padding: 15px 30px;
   height: 70px;
   width: 100%;
