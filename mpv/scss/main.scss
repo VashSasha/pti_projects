@@ -1,13 +1,3 @@
-/*
-    TODO:
-    1. border у колонок
-    2. footer
-    3. шрифты
-    4. градиент
-        background: 62% 50% url("../images/car.png") no-repeat, linear-gradient(180deg, rgba(47,50,57,1) 28%, rgba(0,0,0,1) 28%, rgba(0,0,0,1) 82%, rgba(47,50,57,1) 82%);
-
-*/
-
 $orange-main: #fd6703;
 
 * {
@@ -36,40 +26,27 @@ header {
     position: relative;
     height: 320px;
     width: 100%;
-    background-image: url(../images/header-bg.png);
+    background: 80% 10% url("../images/car.png") no-repeat,
+    linear-gradient(to bottom, #2f3339, #17181b 80px, #000 1rem, #000 15rem, #2f3339 1rem, #16181b );
     margin-bottom: 25px;
 
     .logo {
-        display: flex;
-        justify-content: space-between;
         height: 100%;
         width: 100%;
+        margin-top: 85px;
+        margin-left: 95px;
 
-        .headline {
-            width: 65%;
-            align-self: flex-start;
-            margin-top: 80px;
-            text-align: center;
-
-            span {
-                text-transform: uppercase;
-            }
-
-            h1 {
-                color: $orange-main;
-                font-weight: normal;
-            }
-
-            h3 {
-                color: #a8aebe;
-            }
+        span {
+            text-transform: uppercase;
         }
 
-        .car {
-            height: 100%;
-            width: 100%;
-            background-image: url(../images/car.png);
-            background-repeat: no-repeat;
+        h1 {
+            color: $orange-main;
+            font-weight: normal;
+        }
+
+        h3 {
+            color: #a8aebe;
         }
     }
 
@@ -81,6 +58,7 @@ header {
         padding: 0 23px;
         background: linear-gradient(to bottom, #fd6c03, #fd5103);
         color: #ffff;
+        font-family: Arial, Helvetica, sans-serif;
 
         a {
             color: #23262b;
@@ -109,61 +87,100 @@ main {
     padding: 0 22px;
     background: #2f3239;
 
-    div {
-        flex: 1;
-        padding: 15px 20px;
-
-        p {
-            font-size: 17px;
-            margin: 15px 0;
-            color: #e5e5e5;
-
-            a {
-                color: #e5e5e5;
-            }
-        }
-    }
-
     h2 {
         color: $orange-main;
         margin-bottom: 10px;
+        font-family: Arial, Helvetica, sans-serif;
     }
+}
 
-    .services-module {
+/* ---------------------------- Module Gallery */
+.gallery-module {
+    color: #e5e5e5;
+    flex: 1;
+    padding: 15px 20px;
+    border-left: 1px dashed #a9a9a9;
+    border-right: 1px dashed #a9a9a9;
+
+    p {
+        font-size: 0.85rem;
+        font-family: Tahoma, sans-serif;
+        margin: 15px 0;
         color: #e5e5e5;
 
-        li {
-            margin: 20px 5px;
-            list-style-type: none;
-            font-weight: bold;
-
-            &::before {
-                content: '';
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: $orange-main;
-                margin-right: 10px;
-                box-shadow: 0 1px 3px #fff inset;
-            }
+        a {
+            color: #e5e5e5;
         }
     }
 
-    .gallery-module {
-        .gallery {
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            gap: 5px;
+    .gallery {
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        gap: 5px;
 
-            img {
-                width: 49%;
-                margin: 5px 0;
-                padding: 5px;
-                background: #fff;
-            }
+        img {
+            width: 49%;
+            margin: 5px 0;
+            padding: 5px;
+            background: #fff;
+        }
+    }
+}
+
+/* ---------------------------- Module About */
+
+.services-module {
+    color: #e5e5e5;
+    flex: 1;
+    padding: 15px 20px;
+    border-left: 1px dashed #a9a9a9;
+
+    p {
+        font-size: 0.85rem;
+        font-family: Tahoma, sans-serif;
+        margin: 15px 0;
+        color: #e5e5e5;
+
+        a {
+            color: #e5e5e5;
+        }
+    }
+
+    li {
+        margin: 20px 5px;
+        list-style-type: none;
+        font-weight: bold;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: $orange-main;
+            margin-right: 10px;
+            box-shadow: 0 1px 3px #fff inset;
+        }
+    }
+}
+/* ---------------------------- Module About */
+
+.about-module {
+    color: #e5e5e5;
+    flex: 1;
+    padding: 15px 20px;
+    border-left: 1px dashed #a9a9a9;
+
+    p {
+        font-size: 0.85rem;
+        font-family: Tahoma, sans-serif;
+        margin: 15px 0;
+        color: #e5e5e5;
+
+        a {
+            color: #e5e5e5;
         }
     }
 }
@@ -171,18 +188,22 @@ main {
 /* ---------------------------- Footer */
 
 footer {
+    padding: 0 48px 28px 48px;
     height: 100px;
     margin-top: auto;
     background: #000000;
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
     border-bottom: 9px solid #fd6a03;
     
     h2 {
         color: $orange-main;
+        margin-bottom: 10px;
     }
 
     p {
-        width: 300px;
+        width: 350px;
+        font-size: 0.85rem;
         color: #e5e5e5;
     }
 }
