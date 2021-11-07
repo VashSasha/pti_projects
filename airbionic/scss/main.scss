@@ -1,9 +1,3 @@
-/*
-    TODO:
-    1. иконки не должны прыгать при наведении
-    2. при удалении модуля колонка должна оставаться
-*/
-
 $blue-main: #2faed8;
 
 * {
@@ -78,6 +72,7 @@ header {
 
             &.contact:hover{
                 color: $blue-main;
+
                 &::before {
                     background-position: 0 -16px;
                 }
@@ -137,36 +132,9 @@ header {
     padding: 20px 10px;
     color: #6b6b6b;
 
-    .module-menu-2 {
-        display: flex;
-        flex-shrink: 0;
-        flex-direction: column;
+    .column-left {
         width: 200px;
-        height: fit-content;
-        padding: 15px;
-        background: #ececec;
-        border-radius: 6px;
-        border: 1px solid #d8d8d8;
-
-        a {
-            color: #6b6b6b;
-            margin-bottom: 16px;
-            text-decoration: none;
-            font-weight: bold;
-
-            &::before {
-                content: '';
-                display: inline-block;
-                width: 5px;
-                height: 5px;
-                margin-right: 10px;
-                vertical-align: middle;
-                background-image: url(../images/dot.gif);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: top;
-            }
-        }
+        flex-shrink: 0;
     }
 
     .column-center {
@@ -184,58 +152,95 @@ header {
         }
     }
 
-    .module-menu-3 {
-        flex-shrink: 0;
+    .column-right {
         width: 200px;
-        height: fit-content;
-        padding: 15px;
-        font-size: 0.9em;
-        background: #ececec;
-        border-radius: 6px;
-        border: 1px solid #d8d8d8;
+        flex-shrink: 0;
+    }
+}
 
-        a {
-            display: block;
-            margin-top: 15px;
-            color: $blue-main;
+/* -------------------------------------- Module menu2 */
+.module-menu-2 {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: fit-content;
+    padding: 15px;
+    background: #ececec;
+    border-radius: 6px;
+    border: 1px solid #d8d8d8;
 
-            &.contact-us::before {
-                content: '';
-                display: inline-block;
-                height: 14px;
-                width: 18px;
-                vertical-align: middle;
-                margin-right: 7px;
-                background-image: url(../images/mail.gif);
-                background-repeat: no-repeat;
-                background-position: 0 -17px;
-                background-size: cover;
-            }
+    a {
+        color: #6b6b6b;
+        margin-bottom: 16px;
+        text-decoration: none;
+        font-weight: bold;
 
-            &.contact-us:hover::before {
-                background-position: 0 0;
-            }
-
-            &.call-us::before {
-                content: '';
-                display: inline-block;
-                height: 28px;
-                width: 16px;
-                vertical-align: middle;
-                margin-right: 7px;
-                background-image: url(../images/phone.gif);
-                background-repeat: no-repeat;
-                background-position: 0 -30px;
-                background-size: cover;
-            }
-            &.call-us:hover::before {
-                background-position: 0 0;
-            }
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            margin-right: 10px;
+            vertical-align: middle;
+            background-image: url(../images/dot.gif);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: top;
         }
     }
 }
 
-/* -------------------------------------- Module Main */
+/* -------------------------------------- Module menu2 */
+.module-menu-3 {
+    width: 200px;
+    height: fit-content;
+    padding: 15px;
+    font-size: 0.9em;
+    background: #ececec;
+    border-radius: 6px;
+    border: 1px solid #d8d8d8;
+
+    a {
+        display: block;
+        margin-top: 15px;
+        color: $blue-main;
+
+        &.contact-us::before {
+            content: '';
+            display: inline-block;
+            height: 14px;
+            width: 18px;
+            vertical-align: middle;
+            margin-right: 7px;
+            background-image: url(../images/mail.gif);
+            background-repeat: no-repeat;
+            background-position: 0 -17px;
+            background-size: cover;
+        }
+
+        &.contact-us:hover::before {
+            background-position: 0 1px;
+        }
+
+        &.call-us::before {
+            content: '';
+            display: inline-block;
+            height: 28px;
+            width: 16px;
+            vertical-align: middle;
+            margin-right: 7px;
+            background-image: url(../images/phone.gif);
+            background-repeat: no-repeat;
+            background-position: 0 -30px;
+            background-size: cover;
+        }
+
+        &.call-us:hover::before {
+            background-position: 0 1px;
+        }
+    }
+}
+/* -------------------------------------- Module Main  */
 
 .module-content {
     padding: 0 15px;
@@ -305,8 +310,6 @@ header {
 /* -------------------------------------- Projects-module */
 
 .module-xxx {
-
-
     p {
         font-size: 0.95em;
         margin-bottom: 20px;
@@ -316,12 +319,12 @@ header {
 /* ---------------------------------------- Module Projects*/
 
 .module-projects {
+
     .project-list {
         display: flex;
         flex-wrap: wrap;
         padding: 20px;
         gap: 20px;
-        flex-wrap: wrap;
 
         .project {
             width: 48%;
@@ -366,7 +369,6 @@ header {
             background: #f2f2f2;
         }
 
-
         &.open+dd {
             display: block;
         }
@@ -376,8 +378,6 @@ header {
         background: #f2f2f2;
         display: none;
     }
-
-
 }
 
 /* -------------------------------------- Module Form */
@@ -402,7 +402,6 @@ header {
             span {
                 color: $blue-main;
                 margin-right: 4px;
-                //font-size: 19px;
                 vertical-align: middle;
             }
         }
@@ -454,12 +453,10 @@ footer {
     a {
         color: #6b6b6b;
         text-decoration: none;
-
     }
 
     .logo-footer {
         align-self: end;
-
 
         img {
             margin-right: 5px;
