@@ -88,19 +88,24 @@ var omit = function(obj, prop) {
 // has({a: 1, b: 2, c: 3}, 'b');
 // => true
 
-var has = function(obj, key) {
-    return key in obj;
+var has = function (obj, key) {
+    // return key in obj;
+    for (var prop in obj){
+        if (prop === key) return true;
+    }
+    return  false
 };
-
 
 // Создать функцию isMatch которая проверяет, содержатся ли ключ-значене в объекте. Если да, то возвращает true иначе false.
 // Пример работы:
 // isMatch({name: 'moe', age: 32}, {age: 32});
 // => true
 
-var isMatch = function(obj, obj2) {//TODO
+var isMatch = function(obj, obj2) {
+    for(var key in obj2){
+        return obj2[key] === obj[key];
+    }
 };
-
 
 // Создать функцию isEmpty которая вернёт true если коллекция (объект или массив) не содержит ни одного значения, в противном случае вернет false.
 // Пример работы:
