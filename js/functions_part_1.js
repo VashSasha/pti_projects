@@ -175,10 +175,11 @@ var lastIndexOf = function(arr, value) {
 
 var push = function(arr, value) {
     var result = [];
-    for(var i = 0; i < arr.length; i++){
-        result[i] = arr[i];
+
+    for (var i = 0; i < arr.length; i++) {
+        result[result.length] = arr[i];
     }
-    result[arr.length] = value
+    result[result.length] = value;
 
     return result;
 };
@@ -189,14 +190,14 @@ var push = function(arr, value) {
 // unshift([1, 2, 3, 4], 5);
 // => [5, 1, 2, 3, 4]
 var unshift = function(arr, value) {
-    var index = arr.length;
     var result = [];
 
     result[result.length] = value;
     for(let i = 0; i < arr.length; i++){
         result[result.length] = arr[i];
     }
-    return result
+
+    return result;
 };
 
 // Создать функцию pop которая принимает массив и возвращает копию массива без последнего значения.
