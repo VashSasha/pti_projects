@@ -173,9 +173,10 @@ var lastIndexOf = function(arr, value) {
 // push([1, 2, 3, 4], 5);
 // => [1, 2, 3, 4, 5]
 
-var push = function(arr, value) {//TODO
-    arr[arr.length] = value;
-    return arr;
+var push = function(arr, value) {
+    var result = [];
+    result[result.length] = value;
+    return result;
 };
 
 
@@ -184,14 +185,15 @@ var push = function(arr, value) {//TODO
 // Пример работы:
 // unshift([1, 2, 3, 4], 5);
 // => [5, 1, 2, 3, 4]
-var unshift = function(arr, num) {//TODO
+var unshift = function(arr, num) {
     var index = arr.length;
+    var result = [];
     while (index > 0) {
-         arr[index] = arr[index - 1]
+         result[index] = arr[index - 1]
         index--;
     }
-    arr[0] = num;
-    return arr
+    result[0] = num;
+    return result
 };
 
 // Создать функцию pop которая принимает массив и возвращает копию массива без последнего значения.
@@ -322,14 +324,25 @@ var without = function(arr, value) {
 // concat(['a', 'b', 'c'], ['d', 'e', 'f']);
 // => [ "a", "b", "c", "d", "e", "f" ]
 
-var concat = function(arr1, arr2) {// TODO
-    var index = 0;
-    var newArr = [];
-    while (index < arr2.length) {
-        arr1[arr1.length] = arr2[index];
-        index++;
+var concat = function(arr1, arr2) {
+
+    var result = [];
+    // while ( var i < arr1.length ){
+    //     result[result.length] = arr1[i];
+    //     i++;
+    // }
+    // while (var j < arr2.length) {
+    //     result[result.length] = arr2[j];
+    //     j++;
+    // }
+    for( let i = 0; i < arr1.length; i++){
+        result[result.length] = arr1[i]
     }
-    return arr1;
+    for(let j = 0; j < arr2.length; j++) {
+        result[result.length] = arr2[j]
+    }
+
+    return result;
 };
 
 // Создать функцию slice которая принимает 3 параметра. Массив и два числа (begin и end). Возвращает копию части исходного массива. Начиная с индекса begin и заканчивая индексом end включительно (или концом массива если параметр end отстутствует).
