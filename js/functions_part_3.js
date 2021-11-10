@@ -12,9 +12,9 @@
 // each([1, 2, 3], function(element, index) { console.log(element, index); });
 // => выведет в консоль все цифры и соответствующие им индексы по очереди
 
-var each = function(element, iteratee) {
-    for (let i = 0; i < element.length; i++){
-        iteratee(element[i], i);
+var each = function(list, iteratee) {
+    for (let i = 0; i < list.length; i++) {
+        iteratee(list[i], i);
     }
 };
 
@@ -25,11 +25,13 @@ var each = function(element, iteratee) {
 // map([1, 2, 3], function(value) { return value * 3; });
 // => [3, 6, 9]
 
-var map = function(arr, iteratee){
+var map = function(arr, iteratee) {
     var newArr = [];
-    for(let i = 0; i < arr.length; i++){
-       newArr[newArr.length] = iteratee(arr[i]);
+
+    for (let i = 0; i < arr.length; i++) {
+       newArr[newArr.length] = iteratee(arr[i], i);
     }
+
     return newArr;
 };
 
@@ -40,12 +42,12 @@ var map = function(arr, iteratee){
 // => 2
 
 var findIndex = function(arr, predicate) {
-    var index = 0
     for (let i = 0; i < arr.length; i++) {
         if (predicate(arr[i])) {
-            return i
+            return i;
         }
     }
+
     return -1;
 };
 
@@ -55,10 +57,13 @@ var findIndex = function(arr, predicate) {
 // => 2
 
 function find(list, predicate) {
-    for(let i = 0; i < list.length; i++) {
-        if(predicate(list[i])){return list[i]};
+    for (let i = 0; i < list.length; i++) {
+        if (predicate(list[i])) {
+            return list[i];
+        }
     }
-    return  undefined;
+
+    return undefined;
 }
 
 
@@ -69,11 +74,13 @@ function find(list, predicate) {
 
 function filter(list, predicate) {
     var result = [];
-    for(let i = 0; i < list.length; i++){
-        if(predicate(list[i])) {
+
+    for (let i = 0; i < list.length; i++) {
+        if (predicate(list[i])) {
             result[result.length] = list[i];
         }
     }
+
     return result;
 }
 
@@ -84,11 +91,13 @@ function filter(list, predicate) {
 
 function reject(list, predicate) {
     var result = [];
-    for(let i = 0; i < list.length; i++){
-        if (!predicate(list[i])){
+
+    for (let i = 0; i < list.length; i++) {
+        if (!predicate(list[i])) {
             result[result.length] = list[i];
         }
     }
+
     return result;
 }
 
@@ -99,27 +108,27 @@ function reject(list, predicate) {
 // every([2, 4, 6], function(num) { return num % 2 === 0; });
 // => false
 function every(list, predicate) {
-    for(let i = 0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
         if(!predicate(list[i])) {
-           return false
+           return false;
         }
     }
-    return  true;
+
+    return true;
 }
 
 // Создать функцию some с двумя входными параметрами (массив list и функция predicate). Вернёт true, если хотя бы для одного значения из list predicate вернёт true, иначе false.
 // Пример работы:
 // some([2, 4, 5], function(num) { return num % 2 === 0; });
 // => true
-function  some(list, predicate) {
-    var result;
-
-    for(let i = 0; i < list.length; i++){
-        if(predicate(list[i])){
-            return true
+function some(list, predicate) {
+    for (let i = 0; i < list.length; i++) {
+        if (predicate(list[i])) {
+            return true;
         }
     }
-    return false
+
+    return false;
 }
 
 
@@ -132,12 +141,13 @@ function partition(array, predicate) {
     var arr1 = [];
     var arr2 = [];
 
-    for(let i = 0; i < array.length; i++){
-        if(predicate(array[i])){
+    for (let i = 0; i < array.length; i++) {
+        if (predicate(array[i])) {
             arr1[arr1.length] = array[i];
         } else {
             arr2[arr2.length] = array[i];
         }
     }
-    return array;
+
+    return [arr1, arr2];
 }
