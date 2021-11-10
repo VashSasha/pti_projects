@@ -173,26 +173,29 @@ var lastIndexOf = function(arr, value) {
 // push([1, 2, 3, 4], 5);
 // => [1, 2, 3, 4, 5]
 
-var push = function(arr, value) {//TODO
+var push = function(arr, value) {
     var result = [];
-    result[result.length] = value;
+    for(var i = 0; i < arr.length; i++){
+        result[i] = arr[i];
+    }
+    result[arr.length] = value
+
     return result;
 };
-
 
 
 // Создать функцию unshift которая принимает массив и произвольное значение и возвращает копию массива + произвольное значение (которое находится в начале массива)
 // Пример работы:
 // unshift([1, 2, 3, 4], 5);
 // => [5, 1, 2, 3, 4]
-var unshift = function(arr, num) {//TODO
+var unshift = function(arr, value) {
     var index = arr.length;
     var result = [];
-    while (index > 0) {
-         result[index] = arr[index - 1]
-        index--;
+
+    result[result.length] = value;
+    for(let i = 0; i < arr.length; i++){
+        result[result.length] = arr[i];
     }
-    result[0] = num;
     return result
 };
 
