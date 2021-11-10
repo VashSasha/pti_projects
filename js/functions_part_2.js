@@ -90,10 +90,14 @@ var omit = function(obj, prop) {
 
 var has = function (obj, key) {
     // return key in obj;
-    for (var prop in obj){
-        if (prop === key) return true;
+
+    for (var prop in obj) {
+        if (prop === key) {
+            return true;
+        }
     }
-    return  false
+
+    return false;
 };
 
 // Создать функцию isMatch которая проверяет, содержатся ли ключ-значене в объекте. Если да, то возвращает true иначе false.
@@ -102,7 +106,7 @@ var has = function (obj, key) {
 // => true
 
 var isMatch = function(obj, obj2) {
-    for(var key in obj2){
+    for (var key in obj2) {
         return obj2[key] === obj[key];
     }
 };
