@@ -173,7 +173,7 @@ var lastIndexOf = function(arr, value) {
 // push([1, 2, 3, 4], 5);
 // => [1, 2, 3, 4, 5]
 
-var push = function(arr, value) {
+var push = function(arr, value) {//TODO
     var result = [];
     result[result.length] = value;
     return result;
@@ -185,7 +185,7 @@ var push = function(arr, value) {
 // Пример работы:
 // unshift([1, 2, 3, 4], 5);
 // => [5, 1, 2, 3, 4]
-var unshift = function(arr, num) {
+var unshift = function(arr, num) {//TODO
     var index = arr.length;
     var result = [];
     while (index > 0) {
@@ -325,21 +325,14 @@ var without = function(arr, value) {
 // => [ "a", "b", "c", "d", "e", "f" ]
 
 var concat = function(arr1, arr2) {
-
     var result = [];
-    // while ( var i < arr1.length ){
-    //     result[result.length] = arr1[i];
-    //     i++;
-    // }
-    // while (var j < arr2.length) {
-    //     result[result.length] = arr2[j];
-    //     j++;
-    // }
-    for( let i = 0; i < arr1.length; i++){
-        result[result.length] = arr1[i]
+
+    for(let i = 0; i < arr1.length; i++){
+        result[result.length] = arr1[i];
     }
+
     for(let j = 0; j < arr2.length; j++) {
-        result[result.length] = arr2[j]
+        result[result.length] = arr2[j];
     }
 
     return result;
