@@ -10,14 +10,14 @@
 // Пример работы:
 // keys({one: 1, two: 2, three: 3});
 // => ["one", "two", "three"]
-var keys = function (obj) {
-    var list = [];
+var keys = function(obj) {
+    var result = [];
 
     for (var prop in obj) {
-        list[list.length] = prop;
+        result[result.length] = prop;
     }
 
-    return list;
+    return result;
 };
 
 // Создать функцию values которая возвращает массив значений всех свойств принимаемого объекта.
@@ -25,14 +25,14 @@ var keys = function (obj) {
 // values({one: 1, two: 2, three: 3});
 // => [1, 2, 3]
 
-var values = function (obj) {
-    var list = [];
+var values = function(obj) {
+    var result = [];
 
     for (var prop in obj) {
-        list[list.length] = obj[prop];
+        result[result.length] = obj[prop];
     }
 
-    return list;
+    return result;
 };
 
 // Создать функцию pairs которая возвращает список пар [свойство, значение] входящего объекта.
@@ -40,14 +40,14 @@ var values = function (obj) {
 // pairs({one: 1, two: 2, three: 3});
 // => [["one", 1], ["two", 2], ["three", 3]]
 
-var pairs = function (obj) {
-    var list = [];
+var pairs = function(obj) {
+    var result = [];
 
-    for (var i in obj) {
-        list[list.length] = [i, obj[i]]
+    for (var prop in obj) {
+        result[result.length] = [prop, obj[prop]];
     }
 
-    return list;
+    return result;
 };
 
 
@@ -57,14 +57,14 @@ var pairs = function (obj) {
 // invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"});
 // => {Moses: "Moe", Louis: "Larry", Jerome: "Curly"}
 
-var invert = function (obj) {
+var invert = function(obj) {
     var result = {};
 
     for (var prop in obj) {
         result[obj[prop]] = prop;
     }
 
-    return result
+    return result;
 };
 
 // Создать функцию omit которая возвращает копию объекта без указанного свойства.
@@ -72,10 +72,10 @@ var invert = function (obj) {
 // omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
 // => {name: 'moe', age: 50}
 
-var omit = function (obj, value) {
+var omit = function(obj, prop) {
     var result = {};
     for (var key in obj) {
-        if(key !== value) {
+        if(key !== prop) {
             result[key] = obj[key];
         }
     }
@@ -88,8 +88,8 @@ var omit = function (obj, value) {
 // has({a: 1, b: 2, c: 3}, 'b');
 // => true
 
-var has = function (obj, value) {
-    return value in obj;
+var has = function(obj, key) {
+    return key in obj;
 };
 
 
@@ -98,17 +98,9 @@ var has = function (obj, value) {
 // isMatch({name: 'moe', age: 32}, {age: 32});
 // => true
 
-var isMatch = function (obj, value) {
-    var result = false;
-    for (var key in obj){
-        // console.log(value[key])
-        if(obj[key] === value[key]) {
-        }
-    }
-    // console.log(result)
+var isMatch = function(obj, obj2) {//TODO
 };
 
-isMatch({name: 'moe', age: 32}, {sex: 32});
 
 // Создать функцию isEmpty которая вернёт true если коллекция (объект или массив) не содержит ни одного значения, в противном случае вернет false.
 // Пример работы:
@@ -121,14 +113,11 @@ isMatch({name: 'moe', age: 32}, {sex: 32});
 // isEmpty({x: 4});
 // => false
 
-var isEmpty = function (obj) {
-    var result = [];
-    for (i in obj) {
-        result[i] = obj[i];
+var isEmpty = function(obj) {
+    for (var key in obj) {
+        return false;
     }
-    if(result.length === 0) return true
-    return Object.keys(obj).length === 0
-
+    return true;
 };
 
 
@@ -137,36 +126,25 @@ var isEmpty = function (obj) {
 // extend({name: 'moe'}, {age: 50});
 // => {name: 'moe', age: 50}
 
-var extend = function (obj1, obj2) {
-    var result = {};
+var extend = function(destination, source) {
+    for (var key in source) {
+        destination[key] = source[key];
+    }
 
-    for (var i in obj1) {
-        result[i] = obj1[i];
-    }
-    for (var j in obj2) {
-        result[j] = obj2[j];
-    }
-    return result
+    return destination;
 };
-// console.log(extend({name: 'moe'}, {age: 50}))
 
 
 // Создать функцию defaults с двумя входными параметрами (объект object и объект default). Функция defaults проинициализирует неопределённые (undefined) свойства объета значениями одноимённых свойств из default. Если же какие-то свойства объекта уже определены, то они не будут изменены.
 // Пример работы:
 // defaults({flavor: "chocolate"}, {flavor: "vanilla", sprinkles: "lots"});
 // => {flavor: "chocolate", sprinkles: "lots"}
-var defaults = function (obj1, obj2) {
-    var result = {};
-
-    for (var i in obj1){
-        result[i] = obj1[i];
+var defaults = function (obj, def) {
+    for (var key in def) {
+        if (obj[key] === undefined) {
+            obj[key] = def[key];
+        }
     }
 
-    for( var j in obj2){
-        result[j] =  obj2[j];
-    }
-    // console.log(result)
-    return result;
+    return obj;
 };
-
-defaults({flavor: "chocolate"}, {flavor: "vanilla", sprinkles: "lots"})
