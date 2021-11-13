@@ -17,10 +17,9 @@ var obj = {
         return this.x;
     },
     changeX: function(num) {
-        return this.x = num
+        this.x = num;
     }
-}
-
+};
 
 // Создать функцию-конструктор Circle которая принимает 3 параметра:
 // координаты центра окружности (x, y) и ее радиус (radius).
@@ -41,25 +40,20 @@ var Circle = function(x, y, radius) {
     this.x = x;
     this.y = y;
     this.radius = radius;
-}
+};
 
-Circle.prototype.getDiameter = function () {
+Circle.prototype.getDiameter = function() {
     return this.radius * 2;
 };
 
-Circle.prototype.getPerimeter = function () {
+Circle.prototype.getPerimeter = function() {
     return 3.14 * this.radius * 2;
 };
 
-Circle.prototype.getSquare = function () {
-    return 3.14 * this.radius * this.radius
+Circle.prototype.getSquare = function() {
+    return 3.14 * this.radius * this.radius;
 };
 
-var newCircle = new Circle(5, 5, 5);
-
-newCircle.getDiameter();
-newCircle.getPerimeter();
-newCircle.getSquare();
 
 // Создать функции size, last, getPositiveNumbers, without, min, sum, как методы массивов
 // Примеры работы:
@@ -96,11 +90,11 @@ Array.prototype.getPositiveNumbers = function() {
     return result;
 };
 
-Array.prototype.without = function(element) {
+Array.prototype.without = function(value) {
     var result = [];
 
     for (var i = 0; i < this.length; i++) {
-        if (this[i] !== element) {
+        if (this[i] !== value) {
             result[result.length] = this[i];
         }
     }
@@ -109,13 +103,13 @@ Array.prototype.without = function(element) {
 };
 
 Array.prototype.min = function() {
-    var result = this[0];
+    var min = this[0];
 
-    for (var i = 0; i < this.length; i++) {
-        result = result < this[i] ? result : this[i];
+    for (var i = 1; i < this.length; i++) {
+        min = this[i] < min ? this[i] : min;
     }
 
-    return result;
+    return min;
 };
 
 Array.prototype.sum = function() {
@@ -129,47 +123,37 @@ Array.prototype.sum = function() {
 };
 
 
-// Создать функции keys, values, pairs, isEmpty, extend, как методы объектов
+// Создать функции keys, values, pairs, extend, как методы объектов
 
-
-var user = {
-    name: 'Sasha',
-    age: 25
-}
 
 Object.prototype.keys = function() {
     var keys = [];
-    var key;
 
-    for (key in this) {
+    for (var key in this) {
         keys[keys.length] = key;
     }
 
     return keys;
-}
+};
 
-Object.prototype.values = function () {
-    var valuesList = [];
-    var value;
+Object.prototype.values = function() {
+    var values = [];
 
-    for (value in this) {
-        valuesList[valuesList.length] = this[value];
+    for (var key in this) {
+        values[values.length] = this[key];
     }
 
-    return valuesList;
+    return values;
 };
 
 Object.prototype.pairs = function() {
     var result = [];
-    var key;
 
-    for (key in this) {
+    for (var key in this) {
         result[result.length] = [key, this[key]];
     }
 
-
     return result;
-
 };
 
 Object.prototype.extend = function(source) {
@@ -178,13 +162,6 @@ Object.prototype.extend = function(source) {
     }
 
     return this;
-};
-
-Object.prototype.isEmpty = function() {
-    for (var key in this ) {
-        return false
-    }
-    return true;
 };
 
 
@@ -204,18 +181,14 @@ var charAt = function(string, index) {
 
 var trim = function(str) {
     var result = '';
-    var doneTrimming = false;
 
-    for(var i = 0; i < str.length; i++) {
-        if(str[i] !== ' '){
-            doneTrimming = true
-        }
-        if(doneTrimming){
-            result += str[i]
-        }
-    }
-    return result
-}
+    // TODO
+    // 1. найти индекс первого непробельного символа aka indexOf
+    // 2. найти индекс последнего непробельного символа aka lastIndexOf
+    // 3. Цикл от begin до end в котором ты наполняешь result
+
+    return result;
+};
 
 // Создать функцию join которая принимает массив и возвращает строку состоящую из его элементов разделенных запятой (по-умолчанию) или любым другим разделителем (строкой) указанным во втором аргументе вызываемой функции.
 // Пример работы:
@@ -224,14 +197,15 @@ var trim = function(str) {
 // join([1, 'lol', 5, 'dro'], '+');
 // => "1+lol+5+dro"
 
-var join = function(array, separator = ',') {
+var join = function(array, separator) {
     var result = '';
+    separator = separator === undefined ? ',' : separator;
 
     for (let i = 0; i < array.length; i++) {
-        result += array[i] + separator;
+        result += array[i] + (i === array.length - 1 ? '' : separator);
     }
 
-    return result
+    return result;
 };
 
 // Познакомиться с возможностями базовых (встроенных) классов
@@ -318,7 +292,7 @@ arr2.some(function (element) {
 
 arr1.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue;
-})
+});
 
 arr2.reduce(function (accumulator, currentValue) {
     return accumulator + currentValue;
@@ -348,3 +322,6 @@ Object.values((object1));
 var newObject = Object.create(object1);
 var reternedObject = Object.assign(object1, object2);
 object1.hasOwnProperty('a');
+
+
+//TODO Function.prototype
