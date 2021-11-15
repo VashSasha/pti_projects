@@ -181,11 +181,21 @@ var charAt = function(string, index) {
 
 var trim = function(str) {
     var result = '';
+    var begin, end;
 
-    // TODO
-    // 1. найти индекс первого непробельного символа aka indexOf
-    // 2. найти индекс последнего непробельного символа aka lastIndexOf
-    // 3. Цикл от begin до end в котором ты наполняешь result
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== ' ') {
+            end = i;
+        }
+    }
+    for (let i = str.length - 1; i > 0; i--) {
+        if (str[i] !== ' ') {
+            begin = i;
+        }
+    }
+    for (let i = begin; i <= end; i++) {
+        result += str[i];
+    }
 
     return result;
 };
@@ -324,4 +334,29 @@ var reternedObject = Object.assign(object1, object2);
 object1.hasOwnProperty('a');
 
 
-//TODO Function.prototype
+//Function
+
+var array = ['a', 'b'];
+var elements = [0, 1, 2];
+array.push.apply(array, elements);
+
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+
+function Food(name, price) {
+    Product.call(this, name, price);
+    this.category = 'food';
+}
+
+var obj = {
+    name: 'Sasha',
+    age: 25,
+    getAge: function() {
+        return this.age;
+    }
+};
+
+var showAge = obj.getAge;
+var bindShowAge = showAge.bind(obj);
