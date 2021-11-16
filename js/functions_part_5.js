@@ -14,6 +14,7 @@ var lastIndexOf = function(arr, value) {
 
 var shift = function(arr) {
     var result = [];
+
     for (let i = 1; i < arr.length; i++) {
         result[result.length] = arr[i];
     }
@@ -38,7 +39,9 @@ var getMatrixSum = function(arr) {
 // [1,3,5,7].indexOf(5);
 // [1,3,5,7].join('/');
 
-
+console.log(Array.prototype.includes.call([1,3,5,7], 3));
+console.log(Array.prototype.indexOf.call([1,3,5,7], 5));
+console.log(Array.prototype.join.call([1,3,5,7], '/'));
 
 
 // Создать функцию sumOfAllArguments которая принимает произвольное количество чисел и возвращает их сумму.
@@ -50,7 +53,7 @@ var getMatrixSum = function(arr) {
 
 var sumOfAllArguments = function() {
     var sum = 0;
-    console.log(arguments)
+
     for (let i = 0; i < arguments.length; i++) {
         sum += arguments[i];
     }
@@ -89,15 +92,14 @@ console.log(Math.sqrt(9));
 console.log(Math.trunc(22.123))
 
 
-
 var obj = {
     x: 'sasah',
     age: 25
-}
+};
 
-var o = '{"name": "sasha", "age": 23 }'
+var o = '{"name": "sasha", "age": 23 }';
 
 JSON.stringify(obj);
 
 o2 = JSON.parse(o);
-console.log(o2)
+console.log(o2);
