@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery API</title>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .z {
+            color: red;
+            margin: 1em 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .t {
+            font-style: italic;
+        }
+
+        .t99 {
+            padding: 10px;
+            background: #8fff00;
+        }
+
+        .t97 {
+            color: #fff;
+            background: #144d74;
+            padding: 15px;
+            margin: 0;
+            font-style: normal;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+
+        .t97 a {
+            color: #ffd600;
+        }
+
+        .t97 button {
+            float: right;
+        }
+
+        #ab {
+            border: 1px dashed orange;
+        }
+
+        .hi {
+            background: yellow;
+        }
+    </style>
+
+    <p class="z">При клике на кнопку изменить цвет текста</p>
+    <p class="t t1">Тест</p>
+    <button class="b b1">Изменить цвет текста</button>
+
+    <p class="z">При клике на кнопку изменить цвет фона</p>
+    <p class="t t2">Тест</p>
+    <button class="b b2">Изменить цвет фона</button>
+
+    <p class="z">При клике на кнопку изменить путь ссылки</p>
+    <p class="t t3"><a href="https://habrahabr.ru/">Тест</a></p>
+    <button class="b b3">Изменить путь ссылки</button>
+
+    <p class="z">При клике на кнопку изменить путь к картинке</p>
+    <p class="t t4">Тест <img src="images/kaktus.jpg" width="100"></p>
+    <button class="b b4">Изменить путь к картинке</button>
+
+    <p class="z">При клике на кнопку изменить id элемента</p>
+    <p class="t t5" id="ab">Тест</p>
+    <button class="b b5">Изменить id элемента</button>
+
+    <p class="z">При клике на кнопку изменить текст</p>
+    <p class="t t6">Тест</p>
+    <button class="b b6">Изменить текст</button>
+
+    <p class="z">При клике на кнопку изменить HTML</p>
+    <p class="t t7">Тест <b>Цветы</b></p>
+    <button class="b b7">Изменить HTML</button>
+
+    <p class="z">При клике на кнопку изменить размер шрифта</p>
+    <p class="t t8">Тест</p>
+    <button class="b b8">Изменить размер шрифта</button>
+
+    <p class="z">При клике на кнопку добавить класс 'hi'</p>
+    <p class="t t9">Тест</p>
+    <button class="b b9">Добавить класс 'hi'</button>
+
+    <p class="z">При клике на кнопку удалить класс 'hi'</p>
+    <p class="t t10 hi">Тест</p>
+    <button class="b b10">Удалить класс 'hi'</button>
+
+    <p class="z">При клике на кнопку добавлять/удалять (в зависимости от наличия) класс 'hi'</p>
+    <p class="t t11">Тест</p>
+    <button class="b b11">Добавить/удалить (в зависимости от наличия) класс 'hi'</button>
+
+    <p class="z">При клике на любом элементе страницы выводить значение атрибута class элемента</p>
+    <p class="t t12">Тест</p>
+
+    <p class="z">При клике на кнопку перевести текст на английский язык (перевод хранится в атрибуте data-en элемента)</p>
+    <p class="t t13" data-en="sun">Солнце</p>
+    <button class="b b13">Перевести</button>
+
+    <p class="z">При изменении размеров окна вкладки или браузера изменять фоновый цвет абзаца (использовать RGB и Math.random)</p>
+    <p class="t t99">Drugs are bad, m'kay, so, if you do drugs, you're bad, m'kay, because drugs are bad.</p>
+
+    <p class="z">При изменении значения элемента формы выводить количество символов которое оно содержит</p>
+    <p class="t t98"><input type="text" value="Я не касался писи козла!"> <span class="t98-2">24</span></p>
+
+    <p class="z">Вывести на экран анкету Жасмин используя переменную jasmine (смотри исходный код) двумя способами (созданием элементов, конкатенацией)</p>
+
+    <div class="whores-container">
+        <div class="whore">
+            <div class="whore-name">Сильвия</div>
+            <img src="images/silvia.jpg" width="200">
+            <div class="whore-age">Возраст: 32</div>
+            <div class="whore-boobs">Размер груди: 3</div>
+            <div class="whore-height">Рост: 170</div>
+            <div class="whore-weight">Вес: 60</div>
+            <div class="whore-phone">+380960000000</div>
+            <div class="whore-can-come">Выезд: -</div>
+            <div class="whore-teaser">Я - симпатичная девочка экзотической внешности без комплексов и с огромной любовью к сексу! Я непревзойденная любовница, страстная, доступная и яркая! Я невероятно сексуальна и изобретательна, мила и непосредственна. Не теряй времени, звони мне, мой друг! Я скрашу твоё одиночество :)</div>
+        </div>
+    </div>
+
+    <button class="b b14">Добавить анкету</button>
+
+    <style>
+        .whores-container {
+            background: #751a1a;
+            width: 910px;
+            height:  474px;
+            padding: 10px;
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+
+        .whore {
+            background: white;
+            padding: 10px;
+            width: 200px;
+            position: relative;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+            margin: 0 0 10px 10px;
+        }
+
+        .whore:first-child {
+            margin-left: 0;
+        }
+
+        .whore-name {
+            font-size: 22px;
+            font-family: Tahoma, sans-serif;
+            margin-bottom: 5px;
+            color: #7b1e1e;
+        }
+
+        .whore img {
+            margin-bottom: 10px;
+        }
+
+        .whore-teaser {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-sizing: border-box;
+            padding: 10px;
+            display: none;
+        }
+
+        .whore:hover .whore-teaser {
+            display: block;
+        }
+
+        .whore-phone {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0 1px;
+        }
+    </style>
+
+    <script>
+        var jasmine = {
+            name: 'Жасмин',
+            photo: 'images/zhasmin.jpg',
+            age: '18',
+            boobs: '3',
+            weight: '50',
+            height: '168',
+            phone: '+380960000000',
+            can_come: true,
+            teaser: 'Очень нежная девчонка доставит Вам удовольствие по полной программе! Каждый мужчина ищет идеальную женщину - попробуй, может быть я именно та которая тебе нужна... Фото мои 1000%!!! Выезда НЕТ!!! Квартира для встреч ЕСТЬ, 5 мин от ст. метро \"Дворец Украина\"'
+        };
+    </script>
+
+    <p class="z">Переместить рыбу из первого контейнера во второй (при повторном клике из второго в первый и т.д.)</p>
+
+    <div class="cats-container">
+        <div class="cat-container-1">
+            <img class="cat" src="images/kat.png" width="100">
+            <img class="fish" src="images/fish.jpg" width="100">
+        </div>
+
+        <div class="cat-container-2">
+            <img class="cat" src="images/kat.png" width="100">
+        </div>
+    </div>
+
+    <button class="b b15">Переместить рыбу</button>
+
+    <style>
+        .cats-container {
+            width: 600px;
+            height: 200px;
+            margin-bottom: 1em;
+        }
+
+        .cat-container-1,
+        .cat-container-2 {
+            float: left;
+            width: 49%;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px dashed #000;
+            margin-left: 0.5%;
+        }
+    </style>
+
+    <p class="z">Удалить зуб</p>
+
+    <div class="tooth-container">
+        <img class="tooth" src="images/tooth.jpg" width="200">
+        <img class="boy" src="images/bro.jpg" width="600">
+    </div>
+
+    <button class="b b16">Удалить зуб</button>
+
+    <style>
+        .tooth-container {
+            width: 600px;
+            height: 266px;
+            padding: 5px;
+            border: 1px solid black;
+            margin-bottom: 1em;
+        }
+
+        .tooth + .boy {
+            display: none;
+        }
+    </style>
+
+    <p class="z">Хочу чтоб лыжник бесконечно ехал вправо (сдвиг на 5px каждые 16ms). При нажатии на кнопку "Стоп!" останавливался.</p>
+
+    <div class="ski-resort">
+        <img class="skier" src="images/skier.gif">
+    </div>
+
+    <button class="b b17">Поехали!</button>
+    <button class="b b17-2">Стоп!</button>
+
+    <style>
+        .ski-resort {
+            width: 600px;
+            height: 170px;
+            border: 1px solid #000;
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            margin-bottom: 1em;
+        }
+
+        .skier {
+            width: 150px;
+            transform: scale(-1, 1);
+            position: absolute;
+            top: 85px;
+            left: 0;
+        }
+    </style>
+
+    <p class="z">Хочу такое (смотри исходный код) <img src="images/mikki.png"></p>
+
+    <div class="mikki_tiles"></div>
+
+    <style>
+        .mikki_tiles {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+
+        .mikki_tile {
+            width: 20px;
+            height: 20px;
+            float: left;
+        }
+    </style>
+
+    <script>
+        var mikki = [
+            '  XXXX        XXXX  ',
+            ' XXXXXX      XXXXXX ',
+            'XXXX XX XXXX XX XXXX',
+            'XXX  XXXXXXXXXX  XXX',
+            'XXXXXXXXXXXXXXXXXXXX',
+            'XXXXXXX      XXXXXXX',
+            ' XXXXX        XXXXX ',
+            '   XXX  XX XX XXX   ',
+            '    XX  XX XX XX    ',
+            '    XXX X  X  XX    ',
+            '    X         XX    ',
+            '    X    XXX  XX    ',
+            '    XX   XXX  XX    ',
+            '     XX      XX     ',
+            '      X  XX  X      ',
+            '       X    X       ',
+            '     XX XXXX XX     ',
+            '     XX      XX     ',
+            '    XX        XX    ',
+            '   XXXXXXXXXXXXXX   '
+        ];
+    </script>
+
+    <p class="z">Создать мир Марио <img src="images/mario.png"></p>
+
+    <div class="scene"></div>
+
+    <button class="b b18">Создать мир</button>
+
+    <style>
+        .scene {
+            width: 800px;
+            height: 272px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid black;
+            margin-bottom: 1em;
+        }
+
+        .tile {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            background-image: url('images/mario_tileset.png');
+            background-repeat: no-repeat;
+            background-position: 16px 16px;
+        }
+
+        .tile.x_z {
+            background-position: -96px -112px;
+        }
+        .tile.x_k {
+            background-position: -144px -112px;
+        }
+        .tile.x_c {
+            background-position: -128px -112px;
+        }
+        .tile.x_t {
+            background-position: 0 -48px;
+            width: 32px;
+            height: 48px;
+        }
+        .tile.x_g {
+            background-position: 0 -128px;
+            width: 48px;
+            height: 32px;
+        }
+        .tile.x_b {
+            background-position: -144px -208px;
+            width: 80px;
+            height: 48px;
+        }
+        .tile.x_d {
+            background-position: 0 -96px;
+            width: 80px;
+            height: 32px;
+        }
+        .tile.x_w {
+            background-position: -96px -224px;
+            width: 48px;
+            height: 32px;
+        }
+    </style>
+
+    <script>
+        var map = [
+            '                                                  ',
+            '                                                  ',
+            '                                                  ',
+            '                    w                             ',
+            '                                       w          ',
+            '                                                  ',
+            '                       c                          ',
+            '                                                  ',
+            '                                        c         ',
+            '                                                  ',
+            '                c    kkkkk                        ',
+            ' b                                     t        c ',
+            '            d    g       d                        ',
+            '                                                  ',
+            'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+            'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz',
+            'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
+        ];
+    </script>
+
+    <p class="z">Кликая по кнопкам "предыдущая" и "следующая" я хочу чтобы менялись соответственно слайды</p>
+
+    <div class="slider">
+        <img src="images/slide1.jpg" class="slide active">
+        <img src="images/slide2.jpg" class="slide">
+        <img src="images/slide3.jpg" class="slide">
+        <img src="images/slide4.jpg" class="slide">
+        <img src="images/slide5.jpg" class="slide">
+    </div>
+
+    <div class="pagination">
+        <button class="previous">Previous</button>
+        <button class="next">Next</button>
+    </div>
+
+    <style>
+        .slide {
+            width: 302px;
+            height: 347px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .pagination {
+            margin: 1em 0;
+        }
+    </style>
+
+    <p class="z">Кликая вопросам я хочу видеть ответы на них</p>
+
+    <dl class="faq">
+        <dt class="question active">В чем разница между 32-разрядной и 64-разрядной версиями Windows?</dt>
+        <dd class="answer">
+            Термины "32-разрядный" и "64-разрядный" описывают, каким образом процессор компьютера (он также называется ЦП) обрабатывает информацию. 64-разрядная версия Windows обрабатывает большие объемы оперативной памяти (ОЗУ) более эффективно по сравнению с 32-разрядной версией. Не все устройства могут работать под управлением 64-разрядных версий Windows.
+        </dd>
+        <dt class="question">Моя копия Windows приобретена через учебное заведение. Можно ли скачать ее здесь?</dt>
+        <dd class="answer">
+            Да, но вам потребуется ключ продукта. Перейдите на страницу загрузок <b>Академические продукты</b> и выберите версию Windows, чтобы начать.
+        </dd>
+        <dt class="question">Что делать после создания носителя с помощью средства создания носителя?</dt>
+        <dd class="answer">
+            <p>Чтобы установить Windows, после создания установочного носителя выполните одно из следующих действий:</p>
+
+            <ul>
+                <li>
+                    Подключите USB-устройство флэш-памяти к компьютеру, на который необходимо установить Windows, найдите его в проводнике и откройте файл setup.exe. Выполняйте инструкции, отображаемые в ходе установки.
+                </li>
+                <li>
+                    Если ваш компьютер настроен на загрузку с USB-накопителя, подключите USB-устройство флэш-памяти к компьютеру, на который необходимо установить Windows, перезагрузите его, а затем следуйте инструкциям по установке.
+                </li>
+                <li>
+                    Если компьютер настроен на загрузку с DVD-дисковода, вставьте DVD-диск в компьютер, перезагрузите компьютер, а затем следуйте инструкциям по установке.
+                </li>
+            </ul>
+        </dd>
+        <dt class="question">Этот образ диска загрузочный?</dt>
+        <dd class="answer">
+            Образ диска с этого сайта можно использовать для создания загрузочных USB-носителей и DVD-дисков, которые предоставляют доступ к средствам восстановления.
+        </dd>
+    </dl>
+
+    <style>
+        .question {
+            color: #0078d7;
+            padding: 10px 20px 10px;
+            border-top: 1px solid #d2d2d2;
+            cursor: pointer;
+        }
+
+        .question:hover {
+            background: #e6e6e6;
+        }
+
+        .answer {
+            padding: 10px 20px 10px;
+            margin: 0;
+            display: none;
+        }
+
+        .question.active + .answer {
+            display: block;
+        }
+    </style>
+
+    <p class="z">Кликая по вкладкам я хочу видеть связанное содержимое</p>
+
+    <h2>Сеансы</h2>
+
+    <div class="tabs">
+        <div class="item active" data-tab="today">Сегодня</div>
+        <div class="item" data-tab="tomorrow">Завтра</div>
+        <div class="item" data-tab="23d">23 декабря</div>
+    </div>
+
+    <div class="tabs-content">
+        <div class="item active" data-tab="today">
+            <ul>
+                <li>Звёздные войны: Последние джедаи</li>
+                <li>Счастливый день смерти</li>
+                <li>Дыши</li>
+            </ul>
+        </div>
+        <div class="item" data-tab="tomorrow">
+            <ul>
+                <li>Киборги</li>
+                <li>Земля троллей</li>
+                <li>За пропастью во ржи</li>
+            </ul>
+        </div>
+        <div class="item" data-tab="23d">
+            <ul>
+                <li>Мой любимый динозавр</li>
+                <li>Фердинанд</li>
+                <li>Джуманджи: Зов джунглей</li>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+        .tabs {
+            border-bottom: 1px solid black;
+            width: 400px;
+        }
+
+        .tabs .item {
+            background: grey;
+            border: 1px solid black;
+            border-radius: 10px 10px 0 0;
+            display: inline-block;
+            margin-bottom: -1px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tabs .item:hover,
+        .tabs .item.active {
+            background: lightgray;
+        }
+
+        .tabs-content .item {
+            display: none;
+        }
+
+        .tabs-content .item.active {
+            display: block;
+        }
+    </style>
+
+    <p class="z">Кликая на кнопку Login я хочу чтобы затенялся экран и по середине экрана появлялось окошко для авторизации закрыть которое можно кликнув по кнопке с крестиком</p>
+
+    <div class="overlay hidden"></div>
+    <div class="pop-up pop-up--login hidden">
+        <button class="close">x</button>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button class="login">Login</button>
+    </div>
+
+    <button class="show-login-pop-up">Login</button>
+
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: black;
+            opacity: 0.8;
+        }
+
+        .pop-up {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-top: -200px;
+            margin-left: -150px;
+            background: white;
+            border-radius: 10px;
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .pop-up input {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .pop-up .close {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: black;
+            color: white;
+            border-radius: 50%;
+            right: -15px;
+            top: -15px;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+            border: none;
+        }
+
+        .pop-up .close:hover {
+            background: #912626;
+        }
+    </style>
+
+    <p class="z">Отменить действие по-умолчанию при клике на ссылку</p>
+
+    <p><a href="https://ebanoe.it/" class="link-ebanoe" target="_blank">Ebanoe.IT — голая правда о нашем айти</a></p>
+
+    <p class="z">Надоела реклама про увеличение члена? При клике на кнопку "Больше не показывать" заноси в localStorage значение которое будешь проверять при загрузке страницы</p>
+    <p class="t t97">Хочешь увеличить член? Заходи <a href="http://pornhub.com" target="_blank">сюда</a>! <button class="b97">Больше не показывать</button></p>
+
+    <script src="js/jquery_api.js"></script>
+</body>
+</html>
