@@ -168,15 +168,15 @@ document.querySelector('.b14').addEventListener('click', function () {
 
     var newWhore2 =
        ' <div class="whore">'+
-           ' <div class="whore-name">'+ jasmine.name +' </div>'+
-           ' <img src="'+ jasmine.photo +'" width="200">'+
-               ' <div class="whore-age">Возраст: '+ jasmine.age +'</div>'+
-               ' <div class="whore-boobs">Размер груди: '+ jasmine.boobs +'</div>'+
-                '<div class="whore-height">Рост: '+ jasmine.height +'</div>'+
-               ' <div class="whore-weight">Вес: '+ jasmine.weight +'</div>'+
-               ' <div class="whore-phone">'+ jasmine.phone +'</div>'+
-               ' <div class="whore-can-come">Выезд: '+ (jasmine.can_come ? '+' : '-' ) +'</div>'+
-                '<div class="whore-teaser">'+ jasmine.teaser +'</div>'+
+           '<div class="whore-name">'+ jasmine.name +' </div>'+
+           '<img src="'+ jasmine.photo +'" width="200">'+
+           '<div class="whore-age">Возраст: '+ jasmine.age +'</div>'+
+           '<div class="whore-boobs">Размер груди: '+ jasmine.boobs +'</div>'+
+           '<div class="whore-height">Рост: '+ jasmine.height +'</div>'+
+           '<div class="whore-weight">Вес: '+ jasmine.weight +'</div>'+
+           '<div class="whore-phone">'+ jasmine.phone +'</div>'+
+           '<div class="whore-can-come">Выезд: '+ (jasmine.can_come ? '+' : '-' ) +'</div>'+
+           '<div class="whore-teaser">'+ jasmine.teaser +'</div>'+
        ' </div>';
 
     document.querySelector('.whores-container').appendChild(newWhore);
@@ -204,7 +204,7 @@ document.querySelector('.b16').addEventListener('click', function () {
 //Хочу чтоб лыжник бесконечно ехал вправо (сдвиг на 5px каждые 16ms). При нажатии на кнопку "Стоп!" останавливался.
 document.querySelector('.b17').addEventListener('click', function () {
     var skier = document.querySelector('.skier');
-        var distance = 0;
+    var distance = 0;
     var interval = setInterval(function () {
         skier.style.left = (distance += 5) + 'px';
     },16);
@@ -219,8 +219,8 @@ document.querySelector('.b17').addEventListener('click', function () {
 var tiles = document.querySelector('.mikki_tiles');
 
 function print(arr) {
-    arr.map(function (el) {
-        for (let i = 0; i < el.length; i++) {
+    arr.forEach(function (el) {
+        for (let i = 0; i < el.length; i++) {//TODO: forEach
            var tile = document.createElement('tile');
            tile.classList.add('mikki_tile');
 
@@ -229,7 +229,7 @@ function print(arr) {
             }
            tiles.appendChild(tile);
         }
-    })
+    });
 }
 
 print(mikki);
@@ -238,15 +238,14 @@ print(mikki);
 //Создать мир Марио
 var scene = document.querySelector('.scene');
 
-document.querySelector('.b18').addEventListener('click', function createMarioWorld(arr) {
-    arr = map;
-    for (let j = 0; j < arr.length; j++) {
-        arr.map(function (el, j) {
+document.querySelector('.b18').addEventListener('click', function() {
+    for (let j = 0; j < map.length; j++) {//TODO: forEach
+        map.forEach(function (el, j) {
             for (let i = 0; i < el.length; i++) {
                 var tile = document.createElement('div');
                 tile.classList.add('tile');
-                tile.style.top = j * 16 + 'px'
-                tile.style.left = i * 16 + 'px'
+                tile.style.top = j * 16 + 'px';
+                tile.style.left = i * 16 + 'px';
 
                 if (el[i] === 'z') {
                     tile.classList.add('x_z');
@@ -265,7 +264,7 @@ document.querySelector('.b18').addEventListener('click', function createMarioWor
                 } else if (el[i] === 'w') {
                     tile.classList.add('x_w');
                 }
-                scene.appendChild(tile)
+                scene.appendChild(tile);
             }
         });
     }
@@ -276,33 +275,34 @@ document.querySelector('.b18').addEventListener('click', function createMarioWor
 var slider = document.querySelector('.slider');
 var previous = document.querySelector('.previous');
 var next = document.querySelector('.next');
-var images = document.querySelectorAll('.slider img');
-var counter = 0;
+var slides = document.querySelectorAll('.slider img');
+var activeSlideIndex = 0;
 
 next.addEventListener('click', function () {
     slider.querySelector('.active').classList.remove('active');
 
-    if (counter < images.length - 1){
-        counter++;
+    if (activeSlideIndex < slides.length - 1){
+        activeSlideIndex++;
     } else {
-        counter = 0;
+        activeSlideIndex = 0;
     }
 
-    images[counter].classList.add('active');
-})
+    slides[activeSlideIndex].classList.add('active');
+});
 
 previous.addEventListener('click', function () {
     slider.querySelector('.active').classList.remove('active');
 
-    if (counter > 0 ) {
-        counter--;
+    if (activeSlideIndex > 0 ) {
+        activeSlideIndex--;
     } else {
-        counter = images.length - 1;
+        activeSlideIndex = slides.length - 1;
     }
 
-    images[counter].classList.add('active');
-})
+    slides[activeSlideIndex].classList.add('active');
+});
 
+//TODO: goTo('next');
 
 //Кликая вопросам я хочу видеть ответы на них
 var faq = document.querySelector('.faq');
@@ -316,31 +316,21 @@ faq.addEventListener('click', function (e) {
 
 //Кликая по вкладкам я хочу видеть связанное содержимое
 let tabs = document.querySelector('.tabs');
-var tabsContent = document.querySelectorAll('.tabs-content .item');
+var tabsContent = document.querySelector('.tabs-content');
 
-tabs.addEventListener('click', function (e) {
+tabs.addEventListener('click', function (e) {//TODO: проверка что не промахнулся мимо табов
     tabs.querySelector('.active').classList.remove('active');
     e.target.classList.add('active');
 
-    var dataInfo = e.target.getAttribute('data-tab');
-
-    for (let i = 0; i < tabsContent.length; i++) {
-        if (tabsContent[i].dataset.tab === dataInfo) {
-            for (let j = 0; j < tabsContent.length; j++) {
-                if (tabsContent[j].classList.contains('active')) {
-                    tabsContent[j].classList.remove('active');
-                }
-            }
-            tabsContent[i].classList.add('active');
-        }
-    }
-})
+    tabsContent.querySelector('.active').classList.remove('active');
+    tabsContent.querySelector('[data-tab="'+ e.target.dataset.tab +'"]').classList.add('active');
+});
 
 
 //Кликая на кнопку Login я хочу чтобы затенялся экран и по середине экрана появлялось окошко для авторизации закрыть которое можно кликнув по кнопке с крестиком
 var overlay = document.querySelector('.overlay');
 var popUp = document.querySelector('.pop-up');
-var closePopUp = popUp.querySelector('.close');
+var popUpCloseBtn = popUp.querySelector('.close');
 
 function toggleClass() {
     overlay.classList.toggle('hidden');
@@ -350,31 +340,31 @@ function toggleClass() {
 document.querySelector('.show-login-pop-up').addEventListener('click', function () {
     toggleClass();
 });
-closePopUp.addEventListener('click', function () {
+popUpCloseBtn.addEventListener('click', function () {
     toggleClass();
 });
 
 //Отменить действие по-умолчанию при клике на ссылку
 document.querySelector('.link-ebanoe').addEventListener('click', function (e) {
     e.preventDefault();
-})
+});
 
 /*
 Надоела реклама про увеличение члена? При клике на кнопку "Больше не показывать" заноси в localStorage значение которое будешь проверять при загрузке страницы
  */
 
-var popUpAdd = document.querySelector('.t97');
-var closeAdd = popUpAdd.querySelector('.b97');
+var ad = document.querySelector('.t97');
+var adCloseBtn = ad.querySelector('.b97');
 
-closeAdd.addEventListener('click', function () {
-    popUpAdd.style.display = 'none';
+adCloseBtn.addEventListener('click', function () {
+    ad.style.display = 'none';
     localStorage.setItem('showAdd', 'false');
-})
+});
 
 window.addEventListener('load', function () {
     if (localStorage.getItem('showAdd') === 'false') {
-        popUpAdd.style.display = 'none';
+        ad.style.display = 'none';
     }
-})
+});
 
 console.log(localStorage);
