@@ -218,9 +218,9 @@ document.querySelector('.b17').addEventListener('click', function () {
 //Хочу такое (смотри исходный код)
 var tiles = document.querySelector('.mikki_tiles');
 
-function print(arr) {//TODO: forEach(function (el, i) {})
+function print(arr) {
     arr.forEach(function (el) {
-        for (let i = 0; i < el.length; i++) {
+        Array.from(el).forEach(function (item, i){
             var tile = document.createElement('tile');
             tile.classList.add('mikki_tile');
 
@@ -228,7 +228,7 @@ function print(arr) {//TODO: forEach(function (el, i) {})
                 tile.style.backgroundColor = 'black';
             }
             tiles.appendChild(tile);
-        }
+        })
     });
 }
 
@@ -238,34 +238,32 @@ print(mikki);
 //Создать мир Марио
 var scene = document.querySelector('.scene');
 
-document.querySelector('.b18').addEventListener('click', function() {//TODO: forEach(function (el, i) {})
-    map.forEach(function () {
-        map.forEach(function (el, j) {
-            for (let i = 0; i < el.length; i++) {
-                var tile = document.createElement('div');
-                tile.classList.add('tile');
-                tile.style.top = j * 16 + 'px';
-                tile.style.left = i * 16 + 'px';
+document.querySelector('.b18').addEventListener('click', function() {
+    map.forEach(function (item,j) {
+        Array.from(item).forEach(function (el, i) {
+            var tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.style.top = j * 16 + 'px';
+            tile.style.left = i * 16 + 'px';
 
-                if (el[i] === 'z') {
-                    tile.classList.add('x_z');
-                } else if (el[i] === 'k') {
-                    tile.classList.add('x_k');
-                } else if (el[i] === 'c') {
-                    tile.classList.add('x_c');
-                } else if (el[i] === 't') {
-                    tile.classList.add('x_t');
-                } else if (el[i] === 'g') {
-                    tile.classList.add('x_g');
-                } else if (el[i] === 'b') {
-                    tile.classList.add('x_b');
-                } else if (el[i] === 'd') {
-                    tile.classList.add('x_d');
-                } else if (el[i] === 'w') {
-                    tile.classList.add('x_w');
-                }
-                scene.appendChild(tile);
+            if (item[i] === 'z') {
+                tile.classList.add('x_z');
+            } else if (item[i] === 'k') {
+                tile.classList.add('x_k');
+            } else if (item[i] === 'c') {
+                tile.classList.add('x_c');
+            } else if (item[i] === 't') {
+                tile.classList.add('x_t');
+            } else if (item[i] === 'g') {
+                tile.classList.add('x_g');
+            } else if (item[i] === 'b') {
+                tile.classList.add('x_b');
+            } else if (item[i] === 'd') {
+                tile.classList.add('x_d');
+            } else if (item[i] === 'w') {
+                tile.classList.add('x_w');
             }
+            scene.appendChild(tile);
         });
     });
 });
