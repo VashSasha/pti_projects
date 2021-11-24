@@ -220,14 +220,14 @@ var tiles = document.querySelector('.mikki_tiles');
 
 function print(arr) {
     arr.forEach(function (el) {
-        for (let i = 0; i < el.length; i++) {//TODO: forEach
-           var tile = document.createElement('tile');
-           tile.classList.add('mikki_tile');
+        for (let i = 0; i < el.length; i++) {
+            var tile = document.createElement('tile');
+            tile.classList.add('mikki_tile');
 
             if (el[i] === 'X') {
                 tile.style.backgroundColor = 'black';
             }
-           tiles.appendChild(tile);
+            tiles.appendChild(tile);
         }
     });
 }
@@ -239,7 +239,7 @@ print(mikki);
 var scene = document.querySelector('.scene');
 
 document.querySelector('.b18').addEventListener('click', function() {
-    for (let j = 0; j < map.length; j++) {//TODO: forEach
+    map.forEach(function () {
         map.forEach(function (el, j) {
             for (let i = 0; i < el.length; i++) {
                 var tile = document.createElement('div');
@@ -267,7 +267,7 @@ document.querySelector('.b18').addEventListener('click', function() {
                 scene.appendChild(tile);
             }
         });
-    }
+    });
 });
 
 
@@ -279,30 +279,33 @@ var slides = document.querySelectorAll('.slider img');
 var activeSlideIndex = 0;
 
 next.addEventListener('click', function () {
-    slider.querySelector('.active').classList.remove('active');
-
-    if (activeSlideIndex < slides.length - 1){
-        activeSlideIndex++;
-    } else {
-        activeSlideIndex = 0;
-    }
-
-    slides[activeSlideIndex].classList.add('active');
+    goTo('next');
 });
 
 previous.addEventListener('click', function () {
+    goTo('prev');
+});
+
+function goTo(direction) {
     slider.querySelector('.active').classList.remove('active');
 
-    if (activeSlideIndex > 0 ) {
-        activeSlideIndex--;
-    } else {
-        activeSlideIndex = slides.length - 1;
+    if (direction === 'next') {
+        if (activeSlideIndex < slides.length - 1){
+            activeSlideIndex++;
+        } else {
+            activeSlideIndex = 0;
+        }
+    }
+    if (direction === 'prev') {
+        if (activeSlideIndex > 0 ) {
+            activeSlideIndex--;
+        } else {
+            activeSlideIndex = slides.length - 1;
+        }
     }
 
     slides[activeSlideIndex].classList.add('active');
-});
-
-//TODO: goTo('next');
+}
 
 //Кликая вопросам я хочу видеть ответы на них
 var faq = document.querySelector('.faq');
@@ -318,12 +321,15 @@ faq.addEventListener('click', function (e) {
 let tabs = document.querySelector('.tabs');
 var tabsContent = document.querySelector('.tabs-content');
 
-tabs.addEventListener('click', function (e) {//TODO: проверка что не промахнулся мимо табов
+tabs.addEventListener('click', function (e) {
+    if (e.target.className !== 'item'){
+        return;
+    }
     tabs.querySelector('.active').classList.remove('active');
     e.target.classList.add('active');
 
     tabsContent.querySelector('.active').classList.remove('active');
-    tabsContent.querySelector('[data-tab="'+ e.target.dataset.tab +'"]').classList.add('active');
+    tabsContent.querySelector('[data-tab="' + e.target.dataset.tab + '"]').classList.add('active');
 });
 
 
