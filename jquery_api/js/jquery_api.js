@@ -86,10 +86,52 @@ $('.t98 input').on('input', function () {
 //Вывести на экран анкету Жасмин используя переменную jasmine (смотри исходный код) двумя способами (созданием элементов, конкатенацией)
 
 
-$('.b14').on('click', function () {//TODO: глянь в browser_api
+$('.b14').on('click', function () {
     addWhore();
-    // addWhore2();
+    addWhore2();
 });
+
+function addWhore2() {
+    var newWhore = $('<div class="whore">');
+
+    var whoreName = $('<div class="whore-name">');
+    whoreName.text(jasmine.name);
+    newWhore.append(whoreName);
+
+    var whorePic = $('<img>');
+    whorePic.attr('src', jasmine.photo);
+    newWhore.append(whorePic);
+
+    var whoreAge = $('<div class="whore-age">');
+    whoreAge.text('Возраст: ' + jasmine.age);
+    newWhore.append(whoreAge);
+
+    var whoreBoobs = $('<div class="whore-boobs">');
+    whoreBoobs.text('Размер груди: ' + jasmine.boobs);
+    newWhore.append(whoreBoobs);
+
+    var whoreHeight = $('<div class="whore-height">');
+    whoreHeight.text('Рост: ' + jasmine.height);
+    newWhore.append(whoreHeight);
+
+    var whoreWeight = $('<div class="whore-weight">');
+    whoreWeight.text('Вес: ' + jasmine.weight);
+    newWhore.append(whoreWeight);
+
+    var whorePhone = $('<div class="whore-phone">');
+    whorePhone.text(jasmine.phone);
+    newWhore.append(whorePhone);
+
+    var whoreCanCome = $('<div class="whore-can-come">');
+    whoreCanCome.text('Выезд: ' + (jasmine.can_come ? '+' : '-'));
+    newWhore.append(whoreCanCome);
+
+    var whoreTeaser = $('<div class="whore-teaser">');
+    whoreTeaser.text(jasmine.teaser);
+    newWhore.append(whoreTeaser);
+
+    $('.whores-container').append(newWhore);
+}
 
 function addWhore() {
     var newWhore = ' <div class="whore">' +
@@ -105,12 +147,6 @@ function addWhore() {
         ' </div>';
     $('.whores-container').append(newWhore);
 }
-
-function addWhore2() {
-    $('.whores-container').append('<div class="whore">');
-    $('.whore:last-child').append('<div class="whore-name"> ' + jasmine.name + ' ');
-}
-
 
 //Переместить рыбу из первого контейнера во второй (при повторном клике из второго в первый и т.д.)
 $('.b15').click(function () {
@@ -144,47 +180,46 @@ $('.b17').click(function () {
 
 //Хочу такое (смотри исходный код)
 mikki.forEach(function (el) {
-    for (let i = 0; i < el.length; i++) {//TODO: forEach
+    // for (let i = 0; i < el.length; i++) {
+    Array.from(el).forEach(function (item,i){
         var tile = $('<div class="mikki_tile">');
 
         if (el[i] === 'X') {
            tile.css('background', 'black');
         }
         tile.appendTo($('.mikki_tiles'));
-    }
+    })
 });
 
 
 //Создать мир Марио
 $('.b18').click(function () {
-    map.forEach(function () {
-        map.forEach(function (el, j) {
-            for (let i = 0; i < el.length; i++) {//TODO: forEach
-                var tile = $('<div>');
-                tile.addClass('tile');
-                tile.css('top', (j * 16 + 'px')) ;
-                tile.css('left', (i * 16 + 'px')) ;
+    map.forEach(function (item,j) {
+        Array.from(item).forEach(function (el, i) {
+            var tile = $('<div>');
+            tile.addClass('tile');
+            tile.css('top', (j * 16 + 'px')) ;
+            tile.css('left', (i * 16 + 'px')) ;
 
-                if (el[i] === 'z') {
-                    tile.addClass('x_z');
-                } else if (el[i] === 'k') {
-                    tile.addClass('x_k');
-                } else if (el[i] === 'c') {
-                    tile.addClass('x_c');
-                } else if (el[i] === 't') {
-                    tile.addClass('x_t');
-                } else if (el[i] === 'g') {
-                    tile.addClass('x_g');
-                } else if (el[i] === 'b') {
-                    tile.addClass('x_b');
-                } else if (el[i] === 'd') {
-                    tile.addClass('x_d');
-                } else if (el[i] === 'w') {
-                    tile.addClass('x_w');
-                }
-                $('.scene').append(tile);
+            if (item[i] === 'z') {
+                tile.addClass('x_z');
+            } else if (item[i] === 'k') {
+                tile.addClass('x_k');
+            } else if (item[i] === 'c') {
+                tile.addClass('x_c');
+            } else if (item[i] === 't') {
+                tile.addClass('x_t');
+            } else if (item[i] === 'g') {
+                tile.addClass('x_g');
+            } else if (item[i] === 'b') {
+                tile.addClass('x_b');
+            } else if (item[i] === 'd') {
+                tile.addClass('x_d');
+            } else if (item[i] === 'w') {
+                tile.addClass('x_w');
             }
-        });
+            $('.scene').append(tile);
+        })
     });
 });
 
