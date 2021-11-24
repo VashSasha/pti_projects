@@ -74,8 +74,8 @@ $(window).on('resize',function () {
     var r = Math.floor(Math.random() * 256);
     var g = Math.floor(Math.random() * 256);
     var b = Math.floor(Math.random() * 256);
-    var ColorRGB = "rgb(" + r + "," + g + ", " + b + ")";
-    $('.t99').css('background', ColorRGB) ;
+    var colorRGB = "rgb(" + r + "," + g + ", " + b + ")";
+    $('.t99').css('background', colorRGB) ;
 });
 
 //При изменении значения элемента формы выводить количество символов которое оно содержит
@@ -86,10 +86,10 @@ $('.t98 input').on('input', function () {
 //Вывести на экран анкету Жасмин используя переменную jasmine (смотри исходный код) двумя способами (созданием элементов, конкатенацией)
 
 
-$('.b14').on('click', function () {
+$('.b14').on('click', function () {//TODO: глянь в browser_api
     addWhore();
     // addWhore2();
-})
+});
 
 function addWhore() {
     var newWhore = ' <div class="whore">' +
@@ -116,7 +116,9 @@ function addWhore2() {
 $('.b15').click(function () {
     if ($('.cat-container-1 .fish').length !== 0) {
         $('.fish').appendTo($('.cat-container-2'));
-    } else ($('.fish').appendTo($('.cat-container-1')))
+    } else {
+        ($('.fish').appendTo($('.cat-container-1')));
+    }
 });
 
 
@@ -130,8 +132,9 @@ $('.b16').click(function () {
 $('.b17').click(function () {
     var distance = 0;
     var interval = setInterval(function () {
-        $('.skier').css('left', (distance += 5) + 'px');
-    },16);
+        distance += 5;
+        $('.skier').css('left', distance + 'px');
+    }, 16);
 
     $('.b17-2').click(function () {
         clearInterval(interval)
@@ -141,22 +144,22 @@ $('.b17').click(function () {
 
 //Хочу такое (смотри исходный код)
 mikki.forEach(function (el) {
-    for (let i = 0; i < el.length; i++) {
-        var tile = $('<div class="mikki_tile">')
+    for (let i = 0; i < el.length; i++) {//TODO: forEach
+        var tile = $('<div class="mikki_tile">');
 
         if (el[i] === 'X') {
            tile.css('background', 'black');
         }
-        tile.appendTo($('.mikki_tiles'))
+        tile.appendTo($('.mikki_tiles'));
     }
-})
+});
 
 
 //Создать мир Марио
 $('.b18').click(function () {
     map.forEach(function () {
         map.forEach(function (el, j) {
-            for (let i = 0; i < el.length; i++) {
+            for (let i = 0; i < el.length; i++) {//TODO: forEach
                 var tile = $('<div>');
                 tile.addClass('tile');
                 tile.css('top', (j * 16 + 'px')) ;
@@ -189,7 +192,7 @@ $('.b18').click(function () {
 var activeSlideIndex = 0;
 
 function goTo(direction) {
-    $('.active').removeClass('active');
+    $('.slider .active').removeClass('active');
     var slides = $('.slide');
 
     if (direction === 'next') {
@@ -206,7 +209,7 @@ function goTo(direction) {
         }
     }
 
-    slides.get(activeSlideIndex).classList.add('active');
+    slides.get(activeSlideIndex).addClass('active');
 }
 
 $('.next').click(function () {
@@ -220,12 +223,12 @@ $('.previous').click(function () {
 
 //Кликая вопросам я хочу видеть ответы на них
 $('.question').click(function () {
-    $(this).toggleClass('active')
+    $(this).toggleClass('active');
 });
 
 
 //Кликая по вкладкам я хочу видеть связанное содержимое
-$('.item').click(function () {
+$('.tabs .item').click(function () {
     $('.item.active').removeClass('active');
     $(this).toggleClass('active');
 

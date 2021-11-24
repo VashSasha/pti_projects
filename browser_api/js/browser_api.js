@@ -218,7 +218,7 @@ document.querySelector('.b17').addEventListener('click', function () {
 //Хочу такое (смотри исходный код)
 var tiles = document.querySelector('.mikki_tiles');
 
-function print(arr) {
+function print(arr) {//TODO: forEach(function (el, i) {})
     arr.forEach(function (el) {
         for (let i = 0; i < el.length; i++) {
             var tile = document.createElement('tile');
@@ -238,7 +238,7 @@ print(mikki);
 //Создать мир Марио
 var scene = document.querySelector('.scene');
 
-document.querySelector('.b18').addEventListener('click', function() {
+document.querySelector('.b18').addEventListener('click', function() {//TODO: forEach(function (el, i) {})
     map.forEach(function () {
         map.forEach(function (el, j) {
             for (let i = 0; i < el.length; i++) {
