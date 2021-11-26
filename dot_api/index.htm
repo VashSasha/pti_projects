@@ -21,7 +21,59 @@
         }
     </style>
 
-    <div class="games"><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Batman-v-Superman-Dawn-of-Justice-290x180.jpg"><h6>Batman v Superman Dawn of Justice</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Batman-Begins-290x180.jpg"><h6>Batman Begins</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/jackpot-giant-290x180.jpg"><h6>Jackpot Giant</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span><span class="item item-new">New</span></div><img src="images/games/european-roulette-290x180.jpg"><h6>Premium European Roulette</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Da-vinci-Vault-290x180.jpg"><h6>Da Vinci’s Vault</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Murder-Mystery-290x180.jpg"><h6>Murder Mystery</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/PremiumBlackjack-290x180.jpg"><h6>Premium Blackjack</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Gladiator-road-to-rome-290x180.jpg"><h6>Gladiator 2</h6></div></div>
+    <div class="games">
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-hot">Hot</span>
+            </div>
+            <img src="images/games/Batman-v-Superman-Dawn-of-Justice-290x180.jpg">
+            <h6>Batman v Superman Dawn of Justice</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags"></div>
+            <img src="images/games/Batman-Begins-290x180.jpg">
+            <h6>Batman Begins</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/jackpot-giant-290x180.jpg">
+            <h6>Jackpot Giant</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-hot">Hot</span>
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/european-roulette-290x180.jpg">
+            <h6>Premium European Roulette</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags"></div>
+            <img src="images/games/Da-vinci-Vault-290x180.jpg">
+            <h6>Da Vinci’s Vault</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags"></div>
+            <img src="images/games/Murder-Mystery-290x180.jpg">
+            <h6>Murder Mystery</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/PremiumBlackjack-290x180.jpg">
+            <h6>Premium Blackjack</h6>
+        </div>
+        <div class="game">
+         <div class="game-flags">
+             <span class="item item-hot">Hot</span>
+         </div>
+            <img src="images/games/Gladiator-road-to-rome-290x180.jpg">
+            <h6>Gladiator 2</h6>
+        </div>
+    </div>
 
     <p class="z">Используй переменную games и шаблонизатор doT.js чтобы добавить игры в контейнер #games</p>
 
@@ -75,7 +127,20 @@
     </script>
 
     <script type="text/template" id="game-template">
-        Write your code here
+        {{~ it.games :game:index}}
+            <div class="game">
+                <div class="game-flags">
+                    {{? game.flagHot}}
+                        <span class="item item-hot">Hot</span>
+                    {{? }}
+                    {{? game.flagNew}}
+                        <span class="item item-new">New</span>
+                    {{?}}
+                </div>
+                <img src="{{= game.imageURL}}">
+                <h6>{{= game.name}}</h6>
+            </div>
+        {{~}}
     </script>
 
     <style>
@@ -162,7 +227,42 @@
         }
     </style>
 
-    <div class="nav"><ul class="nav-level-first"><li><a href="#">Фрукты</a><ul class="nav-level-second"><li><a href="#">Апельсин</a></li><li><a href="#">Киви</a></li><li><a href="#">Вишня</a></li><li><a href="#">Банан</a></li></ul></li><li><a href="#">Овощи</a><ul class="nav-level-second"><li><a href="#">Капуста</a></li><li><a href="#">Огурец</a></li></ul></li><li><a href="#">Рыба</a><ul class="nav-level-second"><li><a href="#">Лосось</a></li><li><a href="#">Щука</a></li></ul></li><li><a href="#">Орехи</a><ul class="nav-level-second"><li><a href="#">Арахис</a></li><li><a href="#">Кешью</a></li><li><a href="#">Фундук</a></li><li><a href="#">Миндаль</a></li></ul></li><li><a href="#">Мясо</a></li></ul></div>
+    <div class="nav">
+        <ul class="nav-level-first">
+            <li><a href="#">Фрукты</a>
+                <ul class="nav-level-second">
+                    <li><a href="#">Апельсин</a></li>
+                    <li><a href="#">Киви</a></li>
+                    <li><a href="#">Вишня</a></li>
+                    <li><a href="#">Банан</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Овощи</a>
+                <ul class="nav-level-second">
+                    <li><a href="#">Капуста</a></li>
+                    <li><a href="#">Огурец</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Рыба</a>
+                <ul class="nav-level-second">
+                    <li><a href="#">Лосось</a></li>
+                    <li><a href="#">Щука</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Орехи</a>
+                <ul class="nav-level-second">
+                    <li><a href="#">Арахис</a></li>
+                    <li><a href="#">Кешью</a></li>
+                    <li><a href="#">Фундук</a></li>
+                    <li><a href="#">Миндаль</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Мясо</a></li>
+        </ul>
+    </div>
 
     <p class="z">Используй переменные navRu или navEn и шаблонизатор doT.js чтобы вывести меню в контейнер #nav</p>
 
@@ -333,7 +433,17 @@
     </script>
 
     <script type="text/template" id="nav-template">
-        Write your code here
+        <ul class="nav-level-first">
+            {{~ it.nav :navLevelFirst}}
+                <li><a href="{{= navLevelFirst.url}}">{{= navLevelFirst.title}}</a>
+                    <ul class="nav-level-second">
+                        {{~ navLevelFirst.children :navLevelSecond}}
+                            <li><a href="{{= navLevelSecond.url}}">{{= navLevelSecond.title}}</a></li>
+                        {{~}}
+                    </ul>
+                </li>
+            {{~}}
+        </ul>
     </script>
 
     <style>
@@ -447,7 +557,19 @@
     </script>
 
     <script type="text/template" id="whore-template">
-        Write your code here
+        {{~ it.whores :whore:index}}
+            <div class="whore">
+                <div class="whore-name">{{= whore.name}}</div>
+                <img src="{{= whore.photo}}" width="200">
+                <div class="whore-age">Возраст: {{= whore.age}}</div>
+                <div class="whore-boobs">Размер груди: {{= whore.boobs}}</div>
+                <div class="whore-height">Рост: {{= whore.height}}</div>
+                <div class="whore-weight">Вес: {{= whore.weight}}</div>
+                <div class="whore-phone">{{= whore.phone}}</div>
+                <div class="whore-can-come">Выезд: {{? whore.can_come}}+{{??}}-{{?}}</div>
+                <div class="whore-teaser">{{= whore.teaser}}</div>
+            </div>
+        {{~}}
     </script>
 
     <style>
@@ -510,7 +632,53 @@
         }
     </style>
 
-    <div class="movies"><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div></div>
+    <div class="movies">
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a>
+            </div>
+            <a class="movie-title" href="#">Джентльмены</a>
+            <div class="movie-details">
+                <span>2020</span>
+            </div>
+        </div>
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#"><img src="images/movies/1437566539_88761604.jpg"></a>
+            </div>
+            <a class="movie-title" href="#">Джентльмены удачи</a>
+            <div class="movie-details">
+                <span>1971</span>
+            </div>
+        </div>
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a>
+            </div>
+            <a class="movie-title" href="#">Мстители: Война бесконечности</a>
+            <div class="movie-details">
+                <span>2018</span>
+            </div>
+        </div>
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#"><img src="images/movies/1538682174_690d454.jpg"></a>
+            </div>
+            <a class="movie-title" href="#">Веном</a>
+            <div class="movie-details">
+                <span>2018</span>
+            </div>
+        </div>
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a>
+            </div>
+            <a class="movie-title" href="#">Первому игроку приготовиться</a>
+            <div class="movie-details">
+                <span>2018</span>
+            </div>
+        </div>
+    </div>
 
     <p class="z">Используй переменную movies и шаблонизатор doT.js чтобы добавить фильмы в контейнер #movies</p>
 
@@ -766,7 +934,17 @@
     </script>
 
     <script type="text/template" id="movie-template">
-        Write your code here
+        {{~ it.movies :movie:index}}
+            <div class="movie">
+                <div class="movie-image-container">
+                    <a href="#"><img src="images/movies/{{= movie.id}}.jpg"></a>
+                </div>
+                <a class="movie-title" href="#">{{= movie.title}}</a>
+                <div class="movie-details">
+                    <span>{{= movie.year}}</span>
+                </div>
+            </div>
+        {{~}}
     </script>
 
     <style>
