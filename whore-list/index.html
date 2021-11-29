@@ -25,7 +25,7 @@
                     <input type="text" id="name" placeholder="Имя" value="{{= it.name}}" required>
                     <input type="text" id="lastName" placeholder="Фамилия" value="{{= it.lastName}}" required>
                     <input type="text" id="nickname" placeholder="Псевдоним" value="{{= it.nickname}}" required>
-                    <input type="text" id="age" placeholder="Возраст" value="{{= it.age}}" required>
+                    <input type="number" id="age" placeholder="Возраст" value="{{= it.age}}" required>
                     <input type="number" id="price" placeholder="Цена" value="{{= it.price}}" required>
                 </form>
                 <button type="button" class="remove">Удалить</button>
@@ -38,11 +38,10 @@
                     <input type="text" id="name" placeholder="Имя" autofocus required>
                     <input type="text" id="lastName" placeholder="Фамилия" required>
                     <input type="text" id="nickname" placeholder="Псевдоним" required>
-                    <input type="text" id="age" placeholder="Возраст" required>
+                    <input type="number" id="age" placeholder="Возраст" required>
                     <input type="number" id="price" placeholder="Цена" required>
                 </form>
                 <button type="submit" class="save">Сохранить</button>
-
             </div>
         {{?}}
     </script>

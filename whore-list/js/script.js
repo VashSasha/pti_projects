@@ -6,7 +6,7 @@ var selectedWhore;
 
 
 function whoresFromStorage() {
-    if(getWhoreList === null){
+    if (getWhoreList === null) {
         whore_list = [];
         displayWhoreList();
     } else {
@@ -53,7 +53,7 @@ function validate() {
 }
 
 function uniqueId () {
-    return _.uniqueId('whore_');
+    return '_' + Math.random().toString(36).substr(2, 9);
 }
 
 function openWhoreForm () {
@@ -67,9 +67,9 @@ function hideWhoreForm() {
     $('#whore-form-container').css('display', 'none');
 }
 
-function removeWhore(e){
+function removeWhore(selectedWhore){
     for ( let [i, whore] of whore_list.entries()){
-        if (whore.id === e.id) {
+        if (whore.id === selectedWhore.id) {
             whore_list.splice(i, 1);
         }
     }
@@ -77,19 +77,20 @@ function removeWhore(e){
     whoresFromStorage();
 }
 
-function updateWhore(e) {
+function updateWhore(selectedWhore) {
     var newWhore = {};
     newWhore.id = selectedWhore.id;
     $('.whore-form input').each(function (i, el) {
         newWhore[el.id] = el.value;
     });
     for ( let [i, whore] of whore_list.entries()){
-        if (whore.id === e.id) {
+        if (whore.id === selectedWhore.id) {
             whore_list.splice(i, 1, newWhore);
         }
     }
     localStorage.setItem('whore_list', JSON.stringify(whore_list));
     whoresFromStorage();
+    displayWhoreList();
 }
 
 addNewWhore.on('click', function () {
@@ -100,8 +101,8 @@ addNewWhore.on('click', function () {
     $('.whore-form .save').on('click', function (e) {
         e.preventDefault();
         var newWhore = {};
-
         newWhore.id = uniqueId();
+
         $('.whore-form input').each(function (i, el) {
             newWhore[el.id] = el.value;
         });
