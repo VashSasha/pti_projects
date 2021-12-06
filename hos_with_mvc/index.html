@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Whore LIst</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="dot.js"></script>
+    <script src="jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+</head>
+<body>
+<div class="whore-manager-module">
+    <div id="display-whores">
+        <button id="add-whore-btn">Добавить</button>
+        <div id="whore-list">
+        </div>
+    </div>
+    <div id="whore-form-container"></div>
+</div>
+
+<script type="text/template" id="edit-whore-template">
+    {{? it}}
+    <div class="whore-form">
+        <form>
+            <input type="text" id="name" placeholder="Имя" value="{{= it.name}}" required>
+            <input type="text" id="lastName" placeholder="Фамилия" value="{{= it.lastName}}" required>
+            <input type="text" id="nickname" placeholder="Псевдоним" value="{{= it.nickname}}" required>
+            <input type="number" id="age" placeholder="Возраст" value="{{= it.age}}" required>
+            <input type="number" id="price" placeholder="Цена" value="{{= it.price}}" required>
+        </form>
+        <button type="button" class="remove">Удалить</button>
+        <button type="button" class="update" >Оновить</button>
+
+    </div>
+    {{??}}
+    <div class="whore-form">
+        <form>
+            <input type="text" id="name" placeholder="Имя" autofocus required>
+            <input type="text" id="lastName" placeholder="Фамилия" required>
+            <input type="text" id="nickname" placeholder="Псевдоним" required>
+            <input type="number" id="age" placeholder="Возраст" required>
+            <input type="number" id="price" placeholder="Цена" required>
+        </form>
+        <button type="submit" class="save" disabled="true">Сохранить</button>
+    </div>
+    {{?}}
+</script>
+<script type="text/template" id="whore-template">
+    {{? it.length > 0}}
+    {{~ it :whore:index}}
+    <div>
+        <a href="#" class="whore" data-whoreId = "{{= whore.id}}">{{= whore.name}} {{= whore.age}}, ${{= whore.price}}</a>
+    </div>
+    {{~}}
+    {{??}}
+    <p>Шлюх пока нет</p>
+    {{?}}
+
+</script>
+
+<script src="hos_with_mvc.js"></script>
+</body>
+</html>

@@ -1,98 +1,171 @@
 var whoresCollection = {
     models: [],
 
-    init: function() {
-        // Забрать данные из localStorage и сохранить их в this.models
+    init: function () {
+        this.models = this.getModelsFromStorage();
+        this.setModelsToStorage();
     },
 
-    add: function(whore) {
-        // Добавить модель в коллекцию
-        // Cинхронизировать коллекцию с localStorage
+    add: function (whore) {
+        whore = addFormView.getFormData();
+        this.models.push(whore);
+        this.setModelsToStorage();
     },
 
-    getWhoreById: function(whoreId) {
-        // Вернуть модель из коллекции по ее ID
+    remove: function(id) {
+        this.models = _.reject(this.models, function (whore) {
+            console.log(whore)
+            return whore.id === id
+        });
+        this.setModelsToStorage();
+        listView.render();
     },
 
-    removeWhoreById: function(whoreId) {
-        // Удалить модель из коллекции
-        // Cинхронизировать коллекцию с localStorage
+    getWhoreId: function (e) {
+        if (e === undefined) {
+            return;
+        }
+
+        for (let whore of this.models) {
+            if (whore.id === e.target.dataset.whoreid) {
+                return whore.id;
+            }
+        }
     },
 
-    updateWhore: function(updatedWhore) {
-        // Найти модель в коллекции и обновить ее
-        // Cинхронизировать коллекцию с localStorage
+    checkInputData: function () {
+        $('.whore-form input').on('blur', function (e) {
+            if (e.target.value.length === 0) {
+                e.target.style.border = '3px solid red';
+            } else {
+                e.target.style.border = '1px solid #000';
+            }
+            this.validate();
+        }.bind(this));
     },
 
-    updateStorage: function() {
-        // Cинхронизировать коллекцию с localStorage
-    }
+    validate: function () {
+        var arr = [];
+        $('.whore-form input').each(function (index, element) {
+            if (element.value.length === 0) {
+                arr.push(index);
+            }
+        });
+        if(arr.length >= 1){
+            $('.whore-form .save, .whore-form .update').attr('disabled', true);
+        }else{
+            $('.whore-form .save, .whore-form .update').attr('disabled', false);
+        }
+    },
+
+    setModelsToStorage: function () {
+        localStorage.setItem('whore_list', JSON.stringify(this.models));
+    },
+
+    getModelsFromStorage: function () {
+        return JSON.parse(localStorage.getItem('whore_list')) || [];
+    },
+
+    getWhoreById: function (whoreId) {
+        return _.findWhere(this.models,{id: whoreId});
+    },
+
+    updateWhore: function (updatedWhore) {
+        var newWhore = {};
+        newWhore.id = updatedWhore.id;
+        $('.whore-form input').each(function (i, el) {
+            newWhore[el.id] = el.value;
+        });
+        for ( let [i, whore] of this.models.entries()){
+            if (whore.id === updatedWhore.id) {
+                this.models.splice(i, 1, newWhore);
+            }
+        }
+        this.setModelsToStorage();
+    },
 };
 
 whoresCollection.init();
 
 var listView = {
-    tmplFn: null,
+    tmplFn: doT.template($('#whore-template').html()),
+
+    collection: whoresCollection.models,
 
     render: function() {
-        // Отрисовать элементы компонента
-        // Подписаться на события
+        $('#whore-list').html(this.tmplFn(this.collection));
+        $('#whore-form-container').css('display', 'block');
+        this.subscribe();
     },
 
     subscribe: function() {
-        // Подписаться на события:
-        // 1. Клик по шлюхе
-        // 2. Клик по кнопке Добавить
-    }
+        $('#whore-list').on('click', function (whoreData) {
+            addFormView.render(whoreData);
+        });
+
+        $('#add-whore-btn').on('click', function () {
+            addFormView.render();
+            whoresCollection.checkInputData();
+        });
+    },
 };
 
 listView.render();
 
 var addFormView = {
-    tmplFn: null,
+    tmplFn: doT.template($('#edit-whore-template').html()),
+    whore: null,
 
-    render: function() {
-        // Отрисовать элементы компонента
-        // Подписаться на события
+    render: function (whore) {
+       this.whore = whoresCollection.getWhoreById(whoresCollection.getWhoreId(whore));
+        $('#whore-form-container').html(this.tmplFn(this.whore));
+        this.displayForm();
+        this.subscribe();
     },
 
-    subscribe: function() {
-        // Подписаться на события:
-        // 1. Клик по кнопке Сохранить
+    subscribe: function () {
+        $('.whore-form .save').on('click', function (e) {
+            whoresCollection.add();
+            listView.render();
+            this.remove();
+        }.bind(this));
+
+        $('.remove').on('click', function () {
+            whoresCollection.remove(this.whore.id);
+            listView.render();
+            this.remove();
+        }.bind(this));
+
+        $('.update').on('click', function () {
+            whoresCollection.updateWhore(this.whore);
+            listView.render();
+            this.remove();
+        }.bind(this))
     },
 
-    getFormData: function() {
-        // Собрать данные из формы и вернуть их в виде объекта
+    getFormData: function () {
+        var newWhore = {};
+        newWhore.id = this.getUniqId();
+
+        $('.whore-form input').each(function (i, el) {
+            newWhore[el.id] = el.value;
+        });
+
+        return newWhore;
     },
 
-    getUniqId: function() {
+    getUniqId: function () {
         return '_' + Math.random().toString(36).substr(2, 9);
     },
 
-    remove: function() {
-        // Удалить компонент с экрана
-    }
-};
-
-var editFormView = {
-    tmplFn: null,
-
-    render: function(whore) {
-        // Отрисовать элементы компонента
-        // Подписаться на события
+    displayForm: function () {
+        $('#whore-form-container').css('display', 'block');
     },
 
-    subscribe: function() {
-        // Подписаться на события:
-        // 1. Клик по кнопке Обновить
-        // 2. Клик по кнопке Удалить
-    },
-
-    getFormData: function() {
-        // Собрать данные из формы и вернуть их в виде объекта
-    },
-
-    remove: function() {
-        // Удалить компонент с экрана
+    remove: function () {
+        $('#whore-form-container').css('display', 'none');
+        $('.whore-form input').each(function (i, el) {
+            el.value = '';
+        });
     }
 };
