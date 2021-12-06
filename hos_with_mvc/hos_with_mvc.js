@@ -4,85 +4,46 @@ var whoresCollection = {
     init: function () {
         this.models = this.getModelsFromStorage();
         this.setModelsToStorage();
+
+        // слушает событие "change" и синхронизирует модели с localStorage
     },
 
-    add: function (whore) {
-        whore = addFormView.getFormData();
+    add: function(whore) {
+        //whore = formView.getFormData();
         this.models.push(whore);
-        this.setModelsToStorage();
+        //this.setModelsToStorage();
+        // тригерить событие "change у колекции"
     },
 
-    remove: function(id) {
-        this.models = _.reject(this.models, function (whore) {
-            console.log(whore)
-            return whore.id === id
-        });
-        this.setModelsToStorage();
-        listView.render();
+    getWhoreById: function(whoreId) {
+        return _.findWhere(this.models, {id: whoreId});
     },
 
-    getWhoreId: function (e) {
-        if (e === undefined) {
-            return;
-        }
-
-        for (let whore of this.models) {
-            if (whore.id === e.target.dataset.whoreid) {
-                return whore.id;
-            }
-        }
-    },
-
-    checkInputData: function () {
-        $('.whore-form input').on('blur', function (e) {
-            if (e.target.value.length === 0) {
-                e.target.style.border = '3px solid red';
-            } else {
-                e.target.style.border = '1px solid #000';
-            }
-            this.validate();
-        }.bind(this));
-    },
-
-    validate: function () {
-        var arr = [];
-        $('.whore-form input').each(function (index, element) {
-            if (element.value.length === 0) {
-                arr.push(index);
-            }
-        });
-        if(arr.length >= 1){
-            $('.whore-form .save, .whore-form .update').attr('disabled', true);
-        }else{
-            $('.whore-form .save, .whore-form .update').attr('disabled', false);
-        }
-    },
-
-    setModelsToStorage: function () {
-        localStorage.setItem('whore_list', JSON.stringify(this.models));
-    },
-
-    getModelsFromStorage: function () {
-        return JSON.parse(localStorage.getItem('whore_list')) || [];
-    },
-
-    getWhoreById: function (whoreId) {
-        return _.findWhere(this.models,{id: whoreId});
-    },
-
-    updateWhore: function (updatedWhore) {
-        var newWhore = {};
-        newWhore.id = updatedWhore.id;
-        $('.whore-form input').each(function (i, el) {
-            newWhore[el.id] = el.value;
-        });
-        for ( let [i, whore] of this.models.entries()){
+    update: function(updatedWhore) {
+        this.models.forEach(function(whore, idx) {
             if (whore.id === updatedWhore.id) {
-                this.models.splice(i, 1, newWhore);
+                this.models.splice(idx, 1, updatedWhore);
             }
-        }
-        this.setModelsToStorage();
+        }.bind(this));
+        //this.setModelsToStorage();
+        // тригерить событие "change у колекции"
     },
+
+    remove: function(whoreId) {
+        this.models = _.reject(this.models, function(whore) {
+            return whore.id === whoreId;
+        });
+        //this.setModelsToStorage();
+        // тригерить событие "change у колекции"
+    },
+
+    setModelsToStorage: function() {
+        localStorage.setItem('whores', JSON.stringify(this.models));
+    },
+
+    getModelsFromStorage: function() {
+        return JSON.parse(localStorage.getItem('whores')) || [];
+    }
 };
 
 whoresCollection.init();
@@ -90,82 +51,139 @@ whoresCollection.init();
 var listView = {
     tmplFn: doT.template($('#whore-template').html()),
 
-    collection: whoresCollection.models,
+    collection: whoresCollection,
 
     render: function() {
-        $('#whore-list').html(this.tmplFn(this.collection));
-        $('#whore-form-container').css('display', 'block');
-        this.subscribe();
+        $('#whore-list').html(this.tmplFn(this.collection.models));
     },
 
     subscribe: function() {
-        $('#whore-list').on('click', function (whoreData) {
-            addFormView.render(whoreData);
-        });
-
-        $('#add-whore-btn').on('click', function () {
-            addFormView.render();
-            whoresCollection.checkInputData();
-        });
+        $('#whore-list').on('click', this.handleClickOnWhore.bind(this));
+        $('#add-whore-btn').on('click', this.handleClickOnAddBtn.bind(this));
     },
+
+    handleClickOnWhore: function(e) {
+        var whoreId = e.target.dataset.whoreId;
+        var whore = this.collection.getWhoreById(whoreId);
+        formView.render(whore);
+    },
+
+    handleClickOnAddBtn: function(e) {
+        formView.render();
+    },
+
+    init: function() {
+        this.render();
+        this.subscribe();
+        // TODO: слушает коллекицю и перерендеривается
+    }
 };
 
-listView.render();
+listView.init();
 
-var addFormView = {
-    tmplFn: doT.template($('#edit-whore-template').html()),
-    whore: null,
+var formView = {
+    tmplFn: doT.template($('#form-template').html()),
 
-    render: function (whore) {
-       this.whore = whoresCollection.getWhoreById(whoresCollection.getWhoreId(whore));
+    whore: undefined,
+
+    collection: whoresCollection,
+
+    render: function(whore) {
+        this.whore = whore;
         $('#whore-form-container').html(this.tmplFn(this.whore));
-        this.displayForm();
+        this.showForm();
         this.subscribe();
     },
 
     subscribe: function () {
-        $('.whore-form .save').on('click', function (e) {
-            whoresCollection.add();
-            listView.render();
-            this.remove();
-        }.bind(this));
+        $('.save').on('click', this.handleSave.bind(this));
+        $('.remove').on('click', this.handleRemove.bind(this));
+        $('.update').on('click', this.handleUpdate.bind(this))
+    },
 
-        $('.remove').on('click', function () {
-            whoresCollection.remove(this.whore.id);
-            listView.render();
-            this.remove();
-        }.bind(this));
+    handleSave: function(e) {
+        if (this.isFormDataValid()) {
+            var whore = this.getFormData();
+            this.collection.add(whore);
+            //listView.render();
+            this.hideForm();
+        } else {
+            this.highlighFields();
+        }
+    },
 
-        $('.update').on('click', function () {
-            whoresCollection.updateWhore(this.whore);
-            listView.render();
-            this.remove();
-        }.bind(this))
+    handleRemove: function(e) {
+        var whoreId = this.whore.id;
+        this.collection.remove(whoreId);
+        //listView.render();
+        this.hideForm();
+    },
+
+    handleUpdate: function(e) {
+        if (this.isFormDataValid()) {
+            var updatedWhore = this.getFormData();
+            this.collection.update(updatedWhore);
+            //listView.render();
+            this.hideForm();
+        } else {
+            this.highlighFields();
+        }
     },
 
     getFormData: function () {
-        var newWhore = {};
-        newWhore.id = this.getUniqId();
+        var whore = {};
 
-        $('.whore-form input').each(function (i, el) {
-            newWhore[el.id] = el.value;
+        whore.id = this.whore ? this.whore.id : this.getUniqId();
+        $('.whore-form input').each(function (idx, input) {
+            whore[input.id] = input.value;
         });
 
-        return newWhore;
+        return whore;
     },
 
-    getUniqId: function () {
+    getUniqId: function() {
         return '_' + Math.random().toString(36).substr(2, 9);
     },
 
-    displayForm: function () {
+    showForm: function() {
         $('#whore-form-container').css('display', 'block');
     },
 
-    remove: function () {
+    hideForm: function() {
         $('#whore-form-container').css('display', 'none');
-        $('.whore-form input').each(function (i, el) {
-            el.value = '';
+        this.resetFields();
+    },
+
+    resetFields: function() {
+        $('.whore-form input').each(function (idx, input) {
+            input.value = '';
         });
+    },
+
+    isFormDataValid: function() {
+        // var arr = [];
+        // $('.whore-form input').each(function (index, element) {
+        //     if (element.value.length === 0) {
+        //         arr.push(index);
+        //     }
+        // });
+
+        return true;
+    },
+
+    highlighFields: function() {
+        // $('.whore-form input').on('blur', function (e) {
+        //     if (e.target.value.length === 0) {
+        //         e.target.style.border = '3px solid red';
+        //     } else {
+        //         e.target.style.border = '1px solid #000';
+        //     }
+        //     this.validate();
+        // }.bind(this));
     }
 };
+
+//TODO: когда в коллекции меняется массив моделей нужно возбуждать событие "change" у нее
+// При возникновении события "change" у коллекции нужно
+//          1. синхронизировать .models с localStorage
+//          2. перерендерить список
