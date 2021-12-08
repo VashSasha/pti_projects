@@ -9,11 +9,15 @@ var whoresCollection = {
     },
 
     add: function(whore) {
-        //whore = formView.getFormData();
         this.models.push(whore);
-        //this.setModelsToStorage();
-        // тригерить событие "change у колекции"
+        this.setModelsToStorage();
+        // тригерить событие "change у колекции" //TODO:
     },
+
+    subscribe: function() {
+
+    },
+
 
     getWhoreById: function(whoreId) {
         return _.findWhere(this.models, {id: whoreId});
@@ -25,7 +29,7 @@ var whoresCollection = {
                 this.models.splice(idx, 1, updatedWhore);
             }
         }.bind(this));
-        //this.setModelsToStorage();
+        this.setModelsToStorage();
         // тригерить событие "change у колекции"
     },
 
@@ -33,7 +37,7 @@ var whoresCollection = {
         this.models = _.reject(this.models, function(whore) {
             return whore.id === whoreId;
         });
-        //this.setModelsToStorage();
+        this.setModelsToStorage();
         // тригерить событие "change у колекции"
     },
 
@@ -96,19 +100,20 @@ var formView = {
     },
 
     subscribe: function () {
-        $('.save').on('click', this.handleSave.bind(this));
-        $('.remove').on('click', this.handleRemove.bind(this));
-        $('.update').on('click', this.handleUpdate.bind(this))
+        $('.whore-form .save').on('click', this.handleSave.bind(this));
+        $('.whore-form .remove').on('click', this.handleRemove.bind(this));
+        $('.whore-form .update').on('click', this.handleUpdate.bind(this))
     },
 
     handleSave: function(e) {
+        console.log(this.isFormDataValid())
         if (this.isFormDataValid()) {
             var whore = this.getFormData();
             this.collection.add(whore);
             //listView.render();
             this.hideForm();
         } else {
-            this.highlighFields();
+            this.highlightFields();
         }
     },
 
@@ -126,7 +131,7 @@ var formView = {
             //listView.render();
             this.hideForm();
         } else {
-            this.highlighFields();
+            this.highlightFields();
         }
     },
 
@@ -137,6 +142,7 @@ var formView = {
         $('.whore-form input').each(function (idx, input) {
             whore[input.id] = input.value;
         });
+        console.log(whore);
 
         return whore;
     },
@@ -161,25 +167,22 @@ var formView = {
     },
 
     isFormDataValid: function() {
-        // var arr = [];
-        // $('.whore-form input').each(function (index, element) {
-        //     if (element.value.length === 0) {
-        //         arr.push(index);
-        //     }
-        // });
-
-        return true;
+        var isValid = undefined;
+        $('.whore-form input').toArray().some((node) =>  {
+            isValid = node.value.length !== 0;
+           return  isValid
+        })
+        return isValid
     },
 
-    highlighFields: function() {
-        // $('.whore-form input').on('blur', function (e) {
-        //     if (e.target.value.length === 0) {
-        //         e.target.style.border = '3px solid red';
-        //     } else {
-        //         e.target.style.border = '1px solid #000';
-        //     }
-        //     this.validate();
-        // }.bind(this));
+    highlightFields: function() {
+        $('.whore-form input').each(function (index, element) {
+            if (element.value.length === 0) {
+                element.style.border = '3px solid red';
+            } else {
+                element.style.border = '1px solid #000';
+            }
+        });
     }
 };
 
