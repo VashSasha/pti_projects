@@ -3,21 +3,12 @@ var whoresCollection = {
 
     init: function () {
         this.models = this.getModelsFromStorage();
-        this.setModelsToStorage();
-
-        // слушает событие "change" и синхронизирует модели с localStorage
     },
 
     add: function(whore) {
         this.models.push(whore);
-        this.setModelsToStorage();
-        // тригерить событие "change у колекции" //TODO:
+        $(this).trigger('change');
     },
-
-    subscribe: function() {
-
-    },
-
 
     getWhoreById: function(whoreId) {
         return _.findWhere(this.models, {id: whoreId});
@@ -30,7 +21,7 @@ var whoresCollection = {
             }
         }.bind(this));
         this.setModelsToStorage();
-        // тригерить событие "change у колекции"
+        $(this).trigger('change');
     },
 
     remove: function(whoreId) {
@@ -38,7 +29,7 @@ var whoresCollection = {
             return whore.id === whoreId;
         });
         this.setModelsToStorage();
-        // тригерить событие "change у колекции"
+        $(this).trigger('change');
     },
 
     setModelsToStorage: function() {
@@ -64,6 +55,10 @@ var listView = {
     subscribe: function() {
         $('#whore-list').on('click', this.handleClickOnWhore.bind(this));
         $('#add-whore-btn').on('click', this.handleClickOnAddBtn.bind(this));
+        $(whoresCollection).on('change', function() {
+            listView.render();
+            whoresCollection.setModelsToStorage();
+        })
     },
 
     handleClickOnWhore: function(e) {
@@ -79,7 +74,6 @@ var listView = {
     init: function() {
         this.render();
         this.subscribe();
-        // TODO: слушает коллекицю и перерендеривается
     }
 };
 
@@ -106,29 +100,25 @@ var formView = {
     },
 
     handleSave: function(e) {
-        console.log(this.isFormDataValid())
         if (this.isFormDataValid()) {
             var whore = this.getFormData();
             this.collection.add(whore);
-            //listView.render();
             this.hideForm();
         } else {
             this.highlightFields();
         }
     },
 
-    handleRemove: function(e) {
+    handleRemove: function() {
         var whoreId = this.whore.id;
         this.collection.remove(whoreId);
-        //listView.render();
         this.hideForm();
     },
 
-    handleUpdate: function(e) {
+    handleUpdate: function() {
         if (this.isFormDataValid()) {
             var updatedWhore = this.getFormData();
             this.collection.update(updatedWhore);
-            //listView.render();
             this.hideForm();
         } else {
             this.highlightFields();
@@ -142,7 +132,6 @@ var formView = {
         $('.whore-form input').each(function (idx, input) {
             whore[input.id] = input.value;
         });
-        console.log(whore);
 
         return whore;
     },
@@ -168,11 +157,14 @@ var formView = {
 
     isFormDataValid: function() {
         var isValid = undefined;
-        $('.whore-form input').toArray().some((node) =>  {
-            isValid = node.value.length !== 0;
-           return  isValid
-        })
-        return isValid
+
+        $('.whore-form input').toArray().every(function(input) {
+            isValid = input.value.length !== 0;
+
+            return isValid;
+        });
+
+        return isValid;
     },
 
     highlightFields: function() {
@@ -185,8 +177,3 @@ var formView = {
         });
     }
 };
-
-//TODO: когда в коллекции меняется массив моделей нужно возбуждать событие "change" у нее
-// При возникновении события "change" у коллекции нужно
-//          1. синхронизировать .models с localStorage
-//          2. перерендерить список
