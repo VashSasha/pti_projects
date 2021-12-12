@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
+}
+
+.app {
+    width: 600px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.heading h4 {
+    font-style: italic;
+    color: #a32424;
+}
+
+.heading span {
+    font-size: 1.3em;
+}
+
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters input {
+    padding: 10px;
+    font-size: 20px;
+    font-family: sans-serif;
+    border: 1px solid #767676;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.actions {
+    display: flex;
+}
+
+.actions button {
+    border: 1px solid #8a9197;
+    background: none;
+    padding: 10px;
+    color: #7f8185;
+    cursor: pointer;
+}
+
+.actions button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.actions button:not(:first-child) {
+    border-left: none;
+}
+
+.actions button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.actions .active {
+    color: #d5fdff;
+    background: #0c8db3;
+}
+.actions button:hover {
+    color: #e7ebf2;
+    background: #686f7a;
+}
+
+.source {
+    margin-bottom: 20px;
+}
+
+.source input {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    font-family: sans-serif;
+    border: 1px solid #767676;
+}
+
+.items {
+    border: 1px solid #eceaec;
+}
+
+.item {
+    padding: 15px;
+    border-top: 1px solid #eceaec;
+    font-size: 20px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.item:first-child {
+    border-top: none;
+}
+
+.item .delete,
+.item .important {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: none;
+}
+
+.item .delete:hover,
+.item .important:hover {
+    background: #e7e7e7;
+}
+
+.item .delete {
+    margin-right: 20px;
+    border: 2px solid #f03a17;
+}
+
+.item .important {
+    border: 2px solid #89bb96;
+}
+
+.item.completed .title {
+    text-decoration: line-through;
+}
+
+.item.important .title {
+    font-weight: bold;
+    color: #d44343;
+}
