@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 .whore-manager-module {
     display: flex;
     width: 600px;
@@ -27,6 +28,7 @@
     color: #000;
     text-decoration: none;
 }
+
 #whore-list .whore:hover {
     cursor: pointer;
 }

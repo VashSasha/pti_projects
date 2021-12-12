@@ -3,10 +3,11 @@ var Whores = Backbone.Collection.extend({
         this.reset(this.getModelsFromStorage());
         this.setModelsToStorage();
 
-        this.on('all', function () {
+        this.on('all', function() {
             this.setModelsToStorage();
         });
     },
+
     // model: Backbone.Model,
 
     setModelsToStorage: function() {
@@ -28,7 +29,7 @@ var ListView = Backbone.View.extend({
     initialize: function() {
         this.listenTo(this.collection, 'all', function() {
             this.renderWhores();
-        })
+        });
 
         this.renderWhores();
     },
@@ -38,12 +39,12 @@ var ListView = Backbone.View.extend({
         'click .whore': 'handleClickOnWhore'
     },
 
-    handleClickOnAddBtn: function(e) {
+    handleClickOnAddBtn: function() {
         formView.render();
     },
 
     handleClickOnWhore: function(e) {
-        var whoreId = e.target.dataset.whoreid;
+        var whoreId = e.target.dataset.whoreId;
         var whore = this.collection.get(whoreId);
         formView.render(whore.toJSON());
     },
@@ -64,9 +65,9 @@ var FormView = Backbone.View.extend({
 
     whore: undefined,
 
-    render: function (whore) {
+    render: function(whore) {
         this.whore = whore;
-        $('#whore-form-container').html(this.tmplFn(this.whore));
+        this.$el.html(this.tmplFn(this.whore));
         this.showForm();
     },
 
@@ -107,7 +108,7 @@ var FormView = Backbone.View.extend({
 
         whore.id = this.whore ? this.whore.id : this.getUniqId();
         this.$('input').each(function(idx, input) {
-            whore[input.className] = input.value;
+            whore[input.name] = input.value;
         });
 
         return whore;
@@ -118,11 +119,11 @@ var FormView = Backbone.View.extend({
     },
 
     showForm: function() {
-        $('#whore-form-container').css('display', 'block');
+        this.$el.css('display', 'block');
     },
 
     hideForm: function() {
-        $('#whore-form-container').css('display', 'none');
+        this.$el.css('display', 'none');
         this.resetFields();
     },
 
@@ -131,41 +132,22 @@ var FormView = Backbone.View.extend({
     },
 
     isFormDataValid: function() {
-        var isValid = undefined;
-
-        $('input').toArray().every(function(input) {
-            isValid = input.value.length !== 0;
-
-            return isValid;
+        return this.$('input').toArray().every(function(input) {
+            return input.value !== '';
         });
-
-        return isValid;
     },
 
     highlightFields: function() {
-        $('input').each(function (index, element) {
-            if (element.value.length === 0) {
-                element.style.border = '3px solid red';
+        this.$('input').each(function(index, input) {
+            if (input.value === '') {
+                input.style.border = '3px solid red';
             } else {
-                element.style.border = '1px solid #000';
+                input.style.border = '1px solid #000';
             }
         });
     }
-})
+});
 
 var formView = new FormView({
     collection: whores
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
