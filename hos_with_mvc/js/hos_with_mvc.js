@@ -3,6 +3,7 @@ var whoresCollection = {
 
     init: function () {
         this.models = this.getModelsFromStorage();
+        $(this).on('change', this.setModelsToStorage.bind(this));
     },
 
     add: function(whore) {
@@ -20,7 +21,6 @@ var whoresCollection = {
                 this.models.splice(idx, 1, updatedWhore);
             }
         }.bind(this));
-        this.setModelsToStorage();
         $(this).trigger('change');
     },
 
@@ -28,7 +28,6 @@ var whoresCollection = {
         this.models = _.reject(this.models, function(whore) {
             return whore.id === whoreId;
         });
-        this.setModelsToStorage();
         $(this).trigger('change');
     },
 
@@ -55,10 +54,7 @@ var listView = {
     subscribe: function() {
         $('#whore-list').on('click', this.handleClickOnWhore.bind(this));
         $('#add-whore-btn').on('click', this.handleClickOnAddBtn.bind(this));
-        $(whoresCollection).on('change', function() {
-            listView.render();
-            whoresCollection.setModelsToStorage();
-        })
+        $(this.collection).on('change', listView.render.bind(this));
     },
 
     handleClickOnWhore: function(e) {
@@ -156,23 +152,17 @@ var formView = {
     },
 
     isFormDataValid: function() {
-        var isValid = undefined;
-
-        $('.whore-form input').toArray().every(function(input) {
-            isValid = input.value.length !== 0;
-
-            return isValid;
+        return $('.whore-form input').toArray().every(function(input) {
+            return input.value !== '';
         });
-
-        return isValid;
     },
 
     highlightFields: function() {
-        $('.whore-form input').each(function (index, element) {
-            if (element.value.length === 0) {
-                element.style.border = '3px solid red';
+        $('.whore-form input').each(function (index, input) {
+            if (input.value === '') {
+                input.style.border = '3px solid red';
             } else {
-                element.style.border = '1px solid #000';
+                input.style.border = '1px solid #000';
             }
         });
     }
