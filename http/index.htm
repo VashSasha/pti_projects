@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HTTP</title>
+    <script src="js/dot.js"></script>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            width: 1000px;
+            padding-bottom: 200px;
+        }
+
+        .z {
+            color: red;
+            margin: 1em 0;
+        }
+    </style>
+
+    <div class="games"><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Batman-v-Superman-Dawn-of-Justice-290x180.jpg"><h6>Batman v Superman Dawn of Justice</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Batman-Begins-290x180.jpg"><h6>Batman Begins</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/jackpot-giant-290x180.jpg"><h6>Jackpot Giant</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span><span class="item item-new">New</span></div><img src="images/games/european-roulette-290x180.jpg"><h6>Premium European Roulette</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Da-vinci-Vault-290x180.jpg"><h6>Da Vinci’s Vault</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Murder-Mystery-290x180.jpg"><h6>Murder Mystery</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/PremiumBlackjack-290x180.jpg"><h6>Premium Blackjack</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Gladiator-road-to-rome-290x180.jpg"><h6>Gladiator 2</h6></div></div>
+
+    <p class="z">Кликнув на кнопку "Добавить игры" необходимо отправить HTTP GET запрос по адресу 'http://127.0.0.1:3000/games' и получив ответ в виде массива игр добавить их в контейнер #games (используй шаблонизатор doT.js)</p>
+
+    <div class="games" id="games"></div>
+
+    <p>
+        <button class="add-games">Добавить игры</button>
+    </p>
+
+    <script type="text/template" id="game-template">
+        Write your code here
+    </script>
+
+    <style>
+        .games {
+            background: #212324;
+            padding: 0.5%;
+            border-radius: 3px;
+            margin-bottom: 0.5%;
+        }
+
+        .games:empty {
+            display: none;
+        }
+
+        .games::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .game {
+            background: #353638;
+            padding: 12px;
+            border-radius: 3px;
+            border: 1px solid transparent;
+            float: left;
+            width: 24%;
+            box-sizing: border-box;
+            margin: 0.5%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .game-flags {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+        }
+
+        .game-flags .item {
+            background: magenta;
+            color: #fff;
+            margin-right: 2px;
+            padding: 4px;
+            border-radius: 2px;
+            font-size: 9px;
+            text-transform: uppercase;
+            font-family: sans-serif;
+        }
+
+        .game-flags .item-new {
+            background: #14b1a4;
+        }
+
+        .game-flags .item-hot {
+            background: #d5341a;
+        }
+
+        .game:hover {
+            border: 1px solid white;
+        }
+
+        .game img {
+            display: block;
+            border-radius: 3px;
+            box-shadow: 0 0 2px #a4a4a4;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .game h6 {
+            color: #b1b1b1;
+            font-family: Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: normal;
+            margin: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .game:hover h6 {
+            color: #ffcb05;
+        }
+    </style>
+
+    <div class="nav"><ul class="nav-level-first"><li><a href="#">Фрукты</a><ul class="nav-level-second"><li><a href="#">Апельсин</a></li><li><a href="#">Киви</a></li><li><a href="#">Вишня</a></li><li><a href="#">Банан</a></li></ul></li><li><a href="#">Овощи</a><ul class="nav-level-second"><li><a href="#">Капуста</a></li><li><a href="#">Огурец</a></li></ul></li><li><a href="#">Рыба</a><ul class="nav-level-second"><li><a href="#">Лосось</a></li><li><a href="#">Щука</a></li></ul></li><li><a href="#">Орехи</a><ul class="nav-level-second"><li><a href="#">Арахис</a></li><li><a href="#">Кешью</a></li><li><a href="#">Фундук</a></li><li><a href="#">Миндаль</a></li></ul></li><li><a href="#">Мясо</a></li></ul></div>
+
+    <p class="z">Кликнув на кнопку "En" или "Ru" необходимо отправить HTTP GET запрос по адресу 'http://127.0.0.1:3000/menu/en' или 'http://127.0.0.1:3000/menu/ru' соответственно и получив ответ в виде меню добавить его в контейнер #nav (используй шаблонизатор doT.js)</p>
+
+    <div class="nav" id="nav"></div>
+
+    <p>
+        <button type="button" class="btn-nav-en">En</button>
+        <button type="button" class="btn-nav-ru">Ru</button>
+    </p>
+
+    <script type="text/template" id="nav-template">
+        Write your code here
+    </script>
+
+    <style>
+        .nav {
+            background: #151618;
+        }
+
+        .nav:empty {
+            display: none;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav a {
+            display: block;
+            height: 42px;
+            color: #fff;
+            padding: 0 12px;
+            line-height: 42px;
+            font-size: 13px;
+            font-family: sans-serif;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            color: #ffcb05;
+        }
+
+        .nav-level-first::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .nav-level-first > li {
+            float: left;
+            position: relative;
+        }
+
+        .nav-level-second {
+            position: absolute;
+            background: #151618;
+            z-index: 999;
+        }
+
+        .nav-level-first > li:not(:hover) .nav-level-second {
+            display: none;
+        }
+    </style>
+
+    <p class="z">Кликнув на кнопку "Добавить девочек" необходимо отправить HTTP GET запрос по адресу 'http://127.0.0.1:3000/whores' и получив ответ в виде массива девочек добавить их в контейнер #whores (используй шаблонизатор doT.js) (HTML как в browser_api)</p>
+
+    <div class="whores" id="whores"></div>
+
+    <p>
+        <button class="add-whores">Добавить девочек</button>
+    </p>
+
+    <script type="text/template" id="whore-template">
+        Write your code here
+    </script>
+
+    <style>
+        .whores {
+            background: #751a1a;
+            width: 910px;
+            height:  474px;
+            padding: 10px;
+            overflow: hidden;
+            margin-bottom: 1em;
+        }
+
+        .whore {
+            background: white;
+            padding: 10px;
+            width: 200px;
+            position: relative;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+            margin: 0 0 10px 10px;
+        }
+
+        .whore:first-child {
+            margin-left: 0;
+        }
+
+        .whore-name {
+            font-size: 22px;
+            font-family: Tahoma, sans-serif;
+            margin-bottom: 5px;
+            color: #7b1e1e;
+        }
+
+        .whore img {
+            margin-bottom: 10px;
+        }
+
+        .whore-teaser {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-sizing: border-box;
+            padding: 10px;
+            display: none;
+        }
+
+        .whore:hover .whore-teaser {
+            display: block;
+        }
+
+        .whore-phone {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0 1px;
+        }
+    </style>
+
+    <div class="movies"><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div></div>
+
+    <p class="z">Кликнув на кнопку "Добавить фильмы" необходимо отправить HTTP GET запрос по адресу 'http://127.0.0.1:3000/movies' и получив ответ в виде массива фильмов добавить их в контейнер #movies (используй шаблонизатор doT.js)</p>
+
+    <div class="movies" id="movies"></div>
+
+    <p>
+        <button class="add-movies">Добавить фильмы</button>
+    </p>
+
+    <script type="text/template" id="movie-template">
+        Write your code here
+    </script>
+
+    <style>
+        .movies {
+            overflow: hidden;
+            padding: 7px 0;
+        }
+
+        .movie {
+            float: left;
+            margin: 0 7px;
+            position: relative;
+            width: 152px;
+            height: 280px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        .movie-image-container {
+            overflow: hidden;
+            margin-bottom: 3px;
+            box-shadow: 0 1px 4px 0 #000;
+            border-radius: 3px;
+        }
+
+        .movie img {
+            display: block;
+            width: 152px;
+            height: 220px;
+        }
+
+        .movie-title {
+            height: 15px;
+            margin-bottom: 3px;
+            overflow: hidden;
+            display: block;
+            color: black;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 16px;
+        }
+
+        .movie-title:hover {
+            text-decoration: underline;
+        }
+
+        .movie-details {
+            height: 15px;
+            margin-bottom: 3px;
+            line-height: 14px;
+            overflow: hidden;
+        }
+
+        .movie-details span {
+            font-size: 11px;
+            color: #848484;
+        }
+    </style>
+
+    <script src="js/http.js"></script>
+</body>
+</html>
