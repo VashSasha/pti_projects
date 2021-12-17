@@ -5,8 +5,10 @@
 //     console.log(a, b);
 // };
 
-
-
+var f = function(a = 7, b = 4) {
+    console.log(a, b)
+};
+// f();
 
 // Переписать пример используя шаблоннные строки
 var jasmine = {
@@ -21,6 +23,19 @@ var jasmine = {
     teaser: 'Очень нежная девчонка доставит Вам удовольствие по полной программе! Каждый мужчина ищет идеальную женщину - попробуй, может быть я именно та которая тебе нужна... Фото мои 1000%!!! Выезда НЕТ!!! Квартира для встреч ЕСТЬ, 5 мин от ст. метро \"Дворец Украина\"'
 };
 
+var whore = `
+    <div class="whore">
+        <div class="whore-name">${jasmine.name}</div>
+        <img src="${jasmine.photo}" width="200">
+        <div class="whore-age">Возраст: ${jasmine.age}</div>
+        <div class="whore-boobs">Размер груди: ${jasmine.boobs}</div>
+        <div class="whore-height">Рост: ${jasmine.height}</div>
+        <div class="whore-weight">Вес: ${jasmine.weight}</div>
+        <div class="whore-phone">${jasmine.phone}</div>
+        <div class="whore-can-come">Выезд: ${jasmine.can_come ? '+' : '-'}</div>
+        <div class="whore-teaser">${jasmine.teaser}</div>
+    </div>;
+`
 // var whore =
 //     '<div class="whore">'+
 //         '<div class="whore-name">' + jasmine.name + '</div>'+
@@ -35,11 +50,15 @@ var jasmine = {
 //     '</div>';
 
 
-
-
 // Переписать определение объекта используя расширение объектных литералов
 var name = 'Вася';
 
+var o = {
+    name,
+    getName() {return this.name}
+};
+
+// console.log(o.getName())
 // var o = {
 //     name: name,
 //     getName: function() { return this.name }
@@ -65,31 +84,63 @@ var vasya = {
 
 //whores = whores.concat({ name: 'Ванесса', age: 22 });
 
+whores = {...whores,...{name: 'Ванесса', age: 22}};
+console.log(whores);
+
 // var fruits3 = fruits1.concat(fruits2);
+var fruits3 = [...fruits1, ...fruits2];
 
 // var person = Object.assign({}, vasya, {
 //     age: 31
 // });
+
+var person = {...vasya}
+console.log(person)
 
 
 
 
 // Перепиши определения функций используя стрелочные функции
 // var f1 = function() {};
+var f1 = () => {};
+
 // var f2 = function(x) { return x*x; };
+var f2 = x => x * x;
+
 // var f3 = function(a, b) {
 //     var c = a + b;
 //     return c*c;
 // };
+var f3 = (a, b) => {
+    var c = a + b;
+    return c * c;
+}
+
 // var f4 = function() { return 'Хуй мусорам!'; };
-
-
+var f4 = () => {return 'Хуй мусорам!'}
 
 
 // Перепиши класс Circle из файла js/functions_part_4.js используя синтаксис классов
 
+class Circle {
+    constructor(x, y, radius) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius
+    }
 
+    getDiameter() {
+        return this.radius * 2;
+    }
 
+    getPerimeter(){
+        return 3.14 * this.radius * 2;
+    }
+
+    getSquare() {
+        return 3.14 * this.radius * this.radius;
+    }
+}
 
 // Перепиши инструкции определения переменных используя деструктурирующее присваивание
 var config = {
@@ -98,9 +149,13 @@ var config = {
     dbName: 'customers'
 };
 
+var {host, port, dbName = 'default'} = config;
+
+console.log(host)
+console.log(port)
+console.log(dbName)
+
 // var host = config.host;
 // var port2 = config.port;
 // var dbName = config.dbName !== undefined ? config.dbName : 'default' ;
-
-
 
