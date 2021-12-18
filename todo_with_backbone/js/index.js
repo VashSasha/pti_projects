@@ -20,9 +20,7 @@ var Tasks = Backbone.Collection.extend({
         this.reset(this.getTasksFromStorage());
         this.setTasksToStorage();
 
-        this.on('all', function() {
-            this.setTasksToStorage();
-        });
+        this.on('all', this.setTasksToStorage);
     },
 
     model: Task,
@@ -32,104 +30,96 @@ var Tasks = Backbone.Collection.extend({
     },
 
     getTasksFromStorage: function() {
-        return JSON.parse(localStorage.getItem('tasks',)) || [];
+        return JSON.parse(localStorage.getItem('tasks')) || [];
+    },
+
+    getCompleteTasksCount: function() {
+        return this.where({completed: true}).length;
+    },
+
+    getIncompleteTasksCount: function() {
+        return this.where({completed: false}).length;
     }
 });
 
 var tasks = new Tasks;
 
-
-
 var ItemsListView = Backbone.View.extend({
 
     tmplFn: doT.template($('#tasks-template').html()),
 
-    collection: tasks,
-
     el: '#tasks',
 
     events: {
-        "dblclick .item": "completeTask",
-        "click .delete": "remove",
-        "click .item .important": "clickOnImportant",
+        "dblclick .item .title": "toggleComplete",
+        "click .item .delete": "removeTask",
+        "click .item .important": "toggleImportant",
     },
 
     initialize: function() {
-        this.render()
-        this.listenTo(this.collection, 'all', function () {
-            this.render();
-        });
+        this.render();
 
-        this.listenTo(appModel, 'all', function () {
-            this.render();
-        });
-
-        this.listenTo(appModel.titleFilter, 'all', function () {
-            console.log('title changed')
-            this.render()
-        })
-        this.render()
-
+        this.listenTo(this.collection, 'all', this.render);
+        this.listenTo(this.model, 'all', this.render);
     },
 
     render: function() {
-        console.log('render');
         var models = this.getFilteredModels(this.getSearchedModels(this.collection.toJSON()));
         this.$el.html(this.tmplFn(models));
     },
 
     getFilteredModels: function(models) {
-        var filter = appModel.get('filter');
-        if (filter === 'all') {
-            return models;
-        } else {
-            return models.filter(function (model) {
-                if (filter === 'incompleted') {
-                    return model.completed === false;
-                }
-                if (filter === 'completed') {
-                    return model.completed === true;
-                }
-            });
-        }
+        var filter = this.model.get('filter');
+
+        return models.filter(function (model) {
+            if (filter === 'incompleted') {
+                return model.completed === false;
+            }
+
+            if (filter === 'completed') {
+                return model.completed === true;
+            }
+
+            if (filter === 'all') {
+                return true;
+            }
+        });
     },
 
     getSearchedModels: function(models) {
-        var input = appModel.get('titleFilter');
-        if (input === '') {
-            return models;
-        } else {
-            return models.filter(function (model) {
-                return model.title.includes(input)
-            });
-        }
+        var searchText = this.model.get('titleFilter');
+
+        return models.filter(function(model) {
+            return model.title.toLowerCase().includes(searchText.toLowerCase());
+        });
     },
 
-    completeTask: function(e) {
-        var taskId = e.target.dataset.id;
+    toggleComplete: function(e) {
+        var taskId = e.target.parentNode.dataset.id;
         var updatedTask = this.collection.get(taskId).toJSON();
         updatedTask.completed = !updatedTask.completed ;
         this.collection.add(updatedTask, {merge: true});
     },
 
-    clickOnImportant: function(e) {
+    toggleImportant: function(e) {
         var taskId = e.target.parentNode.dataset.id;
         var updatedTask = this.collection.get(taskId).toJSON();
         updatedTask.important = !updatedTask.important;
         this.collection.add(updatedTask, {merge: true});
     },
 
-    remove: function(e) {
+    removeTask: function(e) {
         var taskId = e.target.parentNode.dataset.id;
         this.collection.remove(taskId);
     },
 });
 
 var itemsList = new ItemsListView({
-    collection: tasks
+    collection: tasks,
+    model: appModel
 });
 
-var FormView = Backbone.View.extend({
+var AppView = Backbone.View.extend({
 
     el: '.app',
 
@@ -140,36 +130,31 @@ var FormView = Backbone.View.extend({
     },
 
     initialize: function() {
-        this.tasksCount();
-        this.listenTo(this.collection, 'all', function() {
-            this.tasksCount();
-        });
+        this.updateStats();
+        this.listenTo(this.collection, 'all', this.updateStats);
     },
-
-    collection: tasks,
 
     handleActions: function(e) {
         var button = e.target;
-        $('.actions .active').removeClass('active');
-        button.classList.add('active');
-        appModel.set('filter', button.dataset.filter) ;
+        $('.actions button').removeClass('active');
+        $(button).addClass('active');
+        this.model.set('filter', button.dataset.filter) ;
     },
 
     handleSearch: function (e) {
-        var inputValue = e.target.value;
-        appModel.set('titleFilter', inputValue);
+        this.model.set('titleFilter', e.target.value);
     },
 
     handleAdd: function(e) {
         if(e.keyCode === 13) {
-            if (this.isFormDataValid()) {
+            if (e.target.value !== '') {
                 var task = {
                     id: this.getUniqId(),
-                    title: $('.title').val()
+                    title: e.target.value
                 };
                 this.collection.add(task);
 
-                this.clearInput();
+                e.target.value = '';
             }
         }
     },
@@ -178,30 +163,13 @@ var FormView = Backbone.View.extend({
         return '_' + Math.random().toString(36).substr(2, 9);
     },
 
-    isFormDataValid: function() {
-        return $('.title').val() !== '';
-    },
-
-    clearInput: function() {
-        $('.title').val('');
-    },
-
-    tasksCount: function() {
-        this.getCompleteTasksCount();
-        this.getIncompleteTasksCount();
-        $('.item-incompleted').text(this.getIncompleteTasksCount())
-        $('.item-completed').text(this.getCompleteTasksCount());
-    },
-
-    getCompleteTasksCount: function() {
-        return this.collection.where({completed: true}).length;
-    },
-
-    getIncompleteTasksCount: function() {
-        return this.collection.where({completed: false}).length;
-    },
+    updateStats: function() {
+        $('.item-incompleted').text(this.collection.getIncompleteTasksCount());
+        $('.item-completed').text(this.collection.getCompleteTasksCount());
+    }
 });
 
-var formView = new FormView({
-    collection: tasks
+var appView = new AppView({
+    collection: tasks,
+    model: appModel
 });

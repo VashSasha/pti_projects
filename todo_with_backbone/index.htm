@@ -21,7 +21,7 @@
         <div class="filters">
             <input type="text" placeholder="Что будем искать?" id="needle">
 
-            <div class="actions" id="actions">
+            <div class="actions">
                 <button class="active" data-filter="all">Все</button>
                 <button data-filter="incompleted">Незавершенные</button>
                 <button data-filter="completed">Завершенные</button>
@@ -40,7 +40,7 @@
             {{~ it :task:index }}
                 <div class="item {{? task.completed}} completed {{?}} {{? task.important}} important {{?}}" data-id="{{= task.id}}">
                     <span class="title">{{= task.title}}</span>
-                    <button class="delete">	&#10060;</button>
+                    <button class="delete">&#10060;</button>
                     <button class="important">&#128276;</button>
                 </div>
             {{~}}
