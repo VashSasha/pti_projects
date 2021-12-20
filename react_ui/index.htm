@@ -67,6 +67,49 @@
     </p>
 
     <script type="text/babel">
+        $('.add-list-1').on('click', function () {
+            var list = React.createElement('ul', null,
+                 React.createElement('li', null, 'Арахис'),
+                 React.createElement('li', null, 'Кешью'),
+                 React.createElement('li', null, 'Фундук'),
+                 React.createElement('li', null, 'Миндаль'),
+            )
+            ReactDOM.render(list, document.querySelector('#list-1'))
+        });
+
+        $('.add-list-2').on('click', function() {
+            var Ul = function(props) {
+                return (
+                    React.createElement('ul', null,
+                        React.createElement('li', null, 'Арахис'),
+                        React.createElement('li', null, 'Кешью'),
+                        React.createElement('li', null, 'Фундук'),
+                        React.createElement('li', null, 'Миндаль'),
+                    )
+                );
+            }
+
+            var ul = React.createElement(Ul,null);
+
+            ReactDOM.render(ul, document.querySelector('#list-2'))
+        })
+
+        $('.add-list-3').on('click', function() {
+            class Ul extends React.Component {
+                render() {
+                    return (
+                        React.createElement('ul', null,
+                            React.createElement('li', null, 'Арахис'),
+                            React.createElement('li', null, 'Кешью'),
+                            React.createElement('li', null, 'Фундук'),
+                            React.createElement('li', null, 'Миндаль'),
+                        ));
+                }
+            }
+            var ul = React.createElement(Ul,null);
+
+            ReactDOM.render(ul, document.querySelector('#list-3'))
+        })
         // Write your code here
     </script>
 
@@ -94,6 +137,48 @@
 
     <script type="text/babel">
         // Write your code here
+        $('.add-list-4').on('click', function () {
+            var list = React.createElement('ul', null, [
+                    nuts.map((item, idx) => {
+                       return  React.createElement('li', {key: idx}, item)
+                    })
+                ]
+            );
+            ReactDOM.render(list, document.querySelector('#list-4'))
+        });
+
+        $('.add-list-5').on('click', function() {
+            var Ul = function(props) {
+                return (
+                    React.createElement('ul', null,
+                        props.items.map((item, idx) => React.createElement('li', {key: idx}, item))
+                    )
+                );
+            };
+
+            var ul = React.createElement(Ul, {
+                items: nuts
+            });
+
+            ReactDOM.render(ul, document.querySelector('#list-5'))
+        })
+
+        $('.add-list-6').on('click', function() {
+            class Ul extends React.Component {
+                render() {
+                    return (
+                        React.createElement('ul', null,
+                           this.props.items.map((item, idx) => React.createElement('li', {key: idx}, item))
+                        ));
+                }
+            }
+            var ul = React.createElement(Ul, {
+                items: nuts
+            });
+
+            ReactDOM.render(ul, document.querySelector('#list-6'))
+        })
+
     </script>
 
     <p class="z">
@@ -120,6 +205,49 @@
 
     <script type="text/babel">
         // Write your code here
+        $('.add-list-7').on('click', function () {
+            var list =  <ul>
+                <li>Арахис</li>
+                <li>Кешью</li>
+                <li>Фундук</li>
+                <li>Миндаль</li>
+            </ul>;
+
+            ReactDOM.render(list, document.querySelector('#list-7'))
+        });
+
+        $('.add-list-8').on('click', function() {
+            var Ul = function(props) {
+                return (
+                   <ul>
+                       {
+                           props.items.map((item, idx) => <li key={idx}>{item}</li>)
+                       }
+                   </ul>
+                );
+            };
+
+            var ul = <Ul items={['Арахис', 'Кешью', 'Фундук', 'Миндаль']}/>
+
+            ReactDOM.render(ul, document.querySelector('#list-8'))
+        })
+
+        $('.add-list-9').on('click', function() {
+            class Ul extends React.Component {
+                render() {
+                    return (
+                       <ul>
+                           {
+                               this.props.items.map((item, idx) => <li key={idx}>{item}</li>)
+                           }
+                       </ul>
+                    );
+                }
+            }
+            var ul = <Ul items={['Арахис', 'Кешью', 'Фундук', 'Миндаль']} />
+
+            ReactDOM.render(ul, document.querySelector('#list-9'))
+        })
     </script>
 
     <p class="z">
@@ -132,6 +260,12 @@
         <li>Классовый компонент</li>
     </ul>
 
+    <div class="lists">
+        <div id="list-10"></div>
+        <div id="list-11"></div>
+        <div id="list-12"></div>
+    </div>
+
     <p>
         <button class="add-list-10">Без компонентов</button>
         <button class="add-list-11">Функциональный компонент</button>
@@ -140,9 +274,106 @@
 
     <script type="text/babel">
         // Write your code here
+
+        $('.add-list-10').on('click', function () {
+            var list =  <ul>
+                {
+                    nuts.map((item, idx) => <li key={idx}>{item}</li>)
+                }
+            </ul>;
+
+            ReactDOM.render(list, document.querySelector('#list-10'))
+        });
+
+        $('.add-list-11').on('click', function() {
+            var Ul = function(props) {
+                return (
+                    <ul>
+                        {
+                            props.items.map((item, idx) => <li key={idx}>{item}</li>)
+                        }
+                    </ul>
+                );
+            };
+
+            var ul = <Ul items ={nuts}/>
+
+            ReactDOM.render(ul, document.querySelector('#list-11'))
+        })
+
+        $('.add-list-12').on('click', function() {
+            class Ul extends React.Component {
+                render() {
+                    return (
+                        <ul>
+                            {
+                                this.props.items.map((item, idx) => <li key={idx}>{item}</li>)
+                            }
+                        </ul>
+                    );
+                }
+            }
+            var ul = <Ul items={nuts} />
+
+            ReactDOM.render(ul, document.querySelector('#list-12'))
+        })
     </script>
 
-    <div class="games"><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Batman-v-Superman-Dawn-of-Justice-290x180.jpg"><h6>Batman v Superman Dawn of Justice</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Batman-Begins-290x180.jpg"><h6>Batman Begins</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/jackpot-giant-290x180.jpg"><h6>Jackpot Giant</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span><span class="item item-new">New</span></div><img src="images/games/european-roulette-290x180.jpg"><h6>Premium European Roulette</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Da-vinci-Vault-290x180.jpg"><h6>Da Vinci’s Vault</h6></div><div class="game"><div class="game-flags"></div><img src="images/games/Murder-Mystery-290x180.jpg"><h6>Murder Mystery</h6></div><div class="game"><div class="game-flags"><span class="item item-new">New</span></div><img src="images/games/PremiumBlackjack-290x180.jpg"><h6>Premium Blackjack</h6></div><div class="game"><div class="game-flags"><span class="item item-hot">Hot</span></div><img src="images/games/Gladiator-road-to-rome-290x180.jpg"><h6>Gladiator 2</h6></div></div>
+    <div class="games">
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-hot">Hot</span>
+            </div>
+            <img src="images/games/Batman-v-Superman-Dawn-of-Justice-290x180.jpg">
+            <h6>Batman v Superman Dawn of Justice</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+
+            </div>
+            <img src="images/games/Batman-Begins-290x180.jpg">
+            <h6>Batman Begins</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/jackpot-giant-290x180.jpg">
+            <h6>Jackpot Giant</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-hot">Hot</span>
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/european-roulette-290x180.jpg">
+            <h6>Premium European Roulette</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags"></div>
+            <img src="images/games/Da-vinci-Vault-290x180.jpg">
+            <h6>Da Vinci’s Vault</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags"></div>
+            <img src="images/games/Murder-Mystery-290x180.jpg">
+            <h6>Murder Mystery</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-new">New</span>
+            </div>
+            <img src="images/games/PremiumBlackjack-290x180.jpg">
+            <h6>Premium Blackjack</h6>
+        </div>
+        <div class="game">
+            <div class="game-flags">
+                <span class="item item-hot">Hot</span>
+            </div>
+            <img src="images/games/Gladiator-road-to-rome-290x180.jpg">
+            <h6>Gladiator 2</h6>
+        </div>
+    </div>
 
     <p class="z">Используй JSX и функциональные компоненты. Создай 2 компонента: Games и Game (компонент одной игры). Используй переменную games в качестве свойств для компонента Games. При клике на кнопку, отобрази компонент Games в контейнере #games.</p>
 
@@ -197,6 +428,37 @@
 
     <script type="text/babel">
         // Write your code here
+
+        var Game = function(props) {
+            return (
+                <div className="game">
+                    <div className="game-flags">
+                        {props.game.flagHot ? <span className="item item-hot">Hot</span> : ''}
+                        {props.game.flagNew ? <span class="item item-new">New</span> : ''}
+                    </div>
+                    <img src={props.game.imageURL} />
+                    <h6>{props.game.name}</h6>
+                </div>
+            );
+        };
+        var Games = function(props) {
+            return (
+                <>
+                    {
+                        props.games.map((game, idx)=>{
+                           return <Game game={game} key={idx} />
+                        })
+                    }
+                </>
+            );
+        };
+
+        var games = <Games games={games}/>
+
+
+        $('.add-games').on('click', function() {
+            ReactDOM.render(games, document.querySelector('#games'))
+        })
     </script>
 
     <style>
@@ -283,7 +545,19 @@
         }
     </style>
 
-    <div class="whores"><div class="whore"><div class="whore-name">Сильвия</div><img src="images/whores/silvia.jpg" width="200"><div class="whore-age">Возраст: 18</div><div class="whore-boobs">Размер груди: 4</div><div class="whore-height">Рост: 168</div><div class="whore-weight">Вес: 50</div><div class="whore-phone">+380960000001</div><div class="whore-can-come">Выезд: +</div><div class="whore-teaser">Очень нежная девчонка доставит Вам удовольствие по полной программе! Каждый мужчина ищет идеальную женщину - попробуй, может быть я именно та которая тебе нужна... Фото мои 1000%!!! Выезда НЕТ!!! Квартира для встреч ЕСТЬ, 5 мин от ст. метро "Дворец Украина"</div></div><div class="whore"><div class="whore-name">Белла</div><img src="images/whores/bella.jpg" width="200"><div class="whore-age">Возраст: 21</div><div class="whore-boobs">Размер груди: 3</div><div class="whore-height">Рост: 172</div><div class="whore-weight">Вес: 65</div><div class="whore-phone">+380960000002</div><div class="whore-can-come">Выезд: -</div><div class="whore-teaser">Я - барышня абсолютно особенная! Я яркая и стильная, веселая и заводная, сексуальная и конечно же очень красивая! Для тех, кто способен оценить по достоинству настоящую женщину, для тех, кто любит в постели задор и изобретательность, для тех прекрасных и щедрых мужчин, которые хотят провести незабываемый досуг в объятиях умелой красотки! Я вся для вас, дорогие мои. Да, да! Именно для тебя, милый! ФОТО МОИ!!!</div></div><div class="whore"><div class="whore-name">Марта</div><img src="images/whores/marta.jpg" width="200"><div class="whore-age">Возраст: 23</div><div class="whore-boobs">Размер груди: 2</div><div class="whore-height">Рост: 163</div><div class="whore-weight">Вес: 54</div><div class="whore-phone">+380960000003</div><div class="whore-can-come">Выезд: -</div><div class="whore-teaser">Я - симпатичная девочка экзотической внешности без комплексов и с огромной любовью к сексу! Я непревзойденная любовница, страстная, доступная и яркая! Я невероятно сексуальна и изобретательна, мила и непосредственна. Не теряй времени, звони мне, мой друг! Я скрашу твоё одиночество :)</div></div><div class="whore"><div class="whore-name">Жасмин</div><img src="images/whores/zhasmin.jpg" width="200"><div class="whore-age">Возраст: 32</div><div class="whore-boobs">Размер груди: 1</div><div class="whore-height">Рост: 151</div><div class="whore-weight">Вес: 45</div><div class="whore-phone">+380960000004</div><div class="whore-can-come">Выезд: +</div><div class="whore-teaser">Еще не распустившаяся розочка ждет своего воздыхателя! Чарующий аромат, тонкий силуэт. Раскрой мой бутончик и покажи свою силу! Я храню свою свежесть, чтоб ты мог вкусить первым тот первозданный нектар, что приготовлен для тебя! Мои упругие девичьи грудки покрываются росой вожделения, когда я думаю о сексе с тобой, мое лоно наполняется жаркой страстью и желаниями.</div></div></div>
+    <div class="whores">
+        <div class="whore">
+            <div class="whore-name">Сильвия</div>
+            <img src="images/whores/silvia.jpg" width="200">
+            <div class="whore-age">Возраст: 18</div>
+            <div class="whore-boobs">Размер груди: 4</div>
+            <div class="whore-height">Рост: 168</div>
+            <div class="whore-weight">Вес: 50</div>
+            <div class="whore-phone">+380960000001</div>
+            <div class="whore-can-come">Выезд: +</div>
+            <div class="whore-teaser">Очень нежная девчонка доставит Вам удовольствие по полной программе! Каждый мужчина ищет идеальную женщину - попробуй, может быть я именно та которая тебе нужна... Фото мои 1000%!!! Выезда НЕТ!!! Квартира для встреч ЕСТЬ, 5 мин от ст. метро "Дворец Украина"</div>
+        </div>
+        <div class="whore"><div class="whore-name">Белла</div><img src="images/whores/bella.jpg" width="200"><div class="whore-age">Возраст: 21</div><div class="whore-boobs">Размер груди: 3</div><div class="whore-height">Рост: 172</div><div class="whore-weight">Вес: 65</div><div class="whore-phone">+380960000002</div><div class="whore-can-come">Выезд: -</div><div class="whore-teaser">Я - барышня абсолютно особенная! Я яркая и стильная, веселая и заводная, сексуальная и конечно же очень красивая! Для тех, кто способен оценить по достоинству настоящую женщину, для тех, кто любит в постели задор и изобретательность, для тех прекрасных и щедрых мужчин, которые хотят провести незабываемый досуг в объятиях умелой красотки! Я вся для вас, дорогие мои. Да, да! Именно для тебя, милый! ФОТО МОИ!!!</div></div><div class="whore"><div class="whore-name">Марта</div><img src="images/whores/marta.jpg" width="200"><div class="whore-age">Возраст: 23</div><div class="whore-boobs">Размер груди: 2</div><div class="whore-height">Рост: 163</div><div class="whore-weight">Вес: 54</div><div class="whore-phone">+380960000003</div><div class="whore-can-come">Выезд: -</div><div class="whore-teaser">Я - симпатичная девочка экзотической внешности без комплексов и с огромной любовью к сексу! Я непревзойденная любовница, страстная, доступная и яркая! Я невероятно сексуальна и изобретательна, мила и непосредственна. Не теряй времени, звони мне, мой друг! Я скрашу твоё одиночество :)</div></div><div class="whore"><div class="whore-name">Жасмин</div><img src="images/whores/zhasmin.jpg" width="200"><div class="whore-age">Возраст: 32</div><div class="whore-boobs">Размер груди: 1</div><div class="whore-height">Рост: 151</div><div class="whore-weight">Вес: 45</div><div class="whore-phone">+380960000004</div><div class="whore-can-come">Выезд: +</div><div class="whore-teaser">Еще не распустившаяся розочка ждет своего воздыхателя! Чарующий аромат, тонкий силуэт. Раскрой мой бутончик и покажи свою силу! Я храню свою свежесть, чтоб ты мог вкусить первым тот первозданный нектар, что приготовлен для тебя! Мои упругие девичьи грудки покрываются росой вожделения, когда я думаю о сексе с тобой, мое лоно наполняется жаркой страстью и желаниями.</div></div></div>
 
     <p class="z">Используй JSX и функциональные компоненты. Создай 2 компонента: Whores и Whore (компонент одной девочки). Используй переменную whores в качестве свойств для компонента Whores. При клике на кнопку, отобрази компонент Whores в контейнере #whores.</p>
 
@@ -344,6 +618,40 @@
 
     <script type="text/babel">
         // Write your code here
+
+        var Whore = function(props) {
+            return (
+                <div className="whore">
+                    <div className="whore-name">Сильвия</div>
+                    <img src={props.whore.photo} width="200" />
+                        <div className="whore-age">Возраст: {props.whore.age}</div>
+                        <div className="whore-boobs">Размер груди: {props.whore.boobs}</div>
+                        <div className="whore-height">Рост: {props.whore.height}</div>
+                        <div className="whore-weight">Вес: {props.whore.weight}</div>
+                        <div className="whore-phone">{props.whore.phone}</div>
+                        <div className="whore-can-come">Выезд: {props.whore.can_come ? '+' : '-'}</div>
+                        <div className="whore-teaser">{props.whore.teaser}}</div>
+                </div>
+            );
+        };
+        var Whores = function(props) {
+            return (
+                <>
+                    {
+                        props.whores.map((whore, idx)=>{
+                            return <Whore whore={whore} key={idx} />
+                        })
+                    }
+                </>
+            );
+        };
+
+        var whores = <Whores whores={whores}/>
+
+
+        $('.add-whores').on('click', function() {
+            ReactDOM.render(whores, document.querySelector('#whores'))
+        })
     </script>
 
     <style>
@@ -410,7 +718,19 @@
         }
     </style>
 
-    <div class="movies"><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div></div>
+    <div class="movies">
+        <div class="movie">
+            <div class="movie-image-container">
+                <a href="#">
+                    <img src="images/movies/1580980803_e29f9c3.jpg">
+                </a>
+            </div>
+            <a class="movie-title" href="#">Джентльмены</a>
+            <div class="movie-details">
+                <span>2020</span>
+            </div>
+        </div>
+        <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div></div>
 
     <p class="z">Используй JSX и функциональные компоненты. Создай 2 компонента: Movies и Movie (компонент одного фильма). Используй переменную movies в качестве свойств для компонента Movies. При клике на кнопку, отобрази компонент Movies в контейнере #movies.</p>
 
@@ -667,6 +987,40 @@
 
     <script type="text/babel">
         // Write your code here
+
+        var Movie = function(props) {
+            return (
+                <div className="movie">
+                    <div className="movie-image-container">
+                        <a href="#">
+                            <img src={"images/movies/"+ props.movie.id + ".jpg"} />
+                        </a>
+                    </div>
+                    <a className="movie-title" href="#">{props.movie.title}</a>
+                    <div className="movie-details">
+                        <span>{props.movie.year}</span>
+                    </div>
+                </div>
+            );
+        };
+        var Movies = function(props) {
+            return (
+                <>
+                    {
+                        props.movies.map((movie, idx) => {
+                            return <Movie movie={movie} key={idx} />
+                        })
+                    }
+                </>
+            );
+        };
+
+        var movies = <Movies movies={movies}/>
+
+
+        $('.add-movies').on('click', function() {
+            ReactDOM.render(movies, document.querySelector('#movies'))
+        })
     </script>
 
     <style>
@@ -868,6 +1222,32 @@
 
     <script type="text/babel">
         // Write your code here
+        var Rich = function(props) {
+            return (
+                <>
+                    <table>
+                        <tr>
+                            {props.rich.headings.map((heading, idx) => <th key={idx}>{heading}</th>)}
+                        </tr>
+                        {props.rich.data.map((person, idx) => <tr>
+                            <td>{person.position}</td>
+                            <td>{person.fio}</td>
+                            <td>{person.money}</td>
+                            <td>{person.sourceOfFunds}</td>
+                            <td>{person.age}</td>
+                            <td>{person.country}</td>
+                        </tr>)}
+                    </table>
+                </>
+            );
+        };
+
+        var rich = <Rich rich={rich} />
+
+
+        $('.add-rich').on('click', function() {
+            ReactDOM.render(rich, document.querySelector('#rich'))
+        })
     </script>
 
     <style>
@@ -878,5 +1258,6 @@
             border: 1px solid #000;
         }
     </style>
+
 </body>
 </html>
