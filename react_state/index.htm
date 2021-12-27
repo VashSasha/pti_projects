@@ -442,7 +442,6 @@
             };
 
             render() {
-
                 var style = {
                     color: this.state.color
                 };
@@ -463,7 +462,7 @@
             };
 
             handleClick = () => {
-               this.setState({background: 'lightblue'})
+               this.setState({background: 'lightblue'});
             };
 
             render() {
@@ -568,6 +567,8 @@
         }
 
         class TaskChangeHtml extends React.Component {
+            //TODO: dangerouslySetInnerHTML
+
             state = {
                 innerHTML: <> Тест <b>Цветы</b> </>
             };
@@ -603,7 +604,8 @@
             render() {
                 var style = {
                     fontSize: this.state.fontSize
-                }
+                };
+
                 return (
                     <>
                         <p className="z">При клике на кнопку изменить размер шрифта</p>
@@ -653,7 +655,7 @@
                 return (
                     <>
                         <p className="z">При клике на кнопку удалить класс 'hi'</p>
-                        <p className={"t t10 " + this.state.className}>Тест</p>
+                        <p className={'t t10 ' + this.state.className}>Тест</p>
                         <button className="b b10" onClick={this.handleClick}>Удалить класс 'hi'</button>
                     </>
                 );
@@ -678,7 +680,7 @@
                 return (
                     <>
                         <p className="z">При клике на кнопку добавлять/удалять (в зависимости от наличия) класс 'hi'</p>
-                        <p className={"t t11 " + className}>Тест</p>
+                        <p className={'t t11 ' + className}>Тест</p>
                         <button className="b b11" onClick={this.handleClick}>`Добавить/удалить (в зависимости от наличия) класс 'hi'`</button>
                     </>
                 );
@@ -704,8 +706,7 @@
 
                 return (
                     <>
-                        <p className="z">При клике на любом элементе страницы выводить значение атрибута class
-                            элемента</p>
+                        <p className="z">При клике на любом элементе страницы выводить значение атрибута class элемента</p>
                         <p className="t t12">{targetClass}</p>
                     </>
                 );
@@ -741,14 +742,18 @@
                 var b = Math.floor(Math.random() * 256);
                 var colorRGB = "rgb(" + r + "," + g + ", " + b + ")";
 
-                this.setState({background: colorRGB})
+                this.setState({background: colorRGB});
             };
 
             render() {
+                const style = {
+                    background: this.state.background
+                };
+
                 return (
                     <>
                         <p className="z">При изменении размеров окна вкладки или браузера изменять фоновый цвет абзаца (использовать RGB и Math.random)</p>
-                        <p className="t t99" style={this.state}>Drugs are bad, m'kay, so, if you do drugs, you're bad, m'kay, because drugs are bad.</p>
+                        <p className="t t99" style={style}>Drugs are bad, m'kay, so, if you do drugs, you're bad, m'kay, because drugs are bad.</p>
                     </>
                 );
             }
@@ -778,12 +783,11 @@
         }
 
 
-        var NewWhore = function(props) {
-            console.log(props)
+        var Whore = function(props) {
             return (
                 <div className="whore">
                     <div className="whore-name">{props.name}</div>
-                    <img src={props.photo} width="200"/>
+                    <img src={props.photo} width="200" />
                     <div className="whore-age">Возраст: {props.age}</div>
                     <div className="whore-boobs">Размер груди: {props.boobs}</div>
                     <div className="whore-height">Рост: {props.height}</div>
@@ -792,7 +796,7 @@
                     <div className="whore-can-come">Выезд: {props.can_come ? '+' : '-'}</div>
                     <div className="whore-teaser">{props.teaser}</div>
                 </div>
-            )
+            );
         };
 
         class TaskWhores extends React.Component {
@@ -808,6 +812,7 @@
 
             render() {
                 var {whores} = this.state;
+
                 return (
                     <>
                         <p className="z">Вывести на экран анкету Жасмин используя переменную jasmine (смотри исходный
@@ -816,7 +821,7 @@
                         <div className="whores-container">
                             <div className="whore">
                                 <div className="whore-name">{jasmine.name}</div>
-                                <img src={jasmine.photo} width="200"/>
+                                <img src={jasmine.photo} width="200" />
                                 <div className="whore-age">Возраст: {jasmine.age}</div>
                                 <div className="whore-boobs">Размер груди: {jasmine.boobs}</div>
                                 <div className="whore-height">Рост: {jasmine.height}</div>
@@ -826,7 +831,7 @@
                                 <div className="whore-teaser">{jasmine.teaser}</div>
                             </div>
                             {
-                                this.state.whores.map((whore, idx) => <NewWhore {...whore} key={idx}/>)
+                                this.state.whores.map((whore, idx) => <Whore {...whore} key={idx} />)
                             }
                         </div>
 
@@ -849,7 +854,7 @@
 
             render() {
                 var {fishInFirstContainer} = this.state;
-                var fish = <img className="fish" src="images/fish.jpg" width="100"/>;
+                var fish = <img className="fish" src="images/fish.jpg" width="100" />;
 
                 return (
                     <>
@@ -882,7 +887,7 @@
             removeTooth = () => {
                 this.setState((state) => ({
                     showTooth: !state.showTooth
-                }))
+                }));
             };
 
             render() {
@@ -977,87 +982,60 @@
 
         class TaskMario extends React.Component {
             state = {
-                tiles: []
+                showChild: false
             };
 
             handleClick = () => {
+                this.setState({showChild: true});
+            };
+
+            getTiles() {
                 var tiles = [];
-                var className;
-                var left;
-                var top;
-                var style;
 
                 for (let i = 0; i < map.length; i++) {
                     for (let j = 0; j < map[i].length; j++) {
-                        top = i * 16 + 'px';
-                        left = j * 16 + 'px';
+                        let style = {
+                            top: i * 16 + 'px',
+                            left: j * 16 + 'px'
+                        };
+                        let className;
 
                         switch (map[i][j]) {
                             case 'z':
                                 className = 'x_z';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'k':
                                 className = 'x_k';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'c':
                                 className = 'x_c';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 't':
                                 className = 'x_t';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'g':
                                 className = 'x_g';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'b':
                                 className = 'x_b';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'd':
                                 className = 'x_d';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                             case 'w':
                                 className = 'x_w';
-                                style = {
-                                    top: top,
-                                    left: left
-                                }
                                 break;
                         }
+
                         tiles.push(<div className={`tile ${className}`} style={style}></div>);
                     }
                 }
-                this.setState({tiles: tiles});
-            };
+
+                return tiles;
+            }
 
             render() {
-                var {tiles} = this.state;
+                var tiles = this.state.showChild ? this.getTiles() : null;
 
                 return (
                     <>
@@ -1073,38 +1051,36 @@
 
         class TaskSlider extends React.Component {
             state = {
-                activeSlideIdx: 0,
-                slides: [
-                    "images/slide1.jpg",
-                    "images/slide2.jpg",
-                    "images/slide3.jpg",
-                    "images/slide4.jpg",
-                    "images/slide5.jpg"
-                ]
+                activeSlideIdx: 0
             };
 
+            slides = [
+                'images/slide1.jpg',
+                'images/slide2.jpg',
+                'images/slide3.jpg',
+                'images/slide4.jpg',
+                'images/slide5.jpg'
+            ];
+
             clickOnNext = () => {
-                if (this.state.activeSlideIdx < this.state.slides.length - 1) {
-                    this.setState((state) => ({
-                        activeSlideIdx: state.activeSlideIdx + 1
-                    }))
-                } else {
-                    this.setState({activeSlideIdx: 0})
-                }
+                this.setState((state) => ({
+                    activeSlideIdx: state.activeSlideIdx === this.slides.length - 1 ?
+                        0 :
+                        state.activeSlideIdx + 1
+                }));
             };
 
             clickOnPrev = () => {
-                if (this.state.activeSlideIdx === 0) {
-                    this.setState({activeSlideIdx: this.state.slides.length - 1})
-                } else {
-                    this.setState((state) => ({
-                        activeSlideIdx: state.activeSlideIdx - 1
-                    }))
-                }
+                this.setState((state) => ({
+                    activeSlideIdx: state.activeSlideIdx === 0 ?
+                        this.slides.length - 1 :
+                        state.activeSlideIdx - 1
+                }));
             };
 
             render() {
-                var {activeSlideIdx, slides} = this.state;
+                var {activeSlideIdx} = this.state;
+                const {slides} = this;
 
                 return (
                     <>
@@ -1113,8 +1089,8 @@
                         <div className="slider">
                             {
                                 slides.map((src, idx) => {
-                                    var className = activeSlideIdx === idx ? 'active' : null;
-                                    return  <img src={src} key={idx} className={`slide ${className}`}  />
+                                    var className = activeSlideIdx === idx ? 'active' : '';
+                                    return <img src={src} key={idx} className={`slide ${className}`} />
                                 })
                             }
                         </div>
@@ -1131,65 +1107,69 @@
         class TaskFaq extends React.Component {
             state = {
                 activeTabIdx: 0,
-                faq: [
-                    {
-                        question: 'В чем разница между 32-разрядной и 64-разрядной версиями Windows?',
-                        answer: `Термины "32-разрядный" и "64-разрядный" описывают, каким образом процессор (он также называется ЦП) обрабатывает информацию. 64-разрядная версия Windows обрабатывает большие объемы оперативной памяти (ОЗУ) более эффективно по сравнению с 32-разрядной версией. Не все устройства могут работать под управлением 64-разрядных версий Windows.`
-                    },
-                    {
-                        question: 'Моя копия Windows приобретена через учебное заведение. Можно ли скачать ее здесь?',
-                        answer: <> Да, но вам потребуется ключ продукта. Перейдите на страницу загрузок <b>Академические продукты</b> и выберите версию Windows, чтобы начать.</>
-                    },
-                    {
-                        question: `Что делать после создания носителя с помощью средства создания носителя?`,
-                        answer: <>
-                            <p>Чтобы установить Windows, после создания установочного носителя выполните одно из следующих действий:</p>
-
-                            <ul>
-                                <li>
-                                    Подключите USB-устройство флэш-памяти к компьютеру, на который необходимо
-                                    установить Windows, найдите его в проводнике и откройте файл setup.exe.
-                                    Выполняйте инструкции, отображаемые в ходе установки.
-                                </li>
-                                <li>
-                                    Если ваш компьютер настроен на загрузку с USB-накопителя, подключите
-                                    USB-устройство флэш-памяти к компьютеру, на который необходимо установить
-                                    Windows, перезагрузите его, а затем следуйте инструкциям по установке.
-                                </li>
-                                <li>
-                                    Если компьютер настроен на загрузку с DVD-дисковода, вставьте DVD-диск в
-                                    компьютер, перезагрузите компьютер, а затем следуйте инструкциям по установке.
-                                </li>
-                            </ul>
-                        </>
-                    },
-                    {
-                        question: 'Этот образ диска загрузочный?',
-                        answer: `Образ диска с этого сайта можно использовать для создания загрузочных USB-носителей DVD-дисков, которые предоставляют доступ к средствам восстановления.`
-                    },
-
-                ]
             };
+
+            items = [
+                {
+                    question: 'В чем разница между 32-разрядной и 64-разрядной версиями Windows?',
+                    answer: 'Термины "32-разрядный" и "64-разрядный" описывают, каким образом процессор (он также называется ЦП) обрабатывает информацию. 64-разрядная версия Windows обрабатывает большие объемы оперативной памяти (ОЗУ) более эффективно по сравнению с 32-разрядной версией. Не все устройства могут работать под управлением 64-разрядных версий Windows.'
+                },
+                {
+                    question: 'Моя копия Windows приобретена через учебное заведение. Можно ли скачать ее здесь?',
+                    answer: 'Да, но вам потребуется ключ продукта. Перейдите на страницу загрузок <b>Академические продукты</b> и выберите версию Windows, чтобы начать.'
+                },
+                {
+                    question: `Что делать после создания носителя с помощью средства создания носителя?`,
+                    answer: `
+                        <p>Чтобы установить Windows, после создания установочного носителя выполните одно из следующих действий:</p>
+
+                        <ul>
+                            <li>
+                                Подключите USB-устройство флэш-памяти к компьютеру, на который необходимо
+                                установить Windows, найдите его в проводнике и откройте файл setup.exe.
+                                Выполняйте инструкции, отображаемые в ходе установки.
+                            </li>
+                            <li>
+                                Если ваш компьютер настроен на загрузку с USB-накопителя, подключите
+                                USB-устройство флэш-памяти к компьютеру, на который необходимо установить
+                                Windows, перезагрузите его, а затем следуйте инструкциям по установке.
+                            </li>
+                            <li>
+                                Если компьютер настроен на загрузку с DVD-дисковода, вставьте DVD-диск в
+                                компьютер, перезагрузите компьютер, а затем следуйте инструкциям по установке.
+                            </li>
+                        </ul>
+                    `
+                },
+                {
+                    question: 'Этот образ диска загрузочный?',
+                    answer: 'Образ диска с этого сайта можно использовать для создания загрузочных USB-носителей DVD-дисков, которые предоставляют доступ к средствам восстановления.'
+                }
+            ];
+
             onClick = (e) => {
-                console.log(e.target.dataset.id);
-                var id = parseInt(e.target.dataset.id);
+                var id = Number(e.target.dataset.id);
                 this.setState({activeTabIdx: id});
             };
 
             render() {
-                var {faq, activeTabIdx} = this.state;
+                var {activeTabIdx} = this.state;
+                var {items} = this;
+
                 return (
                     <>
                         <p className="z">Кликая вопросам я хочу видеть ответы на них</p>
 
                         <dl className="faq">
                             {
-                                faq.map((tab, idx) => {
-                                    var className = activeTabIdx === idx ? 'active' : null;
-                                    return <>
-                                        <dt className={`question ${className}`} data-id={idx} key={idx} onClick={this.onClick} >{tab.question}</dt>
-                                        <dd className="answer">{tab.answer}</dd>
-                                    </>
+                                items.map((item, idx) => {
+                                    var className = activeTabIdx === idx ? 'active' : '';
+                                    return (
+                                        <>
+                                            <dt className={`question ${className}`} data-id={idx} key={idx} onClick={this.onClick} >{item.question}</dt>
+                                            <dd className="answer" dangerouslySetInnerHTML={{__html: item.answer}} />
+                                        </>
+                                    );
                                 })
                             }
                         </dl>
@@ -1201,50 +1181,49 @@
         class TaskTabs extends React.Component {
             state = {
                 activeTabIdx: 0,
-                tabs: [
-                    {
-                        tab: 'today',
-                        title: `Сегодня`,
-                        content: <>
-                            <ul>
-                                <li>Звёздные войны: Последние джедаи</li>
-                                <li>Счастливый день смерти</li>
-                                <li>Дыши</li>
-                            </ul>
-                        </>
-                    },
-                    {
-                        tab: 'tomorrow',
-                        title: `Завтра`,
-                        content: <>
-                            <ul>
-                                <li>Киборги</li>
-                                <li>Земля троллей</li>
-                                <li>За пропастью во ржи</li>
-                            </ul>
-                        </>
-                    },
-                    {
-                        tab: '23d',
-                        title: `23 декабря`,
-                        content: <>
-                            <ul>
-                                <li>Мой любимый динозавр</li>
-                                <li>Фердинанд</li>
-                                <li>Джуманджи: Зов джунглей</li>
-                            </ul>
-                        </>
-                    },
-                ]
             };
 
+            tabs = [
+                {
+                    title: `Сегодня`,
+                    content: `
+                        <ul>
+                            <li>Звёздные войны: Последние джедаи</li>
+                            <li>Счастливый день смерти</li>
+                            <li>Дыши</li>
+                        </ul>
+                    `
+                },
+                {
+                    title: `Завтра`,
+                    content: `
+                        <ul>
+                            <li>Киборги</li>
+                            <li>Земля троллей</li>
+                            <li>За пропастью во ржи</li>
+                        </ul>
+                    `
+                },
+                {
+                    title: `23 декабря`,
+                    content: `
+                        <ul>
+                            <li>Мой любимый динозавр</li>
+                            <li>Фердинанд</li>
+                            <li>Джуманджи: Зов джунглей</li>
+                        </ul>
+                    `
+                }
+            ];
+
             onClick = (e) => {
-                var id = parseInt(e.target.dataset.id);
+                var id = Number(e.target.dataset.id);
                 this.setState({activeTabIdx: id});
             };
 
             render() {
-                var {activeTabIdx, tabs} = this.state;
+                var {activeTabIdx} = this.state;
+                var {tabs} = this;
 
                 return (
                     <>
@@ -1254,23 +1233,16 @@
                         <div className="tabs">
                             {
                                 tabs.map((tab, idx) => {
-                                    var className = activeTabIdx === idx ? 'active' : null;
-                                    return <>
-                                        <div className={`item ${className}`} key={idx} data-id={idx} data-tab={tab.tab}
-                                             onClick={this.onClick}>{tab.title}</div>
-                                    </>
+                                    var className = activeTabIdx === idx ? 'active' : '';
+                                    return <div className={`item ${className}`} key={idx} data-id={idx} onClick={this.onClick}>{tab.title}</div>;
                                 })
                             }
                         </div>
                         <div className="tabs-content">
                             {
                                 tabs.map((tab, idx) => {
-                                    var className = activeTabIdx === idx ? 'active' : null;
-                                    return <>
-                                        <div className={`item ${className}`} key={idx} data-id={idx} data-tab={tab.tab}>
-                                            {tab.content}
-                                        </div>
-                                    </>
+                                    var className = activeTabIdx === idx ? 'active' : '';
+                                    return <div className={`item ${className}`} key={idx} data-id={idx} dangerouslySetInnerHTML={{__html: tab.content}} />;
                                 })
                             }
                         </div>
@@ -1279,22 +1251,21 @@
             }
         }
 
-
         class TaskPopUp extends React.Component {
             state = {
-                showPopUp: true
+                showPopUp: false
             };
 
             handleClick = () => {
                 this.setState((state) => ({
                     showPopUp: !state.showPopUp
                 }));
-                console.log(this.state)
             };
 
             render() {
-                var {showPopUp} = this.state
-                var className = showPopUp ? 'hidden' : null;
+                var {showPopUp} = this.state;
+                var className = showPopUp ? '' : 'hidden';
+
                 return (
                     <>
                         <p className="z">Кликая на кнопку Login я хочу чтобы затенялся экран и по середине экрана появлялось окошко для авторизации закрыть которое можно кликнув по кнопке с крестиком</p>
@@ -1317,11 +1288,11 @@
             onClick = (e) => {
                 e.preventDefault()
             };
+
             render() {
                 return (
                     <>
                         <p className="z">Отменить действие по-умолчанию при клике на ссылку</p>
-
 
                         <p><a href="https://ebanoe.it/" className="link-ebanoe" target="_blank" onClick={this.onClick}>Ebanoe.IT — голая правда о нашем айти</a></p>
                     </>
@@ -1332,30 +1303,32 @@
         class TaskAd extends React.Component {
             constructor(props) {
                 super(props);
+
                 this.state = {
-                    display: null
-                }
-                window.addEventListener('load', this.adStatus);
+                    showAd: true
+                };
             }
 
             onClick = () => {
                 localStorage.setItem('showAd', 'false');
-                this.setState({
-                    display: 'none'
-                })
+                this.setState({showAd: false});
             };
 
-            adStatus = () => {
+            componentDidMount() {
                 if (localStorage.getItem('showAd') === 'false') {
-                    this.setState({display: 'none'});
+                    this.setState({showAd: false});
                 }
-            };
+            }
 
             render() {
+                const style = {
+                    display: this.state.showAd ? 'block' : 'none'
+                };
+
                 return (
                     <>
                         <p className="z">Надоела реклама про увеличение члена? При клике на кнопку "Больше не показывать" заноси в localStorage значение которое будешь проверять при загрузке страницы</p>
-                        <p className="t t97" style={this.state} >Хочешь увеличить член? Заходи <a href="http://pornhub.com" target="_blank">сюда</a>! <button className="b97" onClick={this.onClick}>Больше не показывать</button></p>
+                        <p className="t t97" style={style} >Хочешь увеличить член? Заходи <a href="http://pornhub.com" target="_blank">сюда</a>! <button className="b97" onClick={this.onClick}>Больше не показывать</button></p>
                     </>
                 );
             }
