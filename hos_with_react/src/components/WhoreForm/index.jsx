@@ -1,51 +1,56 @@
 import React from 'react';
-
-// import Whore from '../Whore'
 import $ from 'jquery';
 
 class WhoreForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+
+        const {whore} = this.props;
+
+        this.state = whore ? whore : this.getDefaultState();
     }
 
-    componentDidMount() {
-        console.log(this.state);
-        this.setState(this.props.whore);
+    getDefaultState() {
+        return {
+            id: null,
+            name: '',
+            lastName: '',
+            nickname: '',
+            age: '',
+            price: ''
+        };
     }
 
     componentDidUpdate(prevProps) {
+        const {whore} = this.props;
+
         if (this.props.whore !== prevProps.whore) {
-            console.log('3333333333333333', this.props.whore, prevProps.whore);
-            this.setState(this.props.whore);
+            this.setState(whore ? whore : this.getDefaultState());
         }
     }
 
-    handleInputChange = (e) => {
-        this.isFormDataValid(e.target)
+    onChange = (e) => {
         const value = e.target.value;
         const name = e.target.name;
 
-        this.setState({[name]: value});
+        this.setState({
+            [name]: value
+        });
     };
 
     onSave = () => {
         if (this.isFormDataValid()) {
-            this.props.handleAdd({
+            this.props.onSave({
                 ...this.state,
-                id: '_' + Math.random().toString().substr(2, 9),
-                showAddForm: false
+                id: '_' + Math.random().toString().substr(2, 9)
             });
         } else {
-            console.log('form is invalid')
             this.highlightFields();
         }
     };
 
     onRemove = () => {
-        console.log('state on remove ', this.state);
-        console.log(this.state.id);
-        this.props.handleRemove(this.state.id);
+        this.props.onRemove(this.state.id);
     };
 
     isFormDataValid = () => {
@@ -62,69 +67,37 @@ class WhoreForm extends React.Component {
                 input.style.border = '1px solid #000';
             }
         });
-    }
+    };
 
     onUpdate = () => {
-        this.props.handleUpdate(this.state);
+        this.props.onUpdate(this.state);
     };
 
     render() {
-        console.log('+++++++++++++++');
-        const {showAddForm, showEditForm} = this.props;
+        const {whore} = this.props;
         const {name, lastName, nickname, age, price} = this.state;
-        const {onSave, onUpdate, handleInputChange, onRemove} = this;
-        console.log('state on load form', this.state)
-        return (<>
-                {
-                    showAddForm ?
-                        <div className="whore-form">
-                            <form>
-                                <input onChange={handleInputChange} value={name} type="text" name="name"
-                                       placeholder='Имя'/>
-                                <input onChange={handleInputChange} value={lastName} type="text" name="lastName"
-                                       placeholder="Фамилия"/>
-                                <input onChange={handleInputChange} value={nickname} type="text" name="nickname"
-                                       placeholder="Псевдоним"/>
-                                <input onChange={handleInputChange} value={age} type="number" name="age"
-                                       placeholder="Возраст"/>
-                                <input onChange={handleInputChange} value={price} type="number" name="price"
-                                       placeholder="Цена"/>
-                                <button onClick={onSave} type="button" className="save">Сохранить</button>
-                            </form>
-                        </div> :
-                        null
-                }
-                {
-                    showEditForm ?
-                        <div className="whore-form">
-                            <form>
-                                <input onChange={handleInputChange} value={name} type="text" name="name"
-                                       placeholder='Имя'/>
-                                <input onChange={handleInputChange} value={lastName} type="text" name="lastName"
-                                       placeholder="Фамилия"/>
-                                <input onChange={handleInputChange} value={nickname} type="text" name="nickname"
-                                       placeholder="Псевдоним"/>
-                                <input onChange={handleInputChange} value={age} type="number" name="age"
-                                       placeholder="Возраст"/>
-                                <input onChange={handleInputChange} value={price} type="number" name="price"
-                                       placeholder="Цена"/>
-                            </form>
-                            <button onClick={onRemove} type="button" className="remove">Удалить</button>
-                            <button onClick={onUpdate} type="button" className="update">Оновить</button>
-                        </div> :
-                        null
-                }
-            </>
+        const {onSave, onUpdate, onRemove, onChange} = this;
+
+        return (
+            <div className="whore-form">
+                <form>
+                    <input onChange={onChange} value={name} type="text" name="name" placeholder='Имя' />
+                    <input onChange={onChange} value={lastName} type="text" name="lastName" placeholder="Фамилия" />
+                    <input onChange={onChange} value={nickname} type="text" name="nickname" placeholder="Псевдоним" />
+                    <input onChange={onChange} value={age} type="number" name="age" placeholder="Возраст" />
+                    <input onChange={onChange} value={price} type="number" name="price" placeholder="Цена" />
+                    {
+                        whore ?
+                            <>
+                                <button onClick={onRemove} type="button" className="remove">Удалить</button>
+                                <button onClick={onUpdate} type="button" className="update">Обновить</button>
+                            </> :
+                            <button onClick={onSave} type="button" className="save">Сохранить</button>
+                    }
+                </form>
+            </div>
         );
     }
 }
 
-export default WhoreForm
-
-/*
-    isFormDataValid: function() {
-        return $('.whore-form input').toArray().every(function(input) {
-            return input.value !== '';
-        });
-    }
-* * */
+export default WhoreForm;

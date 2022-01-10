@@ -6,64 +6,75 @@ import WhoreForm from "../WhoreForm";
 class Whores extends React.Component {
     state = {
         showAddForm: false,
-        showEditForm: false,
         selectedWhoreId: null,
         whores: []
     };
 
-    setWhoresToStorage = () => {
-        localStorage.setItem('whores', JSON.stringify(this.state.whores))
+    setWhoresToStorage = (whores) => {
+        localStorage.setItem('whores', JSON.stringify(whores));
     };
 
-    componentWillMount() {
+    componentDidMount() {
         let whores = JSON.parse(localStorage.getItem('whores')) || [];
-        this.setState({whores: whores});
-        localStorage.setItem('whores', JSON.stringify(this.state.whores))
+        this.setState({
+            whores: whores
+        });
+        this.setWhoresToStorage(whores);
     }
 
-    clickOnAdd = () => {
-        this.setState((state) => ({
+    showAddForm = () => {
+        this.setState({
             showAddForm: true,
-            showEditForm: false,
-            selectedWhore: {}
-        }))
+            selectedWhoreId: null
+        });
     };
 
-    handleAdd = (whore) => {
-        this.setState((state) => ({
-            showAddForm: false,
-            whores: [
+    onSave = (whore) => {
+        this.setState((state) => {
+            const whores = [
                 ...state.whores,
                 whore
-            ]
-        }))
-        this.setWhoresToStorage();
+            ];
+
+            this.setWhoresToStorage(whores);
+
+            return {
+                showAddForm: false,
+                whores
+            }
+        });
     };
 
-    handleRemove = (id) => {
-        this.setState((state) => ({
-            whores: state.whores.filter((whore) => whore.id !== id),
-            showEditForm: false
-        }))
+    onRemove = (id) => {
+        this.setState((state) => {
+            const whores = state.whores.filter((whore) => whore.id !== id);
+
+            this.setWhoresToStorage(whores);
+
+            return {
+                whores,
+                selectedWhoreId: null
+            };
+        });
     };
 
-    handleUpdate = (updatedWhore) => {
-        console.log('updated whore ', updatedWhore);
-        this.setState((state) => ({
-            showEditForm: false,
-            whores: state.whores.map((whore) => whore.id === updatedWhore.id ? {
-                ...updatedWhore
-            } : whore)
-        }));
-        console.log('updated Whore State', this.state)
+    onUpdate = (updatedWhore) => {
+        this.setState((state) => {
+            const whores = state.whores.map((whore) => whore.id === updatedWhore.id ? updatedWhore : whore);
+
+            this.setWhoresToStorage(whores);
+
+            return {
+                whores,
+                selectedWhoreId: null
+            };
+        });
     };
 
-    handleClickOnWhore = (id) => {
+    onChoose = (id) => {
         this.setState((state) => ({
-            showEditForm: true,
             showAddForm: false,
-            selectedWhoreId: id,
-            selectedWhore: this.getWhoreById(id)
+            selectedWhoreId: id
         }));
     };
 
@@ -71,40 +82,32 @@ class Whores extends React.Component {
         return this.state.whores.find(whore => whore.id === id);
     };
 
-
     render() {
-        const {whores, showEditForm, showAddForm, selectedWhore} = this.state;
-        const {clickOnAdd, handleClickOnWhore, handleAdd, setWhoresToStorage, handleRemove, handleUpdate} = this;
+        const {whores, selectedWhoreId} = this.state;
+        const {onChoose, onSave, onRemove, onUpdate} = this;
+        const selectedWhore = this.getWhoreById(selectedWhoreId);
 
-        setWhoresToStorage();
         return (
             <div className="whore-manager-module">
                 <div id="display-whores">
-                    <button id="add-whore-btn" onClick={this.clickOnAdd}>Добавить</button>
+                    <button id="add-whore-btn" onClick={this.showAddForm}>Добавить</button>
                     <div id="whore-list">
                         {
                             whores.length > 0 ?
-                            whores.map((whore, idx) => (
-                                <Whore
-                                    {...whore} idx={idx} key={idx}
-                                    handleClickOnWhore={handleClickOnWhore}/>
-                            )) :
+                                whores.map((whore, idx) => (
+                                    <Whore {...whore} key={idx} onChoose={onChoose} />
+                                )) :
                                 <p>Шлюх пока нет</p>
                         }
                     </div>
                 </div>
                 <div id="whore-form-container">
-
                     {
-                        <WhoreForm
-                            clickOnAdd={clickOnAdd}
-                            handleAdd={handleAdd}
-                            handleRemove={handleRemove}
-                            handleUpdate={handleUpdate}
-                            whore={selectedWhore}
-                            showEditForm={showEditForm}
-                            showAddForm={showAddForm}
-                        />
+                        this.state.showAddForm ?
+                            <WhoreForm onSave={onSave} /> :
+                            selectedWhoreId ?
+                                <WhoreForm onRemove={onRemove} onUpdate={onUpdate} whore={selectedWhore} /> :
+                                null
                     }
                 </div>
             </div>
@@ -112,4 +115,4 @@ class Whores extends React.Component {
     }
 }
 
-export default Whores
+export default Whores;
