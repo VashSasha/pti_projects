@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.whore-manager-module {
+  display: flex;
+  width: 600px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#display-whores {
+  display: inline-block;
+  margin: 15px;
+  width: 250px;
+}
+
+#whore-list {
+  background: #bfd8f4;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+#whore-list .whore {
+  color: #000;
+  text-decoration: none;
+}
+
+#whore-list .whore:hover {
+  cursor: pointer;
+}
+
+.whore-form{
+  background: #bfd8f4;
+  margin: 15px;
+  padding: 20px;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.whore-form input {
+  padding: 3px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.whore-form button {
+  display: inline-block;
+  width: 100px;
+  margin-left: auto;
+}
+
+#add-whore-btn {
+  display: block;
+  margin-left: auto;
+}

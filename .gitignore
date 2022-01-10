@@ -1,3 +1,4 @@
 # Все что находится в папке {.idea} и {_design} Git будет игнорировать
 .idea/
 _design/
+/js/cheat_sheet_javascript.txt
