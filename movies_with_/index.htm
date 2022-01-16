@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/dot.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/backbone.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="top-bar">
+            Поиск?
+
+            Сортировать:
+            <select>
+                <option name="" value="default" selected>по умолчанию</option>
+                <option name="" value="ascending_title">по алфавиту &uarr;</option>
+                <option name="" value="descending_title">по алфавиту &darr;</option>
+                <option name="" value="ascending_rating">по рейтингу &uarr;</option>
+                <option name="" value="descending_rating">по рейтингу &darr;</option>
+                <option name="" value="ascending_year">по году &uarr;</option>
+                <option name="" value="descending_year">по году &darr;</option>
+                <option name="" value="ascending_time">по длительности &uarr;</option>
+                <option name="" value="descending_time">по длительности &darr;</option>
+            </select>
+
+            Отображать:
+            <button>Списком</button>
+            <button class="active">Плитками</button>
+        </div>
+
+        <div class="filters">
+            <h4>Фильтры</h4>
+
+            <div>Страна:
+                <input type="checkbox" name="" value="" id="">
+                <label for="">США (4)</label>
+
+                <input type="checkbox" name="" value="" id="">
+                <label for="">СССР (1)</label>
+
+                <input type="checkbox" name="" value="" id="">
+                <label for="">Великобритания (1)</label>
+            </div>
+
+            <div>Жанр:
+                <input type="checkbox" name="" value="" id="">
+                <label for="">боевик (12)</label>
+
+                <input type="checkbox" name="" value="" id="">
+                <label for="">комедия (8)</label>
+
+                <input type="checkbox" name="" value="" id="">
+                <label for="">криминал (2)</label>
+            </div>
+        </div>
+
+        <div class="movies state-tiles">
+            <div class="movie">
+                <div class="movie-image-container">
+                    <a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a>
+                </div>
+                <a class="movie-title" href="#">Джентльмены</a>
+                <div class="movie-details">
+                    <span>2020</span>
+                </div>
+            </div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+            <div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a></div><a class="movie-title" href="#">Джентльмены</a><div class="movie-details"><span>2020</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1437566539_88761604.jpg"></a></div><a class="movie-title" href="#">Джентльмены удачи</a><div class="movie-details"><span>1971</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1533155746_20b5bd3.jpg"></a></div><a class="movie-title" href="#">Мстители: Война бесконечности</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1538682174_690d454.jpg"></a></div><a class="movie-title" href="#">Веном</a><div class="movie-details"><span>2018</span></div></div><div class="movie"><div class="movie-image-container"><a href="#"><img src="images/movies/1530651906_9226a04.jpg"></a></div><a class="movie-title" href="#">Первому игроку приготовиться</a><div class="movie-details"><span>2018</span></div></div>
+        </div>
+
+        <div class="movies state-list">
+            <div class="movie">
+                <div class="movie-image-container">
+                    <a href="#"><img src="images/movies/1580980803_e29f9c3.jpg"></a>
+                </div>
+                <a class="movie-title" href="#">Джентльмены</a>
+                <table class="movie-details">
+                    <tr>
+                        <th>Год:</th>
+                        <td>2020</td>
+                    </tr>
+                    <tr>
+                        <th>Страна:</th>
+                        <td>США</td>
+                    </tr>
+                    <tr>
+                        <th>Жанр:</th>
+                        <td>боевик, комедия, криминал</td>
+                    </tr>
+                    <tr>
+                        <th>Время:</th>
+                        <td>113 мин. / 01:53</td>
+                    </tr>
+                    <tr>
+                        <th>Рейтинг:</th>
+                        <td>8.5</td>
+                    </tr>
+                </table>
+                <div class="movie-plot">
+                    Талантливый выпускник Оксфорда, применив свой уникальный ум и невиданную дерзость, придумал нелегальную схему обогащения с использованием поместья обедневшей английской аристократии. Однако когда он решает продать свой бизнес влиятельному клану миллиардеров из США, на его пути встают не менее обаятельные, но жесткие джентльмены. Намечается обмен любезностями, который точно не обойдется без перестрелок и парочки несчастных случаев.
+                </div>
+            </div>
+
+            <div class="movie">
+                <div class="movie-image-container">
+                    <a href="#"><img src="images/movies/1437566539_88761604.jpg"></a>
+                </div>
+                <a class="movie-title" href="#">Джентльмены удачи</a>
+                <table class="movie-details">
+                    <tr>
+                        <th>Год:</th>
+                        <td>1971</td>
+                    </tr>
+                    <tr>
+                        <th>Страна:</th>
+                        <td>СССР</td>
+                    </tr>
+                    <tr>
+                        <th>Жанр:</th>
+                        <td>драма, комедия, криминал, детектив</td>
+                    </tr>
+                    <tr>
+                        <th>Время:</th>
+                        <td>84 мин. / 01:24</td>
+                    </tr>
+                    <tr>
+                        <th>Рейтинг:</th>
+                        <td>8.4</td>
+                    </tr>
+                </table>
+                <div class="movie-plot">
+                    Заведующему детсадом Трошкину фатально не повезло: он оказался как две капли воды похож на бандита по кличке «Доцент», похитившего уникальный шлем Александра Македонского.
+
+                    Милиция внедряет добряка Трошкина в воровскую среду — и ему ничего не остается, кроме как старательно изображать своего двойника-злодея, путая всех окружающих. Со временем он настолько блестяще входит в роль, что сам начинает порой приходить в ужас. Между тем, жизни его угрожает смертельная опасность...
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

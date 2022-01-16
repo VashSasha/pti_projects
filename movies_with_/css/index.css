@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    background: url(../images/bg.jpg) no-repeat top center;
+    background-attachment: fixed;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.app {
+    background: #fff;
+    width: 1100px;
+    margin: 250px auto 0;
+}
+
+.top-bar {
+    background-color: #2f364a;
+    padding: 15px;
+    color: #fff;
+    text-align: right;
+}
+
+.filters {
+    background: rgba(241, 241, 241, 1);
+    padding: 15px;
+    font-size: 15px;
+    color: #464646;
+    font-weight: bold;
+}
+
+.top-bar select {
+    margin-right: 10px;
+}
+
+.movies {
+    overflow: hidden;
+    padding: 57px 50px;
+}
+
+/* --------------------------------------------- Movies: State => tiles */
+
+.movies.state-tiles .movie {
+    float: left;
+    margin: 0 7px;
+    position: relative;
+    width: 152px;
+    height: 280px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.movies.state-tiles .movie-image-container {
+    overflow: hidden;
+    margin-bottom: 3px;
+    box-shadow: 0 1px 4px 0 #000;
+    border-radius: 3px;
+}
+
+.movies.state-tiles .movie img {
+    display: block;
+    width: 152px;
+    height: 220px;
+}
+
+.movies.state-tiles .movie-title {
+    height: 15px;
+    margin-bottom: 3px;
+    overflow: hidden;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+.movies.state-tiles .movie-title:hover {
+    text-decoration: underline;
+}
+
+.movies.state-tiles .movie-details {
+    height: 15px;
+    margin-bottom: 3px;
+    line-height: 14px;
+    overflow: hidden;
+}
+
+.movies.state-tiles .movie-details span {
+    font-size: 11px;
+    color: #848484;
+}
+
+/* --------------------------------------------- Movies: State => list */
+
+.movies.state-list .movie {
+    margin-bottom: 20px;
+    box-shadow: 0 -30px 94px -8px rgba(0, 0, 0, 0.1) inset;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.movies.state-list .movie-image-container {
+    overflow: hidden;
+    box-shadow: 0 1px 4px 0 #000;
+    border-radius: 3px;
+    float: left;
+    margin-right: 20px;
+}
+
+.movies.state-list .movie img {
+    display: block;
+    width: 152px;
+    height: 220px;
+}
+
+.movies.state-list .movie-title {
+    text-decoration: none;
+    line-height: 18px;
+    font-size: 16px;
+    color: #78829d;
+}
+
+.movies.state-list .movie-title:hover {
+    text-decoration: underline;
+}
+
+.movies.state-list .movie-details {
+    line-height: 18px;
+    font-size: 13px;
+    color: #363636;
+    border-collapse: collapse;
+    margin: 3px;
+}
+
+.movies.state-list .movie-details th {
+    text-align: left;
+    padding-right: 7px;
+}
+
+.movies.state-list .movie-details td {
+    color: #a4a4a4;
+}
+
+.movies.state-list .movie-plot {
+    line-height: 18px;
+    font-size: 13px;
+    color: #383838;
+}
+
+.movies.state-list .movie-details {}
+
+.movies.state-list .movie-details span {
+    font-size: 11px;
+    color: #848484;
+}
