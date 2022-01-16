@@ -14,51 +14,76 @@
 <body>
     <div class="app">
         <div class="top-bar">
-            Поиск?
+            <div class="search">
+                Поиск:
+                <input type="text">
+            </div>
 
-            Сортировать:
-            <select>
-                <option name="" value="default" selected>по умолчанию</option>
-                <option name="" value="ascending_title">по алфавиту &uarr;</option>
-                <option name="" value="descending_title">по алфавиту &darr;</option>
-                <option name="" value="ascending_rating">по рейтингу &uarr;</option>
-                <option name="" value="descending_rating">по рейтингу &darr;</option>
-                <option name="" value="ascending_year">по году &uarr;</option>
-                <option name="" value="descending_year">по году &darr;</option>
-                <option name="" value="ascending_time">по длительности &uarr;</option>
-                <option name="" value="descending_time">по длительности &darr;</option>
-            </select>
+            <div class="items-per-page">
+                На странице:
+                <select>
+                    <option value="default" selected>все фильмы</option>
+                    <option value="6">по 6 фильмов</option>
+                    <option value="12">по 12 фильмов</option>
+                    <option value="18">по 18 фильмов</option>
+                </select>
+            </div>
 
-            Отображать:
-            <button>Списком</button>
-            <button class="active">Плитками</button>
+            <div class="sort">
+                Сортировать:
+                <select>
+                    <option value="default" selected>по умолчанию</option>
+                    <option value="ascending_title">по алфавиту &uarr;</option>
+                    <option value="descending_title">по алфавиту &darr;</option>
+                    <option value="ascending_rating">по рейтингу &uarr;</option>
+                    <option value="descending_rating">по рейтингу &darr;</option>
+                    <option value="ascending_year">по году &uarr;</option>
+                    <option value="descending_year">по году &darr;</option>
+                    <option value="ascending_time">по длительности &uarr;</option>
+                    <option value="descending_time">по длительности &darr;</option>
+                </select>
+            </div>
+
+            <div class="view-type">
+                Отображать:
+                <button data-view-type="list">Списком</button>
+                <button data-view-type="tiles" class="active">Плитками</button>
+            </div>
         </div>
 
         <div class="filters">
             <h4>Фильтры</h4>
 
-            <div>Страна:
-                <input type="checkbox" name="" value="" id="">
+            <div class="countries">
+                Страна:
+
+                <input type="checkbox" value="" id="">
                 <label for="">США (4)</label>
 
-                <input type="checkbox" name="" value="" id="">
+                <input type="checkbox" value="" id="">
                 <label for="">СССР (1)</label>
 
-                <input type="checkbox" name="" value="" id="">
+                <input type="checkbox" value="" id="">
                 <label for="">Великобритания (1)</label>
             </div>
 
-            <div>Жанр:
-                <input type="checkbox" name="" value="" id="">
+            <div class="genres">
+                Жанр:
+
+                <input type="checkbox" value="" id="">
                 <label for="">боевик (12)</label>
 
-                <input type="checkbox" name="" value="" id="">
+                <input type="checkbox" value="" id="">
                 <label for="">комедия (8)</label>
 
-                <input type="checkbox" name="" value="" id="">
+                <input type="checkbox" value="" id="">
                 <label for="">криминал (2)</label>
             </div>
         </div>
+
+        <div class="pagination"></div>
+
+        <div class="movies"></div>
 
         <div class="movies state-tiles">
             <div class="movie">

@@ -4,8 +4,7 @@
 }
 
 body {
-    background: url(../images/bg.jpg) no-repeat top center;
-    background-attachment: fixed;
+    background: fixed url(../images/bg.jpg) no-repeat top center;
     font-family: 'Trebuchet MS', sans-serif;
 }
 
@@ -19,7 +18,12 @@ body {
     background-color: #2f364a;
     padding: 15px;
     color: #fff;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-bar > div:not(:first-child) {
+    margin-left: 15px;
 }
 
 .filters {
@@ -30,17 +34,16 @@ body {
     font-weight: bold;
 }
 
-.top-bar select {
-    margin-right: 10px;
-}
-
 .movies {
     overflow: hidden;
     padding: 57px 50px;
 }
 
-/* --------------------------------------------- Movies: State => tiles */
+.movies:empty {
+    display: none;
+}
 
+/* --------------------------------------------- Movies: State => tiles */
 .movies.state-tiles .movie {
     float: left;
     margin: 0 7px;
@@ -48,6 +51,10 @@ body {
     width: 152px;
     height: 280px;
     font-family: 'Trebuchet MS', sans-serif;
+}
+
+.movies.state-tiles .movie:hover {
+    transform: scale(1.1);
 }
 
 .movies.state-tiles .movie-image-container {
@@ -92,7 +99,6 @@ body {
 }
 
 /* --------------------------------------------- Movies: State => list */
-
 .movies.state-list .movie {
     margin-bottom: 20px;
     box-shadow: 0 -30px 94px -8px rgba(0, 0, 0, 0.1) inset;
@@ -153,4 +159,35 @@ body {
 .movies.state-list .movie-details span {
     font-size: 11px;
     color: #848484;
+}
+
+/* --------------------------------------------- Pagination */
+.pagination {
+    text-align: center;
+    padding: 57px 0 0 0;
+}
+
+.pagination:empty {
+    display: none;
+}
+
+/* --------------------------------------------- Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    opacity: 0.8;
+}
+
+/* --------------------------------------------- PopUp */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ccc;
+    border: 14px solid #fff;
 }
