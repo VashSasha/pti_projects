@@ -26,6 +26,10 @@ body {
     margin-left: 15px;
 }
 
+.top-bar .view-type .active {
+    background: #15a4fa;
+}
+
 .filters {
     background: rgba(241, 241, 241, 1);
     padding: 15px;
@@ -47,7 +51,6 @@ body {
 .movies.state-tiles .movie {
     float: left;
     margin: 0 7px;
-    position: relative;
     width: 152px;
     height: 280px;
     font-family: 'Trebuchet MS', sans-serif;
@@ -169,6 +172,14 @@ body {
 
 .pagination:empty {
     display: none;
+}
+
+.pagination button {
+    cursor: pointer;
+}
+
+.pagination .active {
+    background: #15a4fa;
 }
 
 /* --------------------------------------------- Overlay */
