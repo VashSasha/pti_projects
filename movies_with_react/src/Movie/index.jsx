@@ -1,8 +1,5 @@
 import React from 'react';
 
-import MoviePopUp from '../MoviePopUp';
-import {render} from "react-dom";
-
 class Movie extends React.Component  {
 
     convertTime = (time) => {
@@ -15,7 +12,7 @@ class Movie extends React.Component  {
     };
 
     render() {
-        const {id, countries, genre, plot, rating, time, title, year, viewType, clickOnTile, showPopUp} = this.props;
+        const {id, countries, genre, plot, rating, time, title, year, viewType, clickOnTile} = this.props;
         const {convertTime} = this;
 
         return (
@@ -47,7 +44,7 @@ class Movie extends React.Component  {
                         </tr>
                         <tr>
                             <th>Жанр:</th>
-                            <td>{genre}</td>
+                            <td>{genre.join(', ')} </td>
                         </tr>
                         <tr>
                             <th>Время:</th>
@@ -65,8 +62,3 @@ class Movie extends React.Component  {
 }
 
 export default Movie;
-
-/*
-
-
- */

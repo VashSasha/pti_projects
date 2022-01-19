@@ -14,6 +14,7 @@ class MoviePopUp extends React.Component {
     render() {
         const {id, countries, genre, plot, rating, time, title, year, closePopUp} = this.props;
         const {convertTime} = this;
+
         return (
             <div className="pop-up" >
                 <div className="movie">
@@ -33,7 +34,7 @@ class MoviePopUp extends React.Component {
                         </tr>
                         <tr>
                             <th>Жанр:</th>
-                            <td>{genre}</td>
+                            <td>{genre.join(', ')}</td>
                         </tr>
                         <tr>
                             <th>Время:</th>
