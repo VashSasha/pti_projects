@@ -6,8 +6,13 @@ import '../index.css';
 
 import Movie from '../Movie';
 import MoviePopUp from '../MoviePopUp';
+import Pagination from '../Pagination';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        window.addEventListener('keydown', this.handleEsc);
+    }
     state = {
         movies: [],
         itemsPerPage: 'default',
@@ -46,6 +51,11 @@ class App extends React.Component {
         this.setState({viewType: viewType});
     };
 
+    changePerPage = (e) => {
+        let value = e.target.value;
+        this.setState({itemsPerPage: value})
+    };
+
     clickOnTile = (props) => {
         this.setState({
             showPopUp: true,
@@ -53,18 +63,17 @@ class App extends React.Component {
         });
     };
 
-    closePopUp = (e) => {
-        // if (e.keyCode === 27) {
-        //     this.setState({
-        //         showPopUp: false,
-        //         pupUpMovie: {}
-        //     })
-        // }
-
+    closePopUp = () => {
         this.setState({
             showPopUp: false,
             pupUpMovie: {}
         });
+    };
+
+    handleEsc = (e) => {
+        if (e.keyCode === 27) {
+            this.closePopUp();
+        }
     };
 
     filterBy = (e) => {
@@ -171,7 +180,7 @@ class App extends React.Component {
     render() {
         console.log(this.state);
 
-        const {changeView, viewTypeButtons, clickOnTile, closePopUp, filterBy, getSearchedTask, getSortedTasks, onInput, handleCheckBox, groupMovies,filterByGenre} = this;
+        const {changeView, viewTypeButtons, clickOnTile, closePopUp, filterBy, getSearchedTask, getSortedTasks, onInput, handleCheckBox, groupMovies, filterByGenre, changePerPage, handleEsc} = this;
         const {movies, itemsPerPage, viewType, showPopUp, popUpMovie, filterInput, groupFilter, } = this.state;
 
         const movieGroupCountry = groupMovies(movies, 'countries');
@@ -189,7 +198,7 @@ class App extends React.Component {
 
                     <div className="items-per-page">
                         На странице:
-                        <select>
+                        <select onChange={changePerPage}>
                             <option value="default">все фильмы</option>
                             <option value="6">по 6 фильмов</option>
                             <option value="12">по 12 фильмов</option>
@@ -256,13 +265,7 @@ class App extends React.Component {
 
                 {
                     itemsPerPage !== 'default' ?
-                        <div className="pagination">
-                            <button className="active">1</button>
-                            <button>2</button>
-                            <button>3</button>
-                            <button>4</button>
-                            <button>5</button>
-                        </div> :
+                       <Pagination movies={movies} itemsPerPage={itemsPerPage}/> :
                         null
                 }
 
@@ -277,10 +280,12 @@ class App extends React.Component {
                         ))
                     }
                 </div>
+
                 {
                     showPopUp ?
                         <MoviePopUp {...popUpMovie}
                                     closePopUp={closePopUp}
+                                    handleEsc={handleEsc}
                         /> :
                         null
                 }

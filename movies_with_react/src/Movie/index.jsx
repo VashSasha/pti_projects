@@ -40,7 +40,7 @@ class Movie extends React.Component  {
                         </tr>
                         <tr>
                             <th>Страна:</th>
-                            <td>{countries}</td>
+                            <td>{countries.join(', ')}</td>
                         </tr>
                         <tr>
                             <th>Жанр:</th>

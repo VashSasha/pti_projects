@@ -8,15 +8,18 @@ class MoviePopUp extends React.Component {
         const minutes = (hours - roundHours) * 60;
         const roundMinutes = Math.round(minutes);
 
+
+
         return `${time} мин. / ${roundHours}:${roundMinutes}`;
     };
 
     render() {
-        const {id, countries, genre, plot, rating, time, title, year, closePopUp} = this.props;
+
+        const {id, countries, genre, plot, rating, time, title, year, closePopUp, handleEsc} = this.props;
         const {convertTime} = this;
 
         return (
-            <div className="pop-up" >
+            <div className="pop-up" onKeyPress={handleEsc}>
                 <div className="movie">
                 <span className="close-popup" onClick={closePopUp}>&#10060;</span>
                     <div className="movie-image-container">
@@ -30,7 +33,7 @@ class MoviePopUp extends React.Component {
                         </tr>
                         <tr>
                             <th>Страна:</th>
-                            <td>{countries}</td>
+                            <td>{countries.join(', ')}</td>
                         </tr>
                         <tr>
                             <th>Жанр:</th>
